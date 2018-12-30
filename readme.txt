@@ -57,6 +57,7 @@ Comes with the following premade shortcodes:
 - sc-last-name - Display the current user's last name.
 - sc-display-name - Display the current user's display name.
 - sc-user-agent - Display the current user's user agent
+- sc-privacy-url - Render "Privacy URL" as specified on page WP Dashboard > Settings > Privacy.
 
 Features:
 
