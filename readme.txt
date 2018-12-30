@@ -100,14 +100,14 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 
 == Changelog ==
 
-= 1.7.4 =
-
-- Version and readme.txt updated to reflect 4.8 compatibility.
-
 = 1.8 =
 
 * Improvement: Added escaping for premade shortcodes.
 * Improvement: Added new shortcode "sc-privacy-url" for rendering Privacy URL link.
+
+= 1.7.4 =
+
+- Version and readme.txt updated to reflect 4.8 compatibility.
 
 = 1.7.3 =
 
