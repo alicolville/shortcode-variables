@@ -2,31 +2,24 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-function sh_cd_get_user_defined_arguments($default, $specified) {
+/**
+ * Replace user parameters within a shortcode e.g. look for %%parameter%% and replace
+ *
+ * @param $shortcode
+ * @param $user_defined_parameters
+ *
+ * @return mixed
+ */
+function sh_cd_apply_user_defined_parameters( $shortcode, $user_defined_parameters ){
 
-	$user_defined = array();
+    // Ensure we have something to do!
+    if ( true === empty( $user_defined_parameters ) || false === is_array( $user_defined_parameters ) ) {
+        return $shortcode;
+    }
 
-	if(is_array($default) && !empty($default) && is_array($specified) && !empty($specified)) {
-
-		foreach ($specified as $key => $value) {
-			if(!isset($default[$key])) {
-				$user_defined[$key] = $value;
-			}
-		}
-
-	}
-
-	return (is_array($user_defined) && !empty($user_defined)) ? $user_defined : false;
-}
-
-function sh_cd_apply_user_defined_parameters($shortcode, $user_defined_parameters){
-
-	if(!empty($shortcode) && is_array($user_defined_parameters) && !empty($user_defined_parameters)) {
-
-		foreach ($user_defined_parameters as $key => $value) {
-			$shortcode = str_replace('%%' . $key . '%%', $value, $shortcode);
-		}
-	}
+    foreach ( $user_defined_parameters as $key => $value ) {
+        $shortcode = str_replace( '%%' . $key . '%%', $value, $shortcode );
+    }
 
 	return $shortcode;
 }
@@ -225,9 +218,12 @@ function sh_cd_is_slug_unique($slug)
 
 }
 
-function sh_cd_create_database_table()
-{
-	global $wpdb;
+/**
+ * Build database table
+ */
+function sh_cd_create_database_table() {
+
+    global $wpdb;
 
 	$table_name = $wpdb->prefix . SH_CD_TABLE;
 
@@ -242,10 +238,8 @@ function sh_cd_create_database_table()
 	) $charset_collate;";
 
     require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-	dbDelta( $sql );
 
-    update_option('sh-cd-version', SH_CD_PLUGIN_VERSION);
-
+    dbDelta( $sql );
 }
 
 function sh_cd_display_message($text, $error = false)
