@@ -51,9 +51,3 @@ include_once SH_CD_ABSPATH . 'includes/shortcode-presets.php';
 // -----------------------------------------------------------------------------------------
 
 load_plugin_textdomain( SH_CD_SLUG, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
-
-// -----------------------------------------------------------------------------------------
-// Activation - create table
-// -----------------------------------------------------------------------------------------
-
-register_activation_hook( __FILE__, 'sh_cd_create_database_table');
