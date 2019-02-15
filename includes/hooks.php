@@ -25,3 +25,14 @@ function sh_cd_enqueue_scripts() {
 	wp_enqueue_style( 'sh-cd', plugins_url( '../assets/css/sh-cd.css', __FILE__ ), [], SH_CD_PLUGIN_VERSION ) ;
 }
 add_action( 'admin_enqueue_scripts', 'sh_cd_enqueue_scripts' );
+
+/**
+ * Run installer on each version number change or install
+ */
+function sh_cd_upgrade() {
+
+	if ( true === update_option( 'sh-cd-version-number', SH_CD_PLUGIN_VERSION ) ) {
+		sh_cd_create_database_table();
+	}
+}
+add_action('admin_init', 'sh_cd_upgrade');

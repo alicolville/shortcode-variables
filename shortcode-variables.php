@@ -11,7 +11,7 @@ defined('ABSPATH') or die("Jog on!");
  * License: GPL2
  * Text Domain: shortcode-variables
  */
-/*  Copyright 2017 YeKen.uk
+/*  Copyright 2019 YeKen.uk
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -27,20 +27,20 @@ defined('ABSPATH') or die("Jog on!");
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 
-define('SH_CD_ABSPATH', plugin_dir_path( __FILE__ ));
+define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
-define('SH_CD_PLUGIN_VERSION', '1.8');
+define( 'SH_CD_PLUGIN_VERSION', '2.0' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
 // -----------------------------------------------------------------------------------------
 
-include SH_CD_ABSPATH . 'includes/globals.php';
-include SH_CD_ABSPATH . 'includes/hooks.php';
-include SH_CD_ABSPATH . 'includes/pages.php';
-include SH_CD_ABSPATH . 'includes/functions.php';
-include SH_CD_ABSPATH . 'includes/shortcode.php';
-include SH_CD_ABSPATH . 'includes/shortcode-premade.php';
+include_once SH_CD_ABSPATH . 'includes/globals.php';
+include_once SH_CD_ABSPATH . 'includes/hooks.php';
+include_once SH_CD_ABSPATH . 'includes/pages.php';
+include_once SH_CD_ABSPATH . 'includes/functions.php';
+include_once SH_CD_ABSPATH . 'includes/shortcode.php';
+include_once SH_CD_ABSPATH . 'includes/shortcode-premade.php';
 
 // -----------------------------------------------------------------------------------------
 // AC: Load relevant language files
@@ -52,13 +52,4 @@ load_plugin_textdomain( SH_CD_SLUG, false, dirname( plugin_basename( __FILE__ ) 
 // Activation - create table
 // -----------------------------------------------------------------------------------------
 
-register_activation_hook(   __FILE__, 'sh_cd_create_database_table');
-
-// -----------------------------------------------------------------------------------------
-// Upgrade tasks?
-// -----------------------------------------------------------------------------------------
-if(SH_CD_PLUGIN_VERSION <> get_option('sh-cd-version', SH_CD_PLUGIN_VERSION)) {
-	// Run Database check / upgrade code again
-	sh_cd_create_database_table();
-	update_option('sh-cd-version', SH_CD_PLUGIN_VERSION);
-}
+register_activation_hook( __FILE__, 'sh_cd_create_database_table');
