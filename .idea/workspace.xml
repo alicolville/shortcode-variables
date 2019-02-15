@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff28db7c-6218-44e5-99d4-e1241393f250" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/globals.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/globals.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/shortcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/shortcode.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shortcode-variables.php" beforeDir="false" afterPath="$PROJECT_DIR$/shortcode-variables.php" afterDir="false" />
     </list>
@@ -28,7 +26,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shortcode-variables.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="shortcode-variables.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="524">
@@ -37,11 +35,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shortcode.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="shortcode.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="241">
-              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+            <state relative-caret-position="331">
+              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
             </state>
           </provider>
         </entry>
@@ -57,6 +55,7 @@
       <find>css</find>
       <find>SH_CD_CACHING_KEY_ALL</find>
       <find>SH_CD_SHORTCODE_SMALL</find>
+      <find>SH_CD_SHORTCODE</find>
     </findStrings>
     <dirStrings>
       <dir>C:\web-development\shortcode-variables</dir>
@@ -74,8 +73,8 @@
         <option value="$PROJECT_DIR$/readme.txt" />
         <option value="$PROJECT_DIR$/includes/hooks.php" />
         <option value="$PROJECT_DIR$/includes/globals.php" />
-        <option value="$PROJECT_DIR$/includes/shortcode.php" />
         <option value="$PROJECT_DIR$/shortcode-variables.php" />
+        <option value="$PROJECT_DIR$/includes/shortcode.php" />
       </list>
     </option>
   </component>
@@ -262,17 +261,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="241">
-          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="524">
           <caret line="58" column="67" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>

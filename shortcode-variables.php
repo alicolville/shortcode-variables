@@ -33,7 +33,7 @@ define( 'SH_CD_PLUGIN_VERSION', '2.0' );
 define( 'SH_CD_PLUGIN_NAME', 'Shortcode Variables' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
-define( 'SH_CD_SHORTCODE', 'shortcode-variables' );
+define( 'SH_CD_SHORTCODE', 'sv' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
