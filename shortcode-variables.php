@@ -41,6 +41,7 @@ include SH_CD_ABSPATH . 'includes/pages.php';
 include SH_CD_ABSPATH . 'includes/functions.php';
 include SH_CD_ABSPATH . 'includes/shortcode.php';
 include SH_CD_ABSPATH . 'includes/shortcode-premade.php';
+
 // -----------------------------------------------------------------------------------------
 // AC: Load relevant language files
 // -----------------------------------------------------------------------------------------

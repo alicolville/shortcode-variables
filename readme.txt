@@ -100,6 +100,14 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 
 == Changelog ==
 
+= 2.0 =
+
+TODO:
+
+- minify css
+- make sv standard shortcode
+
+
 = 1.8 =
 
 * Improvement: Added escaping for premade shortcodes.

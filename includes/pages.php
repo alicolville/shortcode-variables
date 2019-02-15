@@ -4,8 +4,6 @@ defined('ABSPATH') or die('Jog on!');
 
 function sh_cd_user_defined_page() {
 
-	wp_enqueue_style('sh-cd-style', plugins_url( 'css/sh-cd.css', __FILE__ ));
-
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
@@ -130,7 +128,7 @@ function sh_cd_user_defined_page() {
 									<h3 class="hndle"><span><?php _e( 'Existing Shortcodes' ); ?> </span></h3>
 									<div style="padding: 0px 15px 0px 15px">
 										<br />
-										<table class="widefat" width="100%">
+										<table class="widefat sh-cd-table" width="100%">
 											<tr class="row-title">
 												<th class="row-title" width="15%"><?php echo __('Slug'); ?></th>
 												<th width="20%"><?php echo __('Shortcode to embed'); ?></th>
@@ -228,7 +226,7 @@ function sh_cd_premade_shortcodes_page() {
 									<div style="padding: 0px 15px 0px 15px">
 										<p><?php echo __('Below is a list of premade shortcode variables that you can use throughout your website.'); ?></p>
 										<br />
-										<table class="widefat" width="100%">
+										<table class="widefat sh-cd-table" width="100%">
 											<tr class="row-title">
 												<th class="row-title" width="30%"><?php echo __('Shortcode to embed'); ?></th>
 												<th width="*"><?php echo __('Description'); ?></th>
