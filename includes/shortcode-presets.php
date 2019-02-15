@@ -2,37 +2,49 @@
 
 defined('ABSPATH') or die("Jog on!");
 
-function sh_cd_is_shortcode_preset($slug)
-{
-	if (!empty($slug) && array_key_exists($slug, sh_cd_shortcode_presets())) {
-		return true;
+/**
+ * Determine if the slug belongs to a preset
+ * @param $slug
+ */
+function sh_cd_is_preset( $slug ) {
+
+	// Free preset?
+	if ( true === array_key_exists( $slug, sh_cd_shortcode_presets_free_list() ) ) {
+		return 'free';
+	}
+
+	// Premium preset?
+	if ( true === array_key_exists( $slug, sh_cd_shortcode_presets_premium_list() ) ) {
+		return 'premium';
 	}
 
 	return false;
-
 }
 
-function sh_cd_shortcode_presets()
-{
-	return array(
+/**
+ * Return a list of slugs / titles for free presets
+ * @return array
+ */
+function sh_cd_shortcode_presets_free_list() {
 
-		'sc-todays-date' => 'Displays today\'s date. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>',
-		'sc-site-title' => 'Displays the site title.',
-		'sc-site-url' => 'Displays the site URL.',
-		'sc-page-title' => 'Displays the page title.',
-		'sc-admin-email' => 'Displays the admin email address.',
-		'sc-login-page' => 'Wordpress login page. Add the parameter "redirect" to specify where the user is taken after a successful login e.g. redirect="http://www.google.co.uk".',
-		'sc-username' => 'Display the logged in username.',
-		'sc-user-id' => 'Display the current user\'s ID',
-		'sc-user-ip' => 'Display the current user\'s IP address.',
-		'sc-user-email' => 'Display the current user\'s email address.',
-		'sc-username' => 'Display the current user\'s username.',
-		'sc-first-name' => 'Display the current user\'s first name.',
-		'sc-last-name' => 'Display the current user\'s last name.',
-		'sc-display-name' => 'Display the current user\'s display name.',
-		'sc-user-agent' => 'Display the current user\'s user agent',
-        'sc-privacy-url' => 'Displays the privacy page URL.'
-		);
+	return [
+			'sc-todays-date' => 'Displays today\'s date. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>',
+			'sc-site-title' => 'Displays the site title.',
+			'sc-site-url' => 'Displays the site URL.',
+			'sc-page-title' => 'Displays the page title.',
+			'sc-admin-email' => 'Displays the admin email address.',
+			'sc-login-page' => 'Wordpress login page. Add the parameter "redirect" to specify where the user is taken after a successful login e.g. redirect="http://www.google.co.uk".',
+			'sc-username' => 'Display the logged in username.',
+			'sc-user-id' => 'Display the current user\'s ID',
+			'sc-user-ip' => 'Display the current user\'s IP address.',
+			'sc-user-email' => 'Display the current user\'s email address.',
+			'sc-username' => 'Display the current user\'s username.',
+			'sc-first-name' => 'Display the current user\'s first name.',
+			'sc-last-name' => 'Display the current user\'s last name.',
+			'sc-display-name' => 'Display the current user\'s display name.',
+			'sc-user-agent' => 'Display the current user\'s user agent',
+	        'sc-privacy-url' => 'Displays the privacy page URL.'
+		];
 }
 
 function sh_cd_render_shortcode_presets($shortcode_args)

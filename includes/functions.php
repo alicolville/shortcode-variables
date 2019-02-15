@@ -204,8 +204,8 @@ function sh_cd_is_slug_unique($slug)
         return false;
 
     // 1.1 Ensure slug is not a prefix
-    if (sh_cd_is_shortcode_preset($slug))
-        return false;
+    //if (sh_cd_is_shortcode_preset($slug))
+      //  return false;
 
     global $wpdb;
 

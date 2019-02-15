@@ -34,7 +34,7 @@ function sh_cd_shortcode_render( $args ) {
 	}
 
 	// Preset shortcode?
-	if ( true === sh_cd_is_shortcode_preset( $args[ 'slug' ] ) ) {
+	if ( false !== sh_cd_is_preset( $args[ 'slug' ] ) ) {
 		return sh_cd_render_shortcode_presets( $args );
 	}
 
