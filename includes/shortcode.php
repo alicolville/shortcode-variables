@@ -2,83 +2,61 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-function sh_cd_shortcode( $atts )
-{
-	$user_defined_parameters = false;
+/**
+ * Render the main user defined shortcode [sv]
+ *
+ * @param $args
+ *
+ * @return bool|mixed|string
+ */
+function sh_cd_shortcode( $args ) {
 
-	$default_arguments = array(
-        'slug' => false,
-        'format' => false,
-		'redirect' => false
-    );
+	$args = wp_parse_args( $args, [ 'slug' => NULL, 'format' => NULL, 'redirect' => NULL ] );
 
-	$shortcode_args = shortcode_atts( $default_arguments, $atts );
-
-	// User defined parameters
-	$user_defined_parameters = sh_cd_get_user_defined_arguments($default_arguments, $atts);
-
-	return sh_cd_render_shortcode_from_db($shortcode_args, $user_defined_parameters);
-
+	return sh_cd_shortcode_render( $args );
 }
 add_shortcode( SH_CD_SHORTCODE, 'sh_cd_shortcode' );
+add_shortcode( 'shortcode-variables', 'sh_cd_shortcode' );  // Backwards compatibility
+add_shortcode( 's-var', 'sh_cd_shortcode' );                // Backwards compatibility
 
 /**
- * The following are for backwards compatibility
+ * Process the shortcode and render
+ *
+ * @param $args
+ *
+ * @return mixed|string
  */
-add_shortcode( 'shortcode-variables', 'sh_cd_shortcode' );
-add_shortcode( 's-var', 'sh_cd_shortcode' );
+function sh_cd_shortcode_render( $args ) {
 
-function sh_cd_render_shortcode_from_db($shortcode_args, $user_defined_parameters = false)
-{
-	$slug = $shortcode_args['slug'];
-
-	if ($slug != false && !empty($slug))
-	{
-		// Check if a shortcode preset
-		if (sh_cd_is_shortcode_preset($slug))		{
-			return sh_cd_render_shortcode_presets($shortcode_args);
-		}
-		else
-		{
-			$cached_shortcode = sh_cd_get_cache($slug);
-
-			if ($cached_shortcode != false)
-			{
-				// Process other shortcodes
-				$cached_shortcode = do_shortcode($cached_shortcode);
-
-				// No shortcode found or disabled? Then return nothing.
-				if(!$cached_shortcode) {
-					return '';
-				}
-
-				// Replace placeholders with user defined parameters
-				$cached_shortcode = sh_cd_apply_user_defined_parameters($cached_shortcode, $user_defined_parameters);
-
-				return $cached_shortcode;
-			}
-			else
-			{
-				$shortcode = sh_cd_get_shortcode_by_slug($slug);
-
-				if ($shortcode)
-				{
-					sh_cd_set_cache($slug, $shortcode);
-
-					// No shortcode found or disabled? Then return nothing.
-					if(!$shortcode) {
-						return '';
-					}
-
-					// Process other shortcodes
-					$shortcode = do_shortcode($shortcode);
-
-					// Replace placeholders with user defined parameters
-					$shortcode = sh_cd_apply_user_defined_parameters($shortcode, $user_defined_parameters);
-
-					return $shortcode;
-				}
-			}
-		}
+	// Have a slug?
+	if ( true === empty( $args[ 'slug' ] ) ) {
+		return '';
 	}
+
+	// Preset shortcode?
+	if ( true === sh_cd_is_shortcode_preset( $args[ 'slug' ] ) ) {
+		return sh_cd_render_shortcode_presets( $args );
+	}
+
+	// Cached?
+	$shortcode = sh_cd_get_cache( $args[ 'slug' ] );
+
+	// If not in cache, hit the database!
+	if ( false === empty( $shortcode ) ) {
+		$shortcode = sh_cd_get_shortcode_by_slug( $args[ 'slug' ] );
+	}
+
+	// If still no reference to a shortcode then slug doesn't exist
+	if ( true === empty( $shortcode ) ) {
+		return '';
+	}
+
+	// Cache it!
+	sh_cd_set_cache( $args[ 'slug' ], $shortcode );
+
+	// Process other shortcodes within this one
+	$shortcode = do_shortcode( $shortcode );
+
+	// Replace placeholders with user defined parameters
+	return sh_cd_apply_user_defined_parameters( $shortcode, $args );
 }
