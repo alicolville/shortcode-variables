@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff28db7c-6218-44e5-99d4-e1241393f250" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/includes/hooks.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/hooks.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/functions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/globals.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/globals.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/shortcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/shortcode.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shortcode-variables.php" beforeDir="false" afterPath="$PROJECT_DIR$/shortcode-variables.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -17,20 +19,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="shortcode-variables.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
+      <file leaf-file-name="globals.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/globals.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="106">
-              <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
+            <state relative-caret-position="72">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="hooks.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/includes/hooks.php">
+      <file leaf-file-name="shortcode-variables.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="542">
-              <caret line="34" selection-start-line="34" selection-end-line="34" />
+            <state relative-caret-position="524">
+              <caret line="58" column="67" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="shortcode.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
             </state>
           </provider>
         </entry>
@@ -44,6 +55,8 @@
       <find>widefat</find>
       <find>wide</find>
       <find>css</find>
+      <find>SH_CD_CACHING_KEY_ALL</find>
+      <find>SH_CD_SHORTCODE_SMALL</find>
     </findStrings>
     <dirStrings>
       <dir>C:\web-development\shortcode-variables</dir>
@@ -59,8 +72,10 @@
         <option value="$PROJECT_DIR$/includes/pages.php" />
         <option value="$PROJECT_DIR$/assets/css/sh-cd.css" />
         <option value="$PROJECT_DIR$/readme.txt" />
-        <option value="$PROJECT_DIR$/shortcode-variables.php" />
         <option value="$PROJECT_DIR$/includes/hooks.php" />
+        <option value="$PROJECT_DIR$/includes/globals.php" />
+        <option value="$PROJECT_DIR$/includes/shortcode.php" />
+        <option value="$PROJECT_DIR$/shortcode-variables.php" />
       </list>
     </option>
   </component>
@@ -216,9 +231,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/globals.php">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/sh-cd.css">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -236,17 +248,31 @@
     <entry file="file://$PROJECT_DIR$/includes/activate.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="106">
-          <caret line="31" column="35" selection-start-line="31" selection-start-column="35" selection-end-line="31" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/includes/hooks.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="542">
           <caret line="34" selection-start-line="34" selection-end-line="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/globals.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="524">
+          <caret line="58" column="67" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
         </state>
       </provider>
     </entry>

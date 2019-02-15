@@ -338,7 +338,7 @@ function sh_cd_set_cache($key, $data)
 {
     $key = sh_cd_generate_cache_key($key);
 
-    set_transient($key, $data, SH_CD_CACHING_TIME);
+    set_transient($key, $data, 1 * HOUR_IN_SECONDS );
 }
 function sh_cd_delete_cache($key)
 {

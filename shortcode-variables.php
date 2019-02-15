@@ -30,6 +30,10 @@ defined('ABSPATH') or die("Jog on!");
 define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
 define( 'SH_CD_PLUGIN_VERSION', '2.0' );
+define( 'SH_CD_PLUGIN_NAME', 'Shortcode Variables' );
+define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
+define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
+define( 'SH_CD_SHORTCODE', 'shortcode-variables' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
@@ -46,7 +50,7 @@ include_once SH_CD_ABSPATH . 'includes/shortcode-premade.php';
 // AC: Load relevant language files
 // -----------------------------------------------------------------------------------------
 
-load_plugin_textdomain( SH_CD_SLUG, false, dirname( plugin_basename( __FILE__ )  ) . '/languages/' );
+load_plugin_textdomain( SH_CD_SLUG, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
 
 // -----------------------------------------------------------------------------------------
 // Activation - create table

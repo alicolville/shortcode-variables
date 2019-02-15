@@ -21,7 +21,7 @@ function sh_cd_shortcode( $atts )
 
 }
 add_shortcode( SH_CD_SHORTCODE, 'sh_cd_shortcode' );
-add_shortcode( SH_CD_SHORTCODE_SMALL, 'sh_cd_shortcode' );
+add_shortcode( 's-var', 'sh_cd_shortcode' );
 
 function sh_cd_render_shortcode_from_db($shortcode_args, $user_defined_parameters = false)
 {
