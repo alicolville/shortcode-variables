@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff28db7c-6218-44e5-99d4-e1241393f250" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/includes/shortcode.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/shortcode.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shortcode-variables.php" beforeDir="false" afterPath="$PROJECT_DIR$/shortcode-variables.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/globals.php" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -17,25 +16,16 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="globals.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/globals.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" selection-start-line="4" selection-end-line="4" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shortcode-variables.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="shortcode-variables.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="524">
+            <state relative-caret-position="538">
               <caret line="58" column="67" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="shortcode.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="shortcode.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="331">
@@ -254,6 +244,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="331">
+          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/globals.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
@@ -263,15 +260,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="524">
+        <state relative-caret-position="538">
           <caret line="58" column="67" selection-start-line="58" selection-start-column="67" selection-end-line="58" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
         </state>
       </provider>
     </entry>
