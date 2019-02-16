@@ -42,6 +42,7 @@ define( 'SH_CD_SHORTCODE', 'sv' );
 include_once SH_CD_ABSPATH . 'includes/hooks.php';
 include_once SH_CD_ABSPATH . 'includes/pages.php';
 include_once SH_CD_ABSPATH . 'includes/functions.php';
+include_once SH_CD_ABSPATH . 'includes/db.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode-presets.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode-presets-premium.php';

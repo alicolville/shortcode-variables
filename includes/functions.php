@@ -24,66 +24,7 @@ function sh_cd_apply_user_defined_parameters( $shortcode, $user_defined_paramete
 	return $shortcode;
 }
 
-function sh_cd_get_all_shortcodes()
-{
-    global $wpdb;
 
-    $sql = 'SELECT * FROM ' . $wpdb->prefix . SH_CD_TABLE . ' order by slug asc';
-
-    $rows = $wpdb->get_results( $sql );
-
-    if (!is_null($rows))
-        return $rows;
-
-    return false;
-
-}
-
-function sh_cd_get_shortcode($id)
-{
-    if (!is_admin())
-        return false;
-
-    global $wpdb;
-
-    $sql = $wpdb->prepare('SELECT slug, data, disabled FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
-
-    $row = $wpdb->get_row( $sql );
-
-    if (!is_null($row))
-        return $row;
-
-    return false;
-
-}
-function sh_cd_get_shortcode_by_slug($slug)
-{
-    global $wpdb;
-
-    $sql = $wpdb->prepare('SELECT data FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s and disabled <> 1', $slug);
-
-    $row = $wpdb->get_var( $sql );
-
-    if (!is_null($row))
-        return stripslashes($row);
-
-    return false;
-
-}
-function sh_cd_get_slug_by_id($id)
-{
-    global $wpdb;
-
-    $sql = $wpdb->prepare('SELECT slug FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
-
-    $row = $wpdb->get_var( $sql );
-
-    if (!is_null($row))
-        return $row;
-
-    return false;
-
-}
 
 function sh_cd_save_shortcode($slug, $data, $disabled = false, $id = false)
 {
@@ -118,7 +59,7 @@ function sh_cd_save_shortcode($slug, $data, $disabled = false, $id = false)
             array( '%d' )
         );
 
-        sh_cd_delete_cache(sh_cd_get_slug_by_id($id));
+        sh_cd_delete_cache(sh_cd_db_shortcodes_get_slug_by_id($id));
     }
     else
     {
@@ -157,7 +98,7 @@ function sh_cd_delete_shortcode($id)
     global $wpdb;
 
     // Clear cached version
-    sh_cd_delete_cache(sh_cd_get_slug_by_id($id));
+    sh_cd_delete_cache(sh_cd_db_shortcodes_get_slug_by_id($id));
 
     if (false === $wpdb->delete( $wpdb->prefix . SH_CD_TABLE, array( 'id' => $id ) )) {
         return false;

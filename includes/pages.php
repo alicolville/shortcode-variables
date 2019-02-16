@@ -77,9 +77,9 @@ function sh_cd_user_defined_page() {
 							$existing_id = $_GET['id'];
 
 							// Get Shortcode from DB
-							$shortcode = sh_cd_get_shortcode($existing_id);
-							$slug = $shortcode->slug;
-							$value = stripslashes($shortcode->data);
+							$shortcode = sh_cd_db_shortcodes_by_id($existing_id);
+							$slug = $shortcode['slug'];
+							$value = stripslashes($shortcode['data']);
 						}
 
 						$settings = array( 'textarea_name' => 'value' );
@@ -105,8 +105,8 @@ function sh_cd_user_defined_page() {
 									<p><?php echo __('Disable variable? If disabled, nothing will be rendered where the shortcode has been placed.'); ?>:</p>
 
 									<select id="is-disabled" name="is-disabled">
-										<option value="0" <?php selected( $shortcode->disabled, 0 ); ?>><?php echo __('No'); ?></option>
-										<option value="1" <?php selected( $shortcode->disabled, 1 ); ?>><?php echo __('Yes'); ?></option>
+										<option value="0" <?php selected( $shortcode['disabled'], 0 ); ?>><?php echo __('No'); ?></option>
+										<option value="1" <?php selected( $shortcode['disabled'], 1 ); ?>><?php echo __('Yes'); ?></option>
 										
 									</select>
 
@@ -138,9 +138,9 @@ function sh_cd_user_defined_page() {
 											</tr>
 											<?php
 
-											$current_shortcodes = sh_cd_get_all_shortcodes();
+											$current_shortcodes = sh_cd_db_shortcodes_all();
 
-											if ($current_shortcodes)
+											if ( false === empty( $current_shortcodes ) )
 											{
 
 												$class = '';
@@ -149,14 +149,14 @@ function sh_cd_user_defined_page() {
 
 													$class = ($class == 'alternate') ? '' : 'alternate';
 
-													$edit_link = admin_url('admin.php?page=sh-cd-shortcode-variables-user-defined&action=edit&id=' . $shortcode->id);
-													$delete_link = admin_url('admin.php?page=sh-cd-shortcode-variables-user-defined&action=delete&id=' . $shortcode->id);
+													$edit_link = admin_url('admin.php?page=sh-cd-shortcode-variables-user-defined&action=edit&id=' . $shortcode['id'] );
+													$delete_link = admin_url('admin.php?page=sh-cd-shortcode-variables-user-defined&action=delete&id=' . $shortcode['id'] );
 											?>
 												<tr class="<?php echo $class; ?>">
-													<td><a href="<?php echo $edit_link; ?>"><?php echo $shortcode->slug; ?></a></td>
-													<td>[<?php echo SH_CD_SHORTCODE; ?> slug="<?php echo $shortcode->slug; ?>"]</td>
-													<td><textarea class="large-text"><?php echo esc_html(stripslashes($shortcode->data)); ?></textarea></td>
-													<td><?php echo (0 == $shortcode->disabled) ? __('No') : __('Yes'); ?></td>
+													<td><a href="<?php echo $edit_link; ?>"><?php echo $shortcode['slug']; ?></a></td>
+													<td>[<?php echo SH_CD_SHORTCODE; ?> slug="<?php echo $shortcode['slug']; ?>"]</td>
+													<td><textarea class="large-text"><?php echo esc_html(stripslashes($shortcode['data'])); ?></textarea></td>
+													<td><?php echo (0 == $shortcode['disabled']) ? __('No') : __('Yes'); ?></td>
 													<td>
 														<a class="button button-small" href="<?php echo $edit_link; ?>"><?php echo __('Edit'); ?></a>
 														<a class="button button-small" href="<?php echo $delete_link; ?>" class="remove-confirm" ><?php echo __('Delete'); ?></a>

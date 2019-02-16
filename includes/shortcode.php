@@ -42,8 +42,8 @@ function sh_cd_shortcode_render( $args ) {
 	$shortcode = sh_cd_get_cache( $args[ 'slug' ] );
 
 	// If not in cache, hit the database!
-	if ( false === empty( $shortcode ) ) {
-		$shortcode = sh_cd_get_shortcode_by_slug( $args[ 'slug' ] );
+	if ( true === empty( $shortcode ) ) {
+		$shortcode = sh_cd_db_shortcodes_by_slug( $args[ 'slug' ] );
 	}
 
 	// If still no reference to a shortcode then slug doesn't exist
