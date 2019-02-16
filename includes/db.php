@@ -84,8 +84,13 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		'disabled' => 0
 	]);
 
-	// Validate relevant fields
-	if ( true === empty( $shortcode['slug'] ) || true === empty( $shortcode['data'] ) ) {
+	// We need either a slug or an ID
+	if ( true === empty( $shortcode['slug'] ) && true === empty( $shortcode['id'] ) ) {
+		return false;
+	}
+
+	// We need some shortcode content
+	if ( true === empty( $shortcode['data'] ) ) {
 		return false;
 	}
 
