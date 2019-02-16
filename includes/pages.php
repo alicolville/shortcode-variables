@@ -22,7 +22,16 @@ function sh_cd_user_defined_page() {
 		$id = ((isset($_POST['existing-id']) && is_numeric($_POST['existing-id'])) ? $_POST['existing-id'] : false);
 		$disabled = (isset($_POST['is-disabled']) && '1' == $_POST['is-disabled']) ? true : false;
 
-		if(sh_cd_save_shortcode($slug, $value, $disabled, $id))
+		// refactor
+        $shortcode = [
+            'id' => ( false === empty( $_POST['existing-id'] ) ) ? (int) $_POST['existing-id'] : NULL,
+            'slug' => ( false === empty( $_POST['slug'] ) ) ? $_POST['slug'] : NULL,
+            'data' => ( false === empty( $_POST['value'] ) ) ? $_POST['value'] : NULL,
+            'disabled' => ( false === empty( $_POST['is-disabled'] ) ) ? (int) $_POST['is-disabled'] : 0
+        ];
+
+
+		if( sh_cd_db_shortcodes_save( $shortcode ) )
 		{
 			sh_cd_display_message('Shortcode has been saved');
 		}
@@ -52,7 +61,6 @@ function sh_cd_user_defined_page() {
 	<div id="poststuff">
 
 		<div id="post-body" class="metabox-holder columns-3">
-
 			<!-- main content -->
 			<div id="post-body-content">
 
