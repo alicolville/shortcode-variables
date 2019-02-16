@@ -3,8 +3,8 @@ Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 4.2.0
-Tested up to: 5.0.2
-Stable tag: 1.8
+Tested up to: 5.0.3
+Stable tag: 2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -106,7 +106,9 @@ TODO:
 
 - minify css
 - make sv standard shortcode
+- update product description
 
+* Improvement: Refactoring and optimisation of the entire plugin code.
 
 = 1.8 =
 

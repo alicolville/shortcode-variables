@@ -56,7 +56,7 @@ function sh_cd_db_shortcodes_by_slug( $slug ) {
  * @return bool
  */
 function sh_cd_db_shortcodes_get_slug_by_id( $id ) {
-	
+
 	global $wpdb;
 
 	$sql = $wpdb->prepare('SELECT slug FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
