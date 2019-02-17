@@ -3,6 +3,19 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
+ * Save / Insert a shortcode
+ *
+ * @return bool
+ */
+function sh_cd_shortcodes_save_post() {
+
+	// Capture the raw $_POST fields, the save functions will process and validate the data
+	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'data', 'disabled' ] );
+
+	return sh_cd_db_shortcodes_save( $shortcode );
+}
+
+/**
  * Replace user parameters within a shortcode e.g. look for %%parameter%% and replace
  *
  * @param $shortcode
@@ -188,4 +201,47 @@ function sh_cd_link_your_shortcodes_delete( $id ) {
 	$link = admin_url('admin.php?page=sh-cd-shortcode-variables-your-shortcodes&action=delete&id=' . (int) $id );
 
 	return esc_url( $link );
+}
+
+/**
+ * Either fetch data from the $_POST object or from the array passed in!
+ *
+ * @param $object
+ * @param $key
+ * @return string
+ */
+function sh_cd_get_value_from_post_or_obj( $object, $key ) {
+
+	if ( true === isset( $_POST[ $key ] ) ) {
+		return $_POST[ $key ];
+	}
+
+	if ( true === isset( $object[ $key ] ) ) {
+		return $object[ $key ];
+	}
+
+	return '';
+}
+
+/**
+ * Either fetch data from the $_POST object for the given object keys
+ *
+ * @param $meta_field
+ * @return string
+ */
+function sh_cd_get_values_from_post( $keys ) {
+
+	$data = [];
+
+	foreach ( $keys as $key ) {
+
+		if ( true === isset( $_POST[ $key ] ) ) {
+			$data[ $key ] = $_POST[ $key ];
+		} else {
+			$data[ $key ] = '';
+		}
+
+	}
+
+	return $data;
 }

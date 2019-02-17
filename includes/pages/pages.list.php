@@ -9,14 +9,17 @@ function sh_cd_pages_your_shortcodes() {
 
     echo '<h1>Your existing Shortcode Variables</h1>';
 
-    switch ( $_GET['action'] ) {
+    $action = ( false === empty( $_GET['action'] ) ) ? $_GET['action'] : NULL;
+
+    switch ( $action ) {
 
         case 'add':
         case 'edit':
-	        sh_cd_pages_your_shortcodes_edit();
+	    case 'save':
+	        sh_cd_pages_your_shortcodes_edit( $action );
             break;
         case 'delete':
-            sh_cd_pages_your_shortcodes_list( 'delete');
+            sh_cd_pages_your_shortcodes_list( $action );
             break;
         default:
 	        sh_cd_pages_your_shortcodes_list();

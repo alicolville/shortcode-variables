@@ -109,6 +109,8 @@ TODO:
 - update product description
 
 * Improvement: Refactoring and optimisation of the entire plugin code.
+* Improvement: Added Fooicons.
+* Improvement: Added simple form validation when adding a record.
 
 = 1.8 =
 
