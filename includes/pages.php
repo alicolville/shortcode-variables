@@ -33,22 +33,22 @@ function sh_cd_user_defined_page() {
 
 		if( sh_cd_db_shortcodes_save( $shortcode ) )
 		{
-			sh_cd_display_message('Shortcode has been saved');
+			sh_cd_message_display('Shortcode has been saved');
 		}
 		else
 		{
-			sh_cd_display_message('There was an error saving your shortcode', true);
+			sh_cd_message_display('There was an error saving your shortcode', true);
 	 	}
 	}
 	elseif($action == 'delete')
 	{
 		if(sh_cd_delete_shortcode($_GET['id']))
 		{
-			sh_cd_display_message('Shortcode has been deleted!');
+			sh_cd_message_display('Shortcode has been deleted!');
 		}
 		else
 		{
-			sh_cd_display_message('There was an error deleting your shortcode', true);
+			sh_cd_message_display('There was an error deleting your shortcode', true);
 	 	}
 	}
 

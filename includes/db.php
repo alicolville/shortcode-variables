@@ -216,3 +216,25 @@ function sh_cd_db_get_formats( $data ) {
 
 	return $formats;
 }
+
+/**
+ * Check if the slug already exists
+ *
+ * @param $slug
+ *
+ * @return bool
+ */
+function sh_cd_slug_is_unique( $slug ) {
+
+	if ( true === empty( $slug ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$sql = $wpdb->prepare( 'SELECT count(slug) FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s', $slug );
+
+	$row = $wpdb->get_var( $sql );
+
+	return ( empty( $row ) );
+}

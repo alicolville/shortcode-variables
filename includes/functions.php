@@ -55,37 +55,21 @@ function sh_cd_slug_generate( $slug ) {
 }
 
 /**
- * Check if the slug already exists
+ * Display message in admin UI
  *
- * @param $slug
- *
- * @return bool
+ * @param $text
+ * @param bool $error
  */
-function sh_cd_slug_is_unique( $slug ) {
+function sh_cd_message_display( $text, $error = false ) {
 
-    if ( true === empty( $slug ) ) {
-        return false;
+    if ( true === empty( $text ) ) {
+        return;
     }
 
-    global $wpdb;
-
-    $sql = $wpdb->prepare( 'SELECT count(slug) FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s', $slug );
-
-    $row = $wpdb->get_var( $sql );
-
-    return ( empty( $row ) );
-}
-
-function sh_cd_display_message($text, $error = false)
-{
-    if (!empty($text))
-    {
-        $class = (($error) ? 'error' : 'updated');
-
-        echo '<div class="' . $class . '">
-                <p>' . $text . '</p>
-            </div>';
-    }
+    printf( '<div class="%s"><p>%s</p></div>',
+            true === $error ? 'error' : 'updated',
+            esc_html( $text )
+    );
 }
 
 function sh_cd_create_dialog_jquery_code($title, $message, $class_used_to_prompt_confirmation, $js_call = false)
@@ -156,17 +140,31 @@ function sh_cd_create_dialog_jquery_code($title, $message, $class_used_to_prompt
   <?php
 }
 
-function sh_cd_get_cache($key)
-{
-    $key = sh_cd_generate_cache_key($key);
+/**
+ * Fetch cache item
+ *
+ * @param $key
+ *
+ * @return mixed
+ */
+function sh_cd_cache_get( $key ) {
 
-    return get_transient($key);
+    $key = sh_cd_cache_generate_key( $key );
+
+    return get_transient( $key );
 }
-function sh_cd_set_cache($key, $data)
-{
-    $key = sh_cd_generate_cache_key($key);
 
-    set_transient($key, $data, 1 * HOUR_IN_SECONDS );
+/**
+ * Set cache item
+ *
+ * @param $key
+ * @param $data
+ */
+function sh_cd_cache_set( $key, $data ) {
+
+    $key = sh_cd_cache_generate_key( $key );
+
+    set_transient( $key, $data, 1 * HOUR_IN_SECONDS );
 }
 
 /**
@@ -178,20 +176,34 @@ function sh_cd_cache_delete_by_slug_or_key( $slug_or_key ) {
 
     if ( true === is_numeric( $slug_or_key ) ) {
 
-        sh_cd_delete_cache( sh_cd_db_shortcodes_get_slug_by_id( $slug_or_key ) );
+        sh_cd_cache_delete( sh_cd_db_shortcodes_get_slug_by_id( $slug_or_key ) );
 
     } else {
-	    sh_cd_delete_cache( $slug_or_key );
+	    sh_cd_cache_delete( $slug_or_key );
     }
 }
 
-function sh_cd_delete_cache($key)
-{
-    $key = sh_cd_generate_cache_key($key);
+/**
+ * Delete cache item
+ *
+ * @param $key
+ *
+ * @return mixed
+ */
+function sh_cd_cache_delete( $key ) {
 
-    return delete_transient($key);
+    $key = sh_cd_cache_generate_key( $key );
+
+    return delete_transient( $key );
 }
-function sh_cd_generate_cache_key($key)
-{
+
+/**
+ * Generate cache key
+ *
+ * @param $key
+ *
+ * @return string
+ */
+function sh_cd_cache_generate_key( $key ) {
     return SH_CD_SHORTCODE . $key;
 }

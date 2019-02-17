@@ -39,7 +39,7 @@ function sh_cd_shortcode_render( $args ) {
 	}
 
 	// Cached?
-	$shortcode = sh_cd_get_cache( $args[ 'slug' ] );
+	$shortcode = sh_cd_cache_get( $args[ 'slug' ] );
 
 	// If not in cache, hit the database!
 	if ( true === empty( $shortcode ) ) {
@@ -52,7 +52,7 @@ function sh_cd_shortcode_render( $args ) {
 	}
 
 	// Cache it!
-	sh_cd_set_cache( $args[ 'slug' ], $shortcode );
+	sh_cd_cache_set( $args[ 'slug' ], $shortcode );
 
 	// Process other shortcodes within this one
 	$shortcode = do_shortcode( $shortcode );
