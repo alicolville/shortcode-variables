@@ -70,6 +70,8 @@ function sh_cd_message_display( $text, $error = false ) {
             true === $error ? 'error' : 'updated',
             esc_html( $text )
     );
+
+    //TODO: Hook this to use admin_notices
 }
 
 /**

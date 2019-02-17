@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff28db7c-6218-44e5-99d4-e1241393f250" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/sh-cd.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/sh-cd.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/functions.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/functions.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/hooks.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/hooks.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/pages/pages.edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/pages/pages.edit.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/pages/pages.list.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/pages/pages.list.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,78 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="shortcode-variables.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="561">
-              <caret line="33" column="44" selection-start-line="33" selection-start-column="44" selection-end-line="33" selection-end-column="44" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="shortcode-presets.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="321">
-              <caret line="27" column="42" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="42" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/functions.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="147" column="35" selection-start-line="147" selection-start-column="9" selection-end-line="147" selection-end-column="35" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="hooks.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/hooks.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" column="63" lean-forward="true" selection-start-line="27" selection-start-column="63" selection-end-line="28" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pages.list.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pages.list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/pages/pages.list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="177">
-              <caret line="40" column="67" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="67" />
-              <folding>
-                <element signature="e#1044#1078#0#HTML" expanded="true" />
-                <element signature="e#1115#1140#0#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sh-cd.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/css/sh-cd.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/db.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2567">
-              <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pages.premade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/includes/pages/pages.premade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="534">
-              <caret line="45" column="78" lean-forward="true" selection-start-line="45" selection-start-column="78" selection-end-line="45" selection-end-column="78" />
+            <state relative-caret-position="323">
+              <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
             </state>
           </provider>
         </entry>
@@ -100,8 +29,26 @@
       <file leaf-file-name="pages.edit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/pages/pages.edit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="4" column="41" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="41" />
+            <state relative-caret-position="799">
+              <caret line="50" column="5" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="378">
+              <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/db.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="112">
+              <caret line="175" column="35" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -151,10 +98,10 @@
         <option value="$PROJECT_DIR$/shortcode-variables.php" />
         <option value="$PROJECT_DIR$/includes/pages/pages.premade.php" />
         <option value="$PROJECT_DIR$/includes/pages/pages.edit.php" />
-        <option value="$PROJECT_DIR$/includes/functions.php" />
         <option value="$PROJECT_DIR$/includes/hooks.php" />
         <option value="$PROJECT_DIR$/assets/css/sh-cd.css" />
         <option value="$PROJECT_DIR$/includes/pages/pages.list.php" />
+        <option value="$PROJECT_DIR$/includes/functions.php" />
       </list>
     </option>
   </component>
@@ -335,10 +282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1088">
           <caret line="64" column="44" selection-start-line="64" selection-start-column="44" selection-end-line="64" selection-end-column="44" />
-          <folding>
-            <element signature="e#1044#1078#0#HTML" expanded="true" />
-            <element signature="e#1115#1140#0#HTML" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -431,13 +374,6 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/pages/pages.php" />
     <entry file="file://$PROJECT_DIR$/includes/pages.php" />
-    <entry file="file://$PROJECT_DIR$/includes/db.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2567">
-          <caret line="151" lean-forward="true" selection-start-line="151" selection-end-line="151" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -466,20 +402,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/pages/pages.edit.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="4" column="41" selection-start-line="4" selection-start-column="9" selection-end-line="4" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/functions.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="147" column="35" selection-start-line="147" selection-start-column="9" selection-end-line="147" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/sh-cd.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -487,14 +409,31 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/includes/pages/pages.edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="50" column="5" lean-forward="true" selection-start-line="39" selection-start-column="4" selection-end-line="50" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="112">
+          <caret line="175" column="35" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/includes/pages/pages.list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="177">
-          <caret line="40" column="67" selection-start-line="40" selection-start-column="32" selection-end-line="40" selection-end-column="67" />
-          <folding>
-            <element signature="e#1044#1078#0#HTML" expanded="true" />
-            <element signature="e#1115#1140#0#HTML" expanded="true" />
-          </folding>
+        <state relative-caret-position="323">
+          <caret line="40" column="19" selection-start-line="40" selection-start-column="19" selection-end-line="40" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="73" column="42" selection-start-line="73" selection-start-column="42" selection-end-line="73" selection-end-column="42" />
         </state>
       </provider>
     </entry>

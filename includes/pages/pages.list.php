@@ -13,6 +13,9 @@ function sh_cd_pages_your_shortcodes() {
         case 'edit':
 	        sh_cd_pages_your_shortcodes_edit();
             break;
+        case 'delete':
+            sh_cd_pages_your_shortcodes_list( 'delete');
+            break;
         default:
 	        sh_cd_pages_your_shortcodes_list();
     }
@@ -22,10 +25,20 @@ function sh_cd_pages_your_shortcodes() {
 /**
  * Display all shortcodes
  */
-function sh_cd_pages_your_shortcodes_list() {
+function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
 
 	if ( false === current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+	}
+
+	// Deleting a shortcode?
+    if( 'delete' === $action && false === empty( $_GET['id'] ) ) {
+
+	    $result = sh_cd_db_shortcodes_delete( (int) $_GET['id'] );
+
+	    $message = ( true === $result ) ? 'Your shortcode has been deleted!' : 'There was an error deleting your shortcode!';
+
+	    sh_cd_message_display( $message, ! $result );
 	}
 
 	?>
@@ -72,7 +85,7 @@ function sh_cd_pages_your_shortcodes_list() {
                                                     <td align="middle"><i class="fas %6$s"></i></td>
                                                     <td>
                                                         <a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
-                                                        <a class="button button-small" href="%7$s" onclick="return confirm(\'Want to delete?\');"><i class="fas fa-trash-alt"></i></a>
+                                                        <a class="button button-small" href="%7$s" onclick="return confirm(\'Are you sure you want to delete this shortcode?\');"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>',
                                                 $class,
