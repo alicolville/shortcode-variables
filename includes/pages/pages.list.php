@@ -7,6 +7,8 @@ defined('ABSPATH') or die('Jog on!');
  */
 function sh_cd_pages_your_shortcodes() {
 
+    echo '<h1>Your existing Shortcode Variables</h1>';
+
     switch ( $_GET['action'] ) {
 
         case 'add':
@@ -42,7 +44,7 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
 	}
 
 	?>
-    <h1>Your existing Shortcode Variables</h1>
+
 	<div class="wrap">
 		<div id="icon-options-general" class="icon32"></div>
 		<div id="poststuff">
