@@ -7,7 +7,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 function sh_cd_pages_your_shortcodes() {
 
-    echo '<h1>Your existing Shortcode Variables</h1>';
+    echo '<h1>Your Shortcode Variables</h1>';
 
     $action = ( false === empty( $_GET['action'] ) ) ? $_GET['action'] : NULL;
 

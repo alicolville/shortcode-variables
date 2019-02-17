@@ -113,11 +113,6 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		return false;
 	}
 
-	// We need some shortcode content
-	if ( true === empty( $shortcode['data'] ) ) {
-		return false;
-	}
-
 	$shortcode['disabled'] = (int) $shortcode['disabled'];
 
 	global $wpdb;

@@ -37,37 +37,45 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 			<div id="post-body" class="metabox-holder columns-3">
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
-                        <a class="button-secondary" href="<?php echo sh_cd_link_your_shortcodes(); ?>">Cancel</a>
-						    <br /><br />
-							<div class="postbox">
-								<h3 class="hndle"><span>Add / Edit a shortcode</span></h3>
-								<div style="padding: 0px 15px 0px 15px">
+                        <div class="postbox">
+                            <h3 class="hndle"><span>Add / Edit a shortcode</span></h3>
+                            <div style="padding: 0px 15px 0px 15px">
+                            <?php
 
-									<form method="post" action="<?php echo sh_cd_link_your_shortcodes() . '&action=save'; ?>">
-										<input type="hidden" id="id" name="id" value="<?php echo esc_attr( $shortcode['id'] ); ?>" />
-										<h4>Slug</h4>
+                                if ( true === $save_result ) :
+
+                                    printf('<p>Your shortcode has been saved successfully. <a href="%s">Return to all shortcodes</a>.',
+                                        sh_cd_link_your_shortcodes() );
+
+                                else:
+                                ?>
+                                    <form method="post" action="<?php echo sh_cd_link_your_shortcodes() . '&action=save'; ?>">
+                                        <input type="hidden" id="id" name="id" value="<?php echo esc_attr( $shortcode['id'] ); ?>" />
+                                        <h4>Slug</h4>
                                         <p><small>Specify the unique identifier for this shortcode.</small></p>
-										<input type="text" required class="regular-text" size="100" id="slug" name="slug"
+                                        <input type="text" required class="regular-text" size="100" id="slug" name="slug"
                                                 <?php echo ( ('edit' === $action) ? ' disabled' : ''); ?> placeholder="Slug"
-                                                    value="<?php echo esc_attr( $shortcode['data'] )?>" />
-										<?php if ('edit' == $action): ?>
-											<p><small>Note: You can not edit a slug name. Editing a slug name may cause issues throughout your site. Please delete this shortcode and create another.</small></p>
-										<?php endif; ?>
-										<h4>Shortcode content</h4>
+                                                    value="<?php echo esc_attr( $shortcode['slug'] )?>" />
+                                        <?php if ('edit' == $action): ?>
+                                            <p><small>Note: You can not edit a slug name. Editing a slug name may cause issues throughout your site. Please delete this shortcode and create another.</small></p>
+                                        <?php endif; ?>
+                                        <h4>Shortcode content</h4>
                                         <p><small>Specify the text, HTML, media, data, etc that should be rendered wherever the shortcode is placed.</small></p>
                                         <?php wp_editor( $shortcode['data'], 'data', [ 'textarea_name' => 'data' ] ); ?>
                                         <h4>Disable?</h4>
                                         <p>If disabled, nothing will be rendered where the shortcode has been placed.</p>
-										<select id="disabled" name="disabled">
-											<option value="0" <?php selected( $shortcode['disabled'], 0 ); ?>>No</option>
-											<option value="1" <?php selected( $shortcode['disabled'], 1 ); ?>>Yes</option>
+                                        <select id="disabled" name="disabled">
+                                            <option value="0" <?php selected( $shortcode['disabled'], 0 ); ?>>No</option>
+                                            <option value="1" <?php selected( $shortcode['disabled'], 1 ); ?>>Yes</option>
                                         </select>
-
-                                        <?php echo submit_button( 'Save Shortcode' ); ?>
-
-									</form>
-								</div>
-							</div>
+                                        <div class="sh-cd-button-row">
+                                            <a class="comment-submit button" href="<?php echo sh_cd_link_your_shortcodes(); ?>">Cancel</a>
+                                            <input name="submit_button" type="submit" value="Save Shortcode" class="comment-submit button button-primary">
+                                        </div>
+                                    </form>
+                                <?php endif; ?>
+                            </div>
+                        </div>
                         </div>
 			    	</div>
 			    </div>
