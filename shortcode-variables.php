@@ -39,6 +39,7 @@ define( 'SH_CD_SHORTCODE', 'sv' );
 // AC: Include all relevant PHP files
 // -----------------------------------------------------------------------------------------
 
+include_once SH_CD_ABSPATH . 'includes/class.presets.php';
 include_once SH_CD_ABSPATH . 'includes/hooks.php';
 include_once SH_CD_ABSPATH . 'includes/functions.php';
 include_once SH_CD_ABSPATH . 'includes/db.php';
