@@ -1,4 +1,9 @@
-.sh-cd-table th
-{
+.sh-cd-table th {
 	font-weight: bold;
+}
+.sh-cd-table .fa-times {
+	color: #ff0000;
+}
+.sh-cd-table .fa-check {
+	color: #008000;
 }

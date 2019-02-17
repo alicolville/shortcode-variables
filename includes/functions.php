@@ -139,3 +139,51 @@ function sh_cd_cache_delete( $key ) {
 function sh_cd_cache_generate_key( $key ) {
     return SH_CD_SHORTCODE . $key;
 }
+
+/**
+ * Return link to list own shortcodes
+ *
+ * @return mixed
+ */
+function sh_cd_link_your_shortcodes() {
+
+	$link = admin_url('admin.php?page=sh-cd-shortcode-variables-your-shortcodes');
+
+	return esc_url( $link );
+}
+
+/**
+ * Return link to add own shortcode
+ *
+ * @return mixed
+ */
+function sh_cd_link_your_shortcodes_add() {
+
+    $link = admin_url('admin.php?page=sh-cd-shortcode-variables-your-shortcodes&action=add');
+
+    return esc_url( $link );
+}
+
+/**
+ * Return link to edit own shortcode
+ *
+ * @return mixed
+ */
+function sh_cd_link_your_shortcodes_edit( $id ) {
+
+	$link = admin_url('admin.php?page=sh-cd-shortcode-variables-your-shortcodes&action=edit&id=' . (int) $id );
+
+	return esc_url( $link );
+}
+
+/**
+ * Return link to delete own shortcode
+ *
+ * @return mixed
+ */
+function sh_cd_link_your_shortcodes_delete( $id ) {
+
+	$link = admin_url('admin.php?page=sh-cd-shortcode-variables-your-shortcodes&action=delete&id=' . (int) $id );
+
+	return esc_url( $link );
+}

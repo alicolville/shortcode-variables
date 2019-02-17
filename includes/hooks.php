@@ -13,7 +13,7 @@ function sh_cd_build_admin_menu() {
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', '', '', 'manage_options', 'sh-cd-shortcode-variables-main-menu', 'sh_cd_user_defined_page');
 
 	// Add sub menus
-	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __('Your Shortcodes'),  __('Your shortcodes'), 'manage_options', 'sh-cd-shortcode-variables-user-defined', 'sh_cd_user_defined_page');
+	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __('Your Shortcodes'),  __('Your shortcodes'), 'manage_options', 'sh-cd-shortcode-variables-your-shortcodes', 'sh_cd_pages_your_shortcodes');
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __('Premade Shortcodes'),  __('Premade shortcodes'), 'manage_options', 'sh-cd-shortcode-variables-sub-premade', 'sh_cd_premade_shortcodes_page');
 }
 add_action( 'admin_menu', 'sh_cd_build_admin_menu' );
@@ -23,6 +23,7 @@ add_action( 'admin_menu', 'sh_cd_build_admin_menu' );
  */
 function sh_cd_enqueue_scripts() {
 	wp_enqueue_style( 'sh-cd', plugins_url( '../assets/css/sh-cd.css', __FILE__ ), [], SH_CD_PLUGIN_VERSION ) ;
+	wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.7.2/css/all.css', [], SH_CD_PLUGIN_VERSION);
 }
 add_action( 'admin_enqueue_scripts', 'sh_cd_enqueue_scripts' );
 
