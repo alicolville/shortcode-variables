@@ -24,57 +24,57 @@ function sh_cd_apply_user_defined_parameters( $shortcode, $user_defined_paramete
 	return $shortcode;
 }
 
-function sh_cd_get_slug($text)
-{
-    if(!empty($text))
-    {
-        $text = sanitize_title($text);
+/**
+ * Generate a unique slug
+ *
+ * @param $slug
+ *
+ * @return string
+ */
+function sh_cd_slug_generate( $slug ) {
 
-        $original_slug = $text;
-
-        $try = 1;
-
-        // If slug exists, then fetch a unique one!
-        //  v1.1: and ensure slug isn't a preset
-        while (!sh_cd_is_slug_unique($text))
-        {
-            $text = $original_slug . '_' . $try;
-
-            $try++;
-        }
+    if ( true === empty( $slug ) ) {
+        return NULL;
     }
 
-    return $text;
+	$slug = sanitize_title( $slug );
+
+    $original_slug = $slug;
+
+    $try = 1;
+
+    // Ensure the slug is unique
+    while ( false === sh_cd_slug_is_unique( $slug ) ) {
+
+	    $slug = sprintf( '%s_%d', $original_slug, $try );
+
+        $try++;
+    }
+
+    return $slug;
 }
 
-function sh_cd_is_slug_unique($slug)
-{
-    if (!is_admin() || empty($slug))
-        return false;
+/**
+ * Check if the slug already exists
+ *
+ * @param $slug
+ *
+ * @return bool
+ */
+function sh_cd_slug_is_unique( $slug ) {
 
-    // 1.1 Ensure slug is not a prefix
-    //if (sh_cd_is_shortcode_preset($slug))
-      //  return false;
+    if ( true === empty( $slug ) ) {
+        return false;
+    }
 
     global $wpdb;
 
-    $sql = $wpdb->prepare('SELECT count(slug) FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s', $slug);
+    $sql = $wpdb->prepare( 'SELECT count(slug) FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s', $slug );
 
     $row = $wpdb->get_var( $sql );
 
-    if(0 == $row)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
-
-
+    return ( empty( $row ) );
 }
-
-
 
 function sh_cd_display_message($text, $error = false)
 {

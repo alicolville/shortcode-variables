@@ -148,7 +148,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		unset( $shortcode['id'] );
 
 		// Ensure slug is santised and unique
-		$shortcode['slug'] = sh_cd_get_slug( $shortcode['slug'] );
+		$shortcode['slug'] = sh_cd_slug_generate( $shortcode['slug'] );
 
 		$formats = sh_cd_db_get_formats( $shortcode );
 
