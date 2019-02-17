@@ -42,7 +42,7 @@ function sh_cd_user_defined_page() {
 	}
 	elseif($action == 'delete')
 	{
-		if(sh_cd_delete_shortcode($_GET['id']))
+		if(sh_cd_db_shortcodes_delete($_GET['id']))
 		{
 			sh_cd_message_display('Shortcode has been deleted!');
 		}
@@ -167,7 +167,7 @@ function sh_cd_user_defined_page() {
 													<td><?php echo (0 == $shortcode['disabled']) ? __('No') : __('Yes'); ?></td>
 													<td>
 														<a class="button button-small" href="<?php echo $edit_link; ?>"><?php echo __('Edit'); ?></a>
-														<a class="button button-small" href="<?php echo $delete_link; ?>" class="remove-confirm" ><?php echo __('Delete'); ?></a>
+														<a class="button button-small" href="<?php echo $delete_link; ?>" class="remove-confirmz" onclick="return confirm('Want to delete?');" ><?php echo __('Delete'); ?></a>
 													</td>
 												</tr>
 											<?php endforeach;
@@ -207,8 +207,5 @@ function sh_cd_user_defined_page() {
 		<!-- #poststuff -->
 
 	</div> <?php
-
-	sh_cd_create_dialog_jquery_code(__('Are you sure?'), __('Are you sure you wish to delete this shortcode?'), 'remove-confirm');
-
 }
 
