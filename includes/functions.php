@@ -24,25 +24,6 @@ function sh_cd_apply_user_defined_parameters( $shortcode, $user_defined_paramete
 	return $shortcode;
 }
 
-function sh_cd_delete_shortcode($id)
-{
-    if (!is_admin() || !is_numeric($id))
-        return false;
-
-    global $wpdb;
-
-    // Clear cached version
-    sh_cd_delete_cache(sh_cd_db_shortcodes_get_slug_by_id($id));
-
-    if (false === $wpdb->delete( $wpdb->prefix . SH_CD_TABLE, array( 'id' => $id ) )) {
-        return false;
-    }
-    else {
-        return true;
-    }
-
-}
-
 function sh_cd_get_slug($text)
 {
     if(!empty($text))
@@ -93,29 +74,7 @@ function sh_cd_is_slug_unique($slug)
 
 }
 
-/**
- * Build database table
- */
-function sh_cd_create_database_table() {
 
-    global $wpdb;
-
-	$table_name = $wpdb->prefix . SH_CD_TABLE;
-
-	$charset_collate = $wpdb->get_charset_collate();
-
-	$sql = "CREATE TABLE $table_name (
-	  id mediumint(9) NOT NULL AUTO_INCREMENT,
-	  slug varchar(100) NOT NULL,
-	  data text,
-	  disabled bit default 0,
-	  UNIQUE KEY id (id)
-	) $charset_collate;";
-
-    require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
-
-    dbDelta( $sql );
-}
 
 function sh_cd_display_message($text, $error = false)
 {
@@ -209,6 +168,23 @@ function sh_cd_set_cache($key, $data)
 
     set_transient($key, $data, 1 * HOUR_IN_SECONDS );
 }
+
+/**
+ * Delete cache for given shortcode slug / ID
+ *
+ * @param $slug_or_key
+ */
+function sh_cd_cache_delete_by_slug_or_key( $slug_or_key ) {
+
+    if ( true === is_numeric( $slug_or_key ) ) {
+
+        sh_cd_delete_cache( sh_cd_db_shortcodes_get_slug_by_id( $slug_or_key ) );
+
+    } else {
+	    sh_cd_delete_cache( $slug_or_key );
+    }
+}
+
 function sh_cd_delete_cache($key)
 {
     $key = sh_cd_generate_cache_key($key);

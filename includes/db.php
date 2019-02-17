@@ -3,6 +3,30 @@
 defined('ABSPATH') or die('Jog on!');
 
 /**
+ * Build database table
+ */
+function sh_cd_create_database_table() {
+
+	global $wpdb;
+
+	$table_name = $wpdb->prefix . SH_CD_TABLE;
+
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE $table_name (
+	  id mediumint(9) NOT NULL AUTO_INCREMENT,
+	  slug varchar(100) NOT NULL,
+	  data text,
+	  disabled bit default 0,
+	  UNIQUE KEY id (id)
+	) $charset_collate;";
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+	dbDelta( $sql );
+}
+
+/**
  * Fetch all Shortcodes
  *
  * @return bool
@@ -116,7 +140,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 			[ '%d' ]
 		);
 
-		sh_cd_delete_cache( sh_cd_db_shortcodes_get_slug_by_id( $shortcode['id'] ) );
+		sh_cd_cache_delete_by_slug_or_key( $shortcode['id'] );
 
 		// Adding a new shortcode
 	} else {
@@ -136,8 +160,31 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 
 		// It's an insert, so there should be no cache... however, just a wee sanity check in case
 		// a shortcode with the same slug previously exists.
-		sh_cd_delete_cache( $shortcode['slug'] );
+		sh_cd_cache_delete_by_slug_or_key( $shortcode['slug'] );
 	}
+
+	return ( false !== $result );
+}
+
+/**
+ * Delete a shortcode
+ *
+ * @param $id
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_delete( $id ) {
+
+	if ( false === is_admin() || false === is_numeric( $id ) ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	// Clear cached version
+	sh_cd_cache_delete_by_slug_or_key( $id );
+
+	$result = $wpdb->delete( $wpdb->prefix . SH_CD_TABLE, [ 'id' => $id ], [ '%d' ] );
 
 	return ( false !== $result );
 }
