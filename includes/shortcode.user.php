@@ -11,7 +11,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 function sh_cd_shortcode( $args ) {
 
-	$args = wp_parse_args( $args, [ 'slug' => NULL, 'format' => NULL, 'redirect' => NULL ] );
+	$args = wp_parse_args( $args, [ 'slug' => NULL ] );
 
 	return sh_cd_shortcode_render( $args );
 }
@@ -35,7 +35,7 @@ function sh_cd_shortcode_render( $args ) {
 
 	// Preset shortcode?
 	if ( false !== sh_cd_is_preset( $args[ 'slug' ] ) ) {
-		return sh_cd_render_shortcode_presets( $args );
+		return sh_cd_shortcode_presets_render( $args );
 	}
 
 	// Cached?
