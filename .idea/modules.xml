@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/shortcode-variables.iml" filepath="$PROJECT_DIR$/.idea/shortcode-variables.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../wlt/.idea/wlt.iml" filepath="$PROJECT_DIR$/../wlt/.idea/wlt.iml" />
     </modules>
   </component>
 </project>

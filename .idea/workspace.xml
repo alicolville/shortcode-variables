@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff28db7c-6218-44e5-99d4-e1241393f250" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/includes/pages/pages.edit.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/pages/pages.edit.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/includes/pages/pages.list.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/pages/pages.list.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shortcode-variables.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shortcode-variables.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/includes/license.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/license.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../wlt/.idea/wlt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../wlt/.idea/wlt.iml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -20,17 +23,49 @@
       <file leaf-file-name="pages.list.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/pages/pages.list.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+            <state relative-caret-position="510">
+              <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pages.edit.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pages.edit.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/pages/pages.edit.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-609">
+            <state relative-caret-position="17">
               <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="page.license.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../wlt/includes/admin-pages/page.license.php">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="license.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../wlt/includes/license.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="123">
+              <caret line="154" selection-start-line="154" selection-end-line="184" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="license.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/includes/license.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="861">
+              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/../wlt-licenser/includes/functions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="544">
+              <caret line="167" column="45" selection-start-line="167" selection-start-column="35" selection-end-line="167" selection-end-column="45" />
             </state>
           </provider>
         </entry>
@@ -38,8 +73,8 @@
       <file leaf-file-name="functions.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/functions.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="344">
-              <caret line="149" column="35" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="35" />
+            <state relative-caret-position="2533">
+              <caret line="149" column="14" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -47,8 +82,8 @@
       <file leaf-file-name="db.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/includes/db.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="175" column="35" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="35" />
+            <state relative-caret-position="2975">
+              <caret line="175" selection-start-line="175" selection-end-line="175" />
             </state>
           </provider>
         </entry>
@@ -73,6 +108,7 @@
       <find>sh-cd-shortcode-variables-user-defined</find>
       <find>here</find>
       <find>sh_cd_shortcode_presets</find>
+      <find>sh_cd_license</find>
     </findStrings>
     <replaceStrings>
       <replace>sh-cd-shortcode-variables-your-shortcodes</replace>
@@ -102,6 +138,7 @@
         <option value="$PROJECT_DIR$/includes/functions.php" />
         <option value="$PROJECT_DIR$/includes/pages/pages.list.php" />
         <option value="$PROJECT_DIR$/includes/pages/pages.edit.php" />
+        <option value="$PROJECT_DIR$/includes/license.php" />
       </list>
     </option>
   </component>
@@ -120,11 +157,13 @@
     <option name="width" value="1934" />
     <option name="height" value="1037" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -154,11 +193,36 @@
               <item name="includes" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="shortcode-variables" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wlt" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shortcode-variables" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wlt" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shortcode-variables" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wlt" type="462c0819:PsiDirectoryNode" />
+              <item name="includes" type="462c0819:PsiDirectoryNode" />
+              <item name="admin-pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shortcode-variables" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wlt" type="462c0819:PsiDirectoryNode" />
+              <item name="pro-features" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="shortcode-variables" type="b2602c69:ProjectViewProjectNode" />
+              <item name="wlt" type="462c0819:PsiDirectoryNode" />
+              <item name="pro-features" type="462c0819:PsiDirectoryNode" />
+              <item name="plus" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -199,10 +263,10 @@
     <option name="totallyTimeSpent" value="1898000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26040268" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26332623" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="right" id="Database" order="3" />
@@ -229,6 +293,34 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/includes/pages/pages.list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2533">
+          <caret line="149" column="14" lean-forward="true" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/db.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2975">
+          <caret line="175" lean-forward="true" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/pages/pages.edit.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="561">
@@ -236,13 +328,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php" />
     <entry file="file://$PROJECT_DIR$/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2907">
@@ -292,13 +378,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets-premium.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets-premium.php" />
     <entry file="file://$PROJECT_DIR$/includes/hooks.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -307,13 +387,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/pages/pages.php" />
-    <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="60" column="29" selection-start-line="60" selection-start-column="29" selection-end-line="60" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode.php" />
     <entry file="file://$PROJECT_DIR$/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
@@ -321,13 +395,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="2" column="37" lean-forward="true" selection-start-line="2" selection-end-line="2" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php" />
     <entry file="file://$PROJECT_DIR$/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1962">
@@ -335,13 +403,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1098">
-          <caret line="61" column="49" lean-forward="true" selection-start-line="61" selection-start-column="49" selection-end-line="61" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php" />
     <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -351,13 +413,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/activate.php" />
     <entry file="file://$PROJECT_DIR$/includes/globals.php" />
-    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets-premium.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="45" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets-premium.php" />
     <entry file="file://$PROJECT_DIR$/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="429">
@@ -365,13 +421,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shortcode.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="646">
-          <caret line="38" column="5" lean-forward="true" selection-start-line="38" selection-start-column="5" selection-end-line="38" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode.php" />
     <entry file="file://$PROJECT_DIR$/includes/pages/pages.php" />
     <entry file="file://$PROJECT_DIR$/includes/pages.php" />
     <entry file="file://$PROJECT_DIR$/shortcode-variables.php">
@@ -395,13 +445,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="321">
-          <caret line="27" column="42" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/shortcode-presets.php" />
     <entry file="file://$PROJECT_DIR$/assets/css/sh-cd.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
@@ -411,29 +455,53 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/db.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="112">
-          <caret line="175" column="35" selection-start-line="175" selection-start-column="9" selection-end-line="175" selection-end-column="35" />
+        <state relative-caret-position="2975">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/functions.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="344">
-          <caret line="149" column="35" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="35" />
+        <state relative-caret-position="2533">
+          <caret line="149" column="14" selection-start-line="149" selection-start-column="9" selection-end-line="149" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/pages/pages.list.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="30" column="25" lean-forward="true" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
+        <state relative-caret-position="510">
+          <caret line="30" column="25" selection-start-line="30" selection-start-column="25" selection-end-line="30" selection-end-column="25" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/pages/pages.edit.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-609">
+        <state relative-caret-position="17">
           <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wlt/includes/admin-pages/page.license.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wlt-licenser/includes/functions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="544">
+          <caret line="167" column="45" selection-start-line="167" selection-start-column="35" selection-end-line="167" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../wlt/includes/license.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="123">
+          <caret line="154" selection-start-line="154" selection-end-line="184" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/license.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="861">
+          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
         </state>
       </provider>
     </entry>
