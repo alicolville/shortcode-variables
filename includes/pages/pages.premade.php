@@ -4,6 +4,9 @@ defined('ABSPATH') or die('Jog on!');
 
 function sh_cd_premade_shortcodes_page() {
 
+    $premium_user = sh_cd_license_is_premium();
+	$upgrade_link = sprintf( '<a class="button" href="%s"><i class="fas fa-check"></i> Upgrade now</a>', sh_cd_license_upgrade_link() );
+
 	?>
 
 	<div class="wrap">
@@ -21,30 +24,38 @@ function sh_cd_premade_shortcodes_page() {
 						<div class="postbox">
 							<h3 class="hndle"><span><?php _e( 'Pre-made Shortcode Variables' ); ?> </span></h3>
 							<div style="padding: 0px 15px 0px 15px">
+
 								<p><?php echo __('Below is a list of premade shortcode variables that you can use throughout your website.'); ?></p>
-								<br />
+                                <h3>Free Shortcodes</h3>
 								<table class="widefat sh-cd-table" width="100%">
 									<tr class="row-title">
-										<th class="row-title" width="30%"><?php echo __('Shortcode to embed'); ?></th>
-										<th width="*"><?php echo __('Description'); ?></th>
-
+										<th class="row-title" width="30%">Shortcode to embed</th>
+                                        <th class="row-title">Premium</th>
+                                        <th width="*">Description</th>
 									</tr>
 									<?php
 
-									$premade_shortcodes = sh_cd_shortcode_presets_free_list();
-
 									$class = '';
 
-									foreach ($premade_shortcodes as $key => $description):
+									foreach ( sh_cd_presets_both_lists() as $key => $data ):
 
 										$class = ($class == 'alternate') ? '' : 'alternate';
 
 										$shortcode = '[' . SH_CD_SHORTCODE. ' slug="' . $key . '"]';
 
+										$premium_shortcode = ( true === $data['premium'] );
+
+
 										?>
 										<tr class="<?php echo $class; ?>">
 											<td><?php echo $shortcode; ?></td>
-											<td><?php echo $description; ?></td>
+                                            <?php
+	                                            printf( '<td align="middle">%s%s</td>',
+                                                    ( true === $premium_shortcode && true === $premium_user ) ? '<i class="fas fa-check"></i>' : '',
+                                                    ( true == $premium_shortcode && false === $premium_user ) ? $upgrade_link : ''
+                                                );
+	                                        ?>
+											<td><?php echo $data['description']; ?></td>
 										</tr>
 									<?php endforeach; ?>
 								</table>

@@ -19,8 +19,8 @@ function sh_cd_shortcode_presets_free_list() {
 		'sc-login-page' => [ 'class' => 'SC_LOGIN_PAGE', 'description' => 'Wordpress login page. Add the parameter "redirect" to specify where the user is taken after a successful login e.g. redirect="http://www.google.co.uk".' ],
 		'sc-privacy-url' => [ 'class' => 'SC_POLICY_URL', 'description' => 'Displays the privacy page URL.' ],
 		'sc-username' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the logged in username.', 'args' => [ '_sh_cd_func' => 'user_login' ] ],
-		'sc-user-id' => [ 'class' => 'SC_USER_INFO', 'description' => '', 'args' => [ '_sh_cd_func' => 'ID' ] ],
-		'sc-user-email' => [ 'class' => 'SC_USER_INFO', 'description' => '', 'args' => [ '_sh_cd_func' => 'user_email' ] ],
+		'sc-user-id' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s ID.', 'args' => [ '_sh_cd_func' => 'ID' ] ],
+		'sc-user-email' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s email address.', 'args' => [ '_sh_cd_func' => 'user_email' ] ],
 		'sc-first-name' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s username.', 'args' => [ '_sh_cd_func' => 'user_firstname' ] ],
 		'sc-last-name' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s last name.', 'args' => [ '_sh_cd_func' => 'user_lastname' ] ],
 		'sc-display-name' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s display name.', 'args' => [ '_sh_cd_func' => 'display_name' ] ]

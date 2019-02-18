@@ -22,6 +22,20 @@ function sh_cd_is_preset( $slug ) {
 }
 
 /**
+ * Return all free and premium premade shortcodes
+ *
+ * @return array
+ */
+function sh_cd_presets_both_lists() {
+
+	$both = array_merge( sh_cd_shortcode_presets_free_list(), sh_cd_shortcode_presets_premium_list() );
+
+	ksort( $both );
+
+	return $both;
+}
+
+/**
  * For a given preset, look up the class information, if valid, initiate the class and render
  *
  * @param $args

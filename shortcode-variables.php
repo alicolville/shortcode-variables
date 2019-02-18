@@ -43,6 +43,7 @@ include_once SH_CD_ABSPATH . 'includes/class.presets.php';
 include_once SH_CD_ABSPATH . 'includes/hooks.php';
 include_once SH_CD_ABSPATH . 'includes/functions.php';
 include_once SH_CD_ABSPATH . 'includes/db.php';
+include_once SH_CD_ABSPATH . 'includes/license.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.user.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.presets.core.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.presets.free.php';
