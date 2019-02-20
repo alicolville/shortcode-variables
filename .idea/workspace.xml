@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ff28db7c-6218-44e5-99d4-e1241393f250" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shortcode-variables.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shortcode-variables.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/includes/license.php" beforeDir="false" afterPath="$PROJECT_DIR$/includes/license.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../wlt/.idea/wlt.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../wlt/.idea/wlt.iml" afterDir="false" />
     </list>
@@ -55,8 +55,8 @@
       <file leaf-file-name="license.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/includes/license.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="861">
-              <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+            <state relative-caret-position="283">
+              <caret line="117" column="35" selection-start-line="117" selection-start-column="35" selection-end-line="117" selection-end-column="35" />
             </state>
           </provider>
         </entry>
@@ -500,8 +500,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/includes/license.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="136" lean-forward="true" selection-start-line="136" selection-end-line="136" />
+        <state relative-caret-position="283">
+          <caret line="117" column="35" selection-start-line="117" selection-start-column="35" selection-end-line="117" selection-end-column="35" />
         </state>
       </provider>
     </entry>
