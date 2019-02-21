@@ -116,3 +116,29 @@ function sh_cd_shortcode_presets_fetch( $slug ) {
 	return false;
 
 }
+
+/**
+ * Render text file for promo
+ */
+function sh_cd_shortcode_render_text() {
+
+	$output = '**Premium Shortcodes**' . PHP_EOL;
+
+	$shortcodes = sh_cd_shortcode_presets_premium_list();
+
+	foreach ( $shortcodes as $key => $data ) {
+		$output .= sprintf('- %s - %s' . PHP_EOL , $key, $data['description'] );
+	}
+
+	$output .= '**Free Shortcodes**' . PHP_EOL;
+
+	$shortcodes = sh_cd_shortcode_presets_free_list();
+
+	foreach ( $shortcodes as $key => $data ) {
+		$output .= sprintf('- %s - %s' . PHP_EOL , $key, $data['description'] );
+	}
+
+	return $output;
+
+}
+add_shortcode( 'sv-promo', 'sh_cd_shortcode_render_text' );
