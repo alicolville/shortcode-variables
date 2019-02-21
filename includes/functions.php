@@ -245,3 +245,105 @@ function sh_cd_get_values_from_post( $keys ) {
 
 	return $data;
 }
+
+/**
+ * Toggle the status of a shortcode
+ *
+ * @param $id
+ */
+function sh_cd_toggle_status( $id ) {
+
+	$slug = sh_cd_db_shortcodes_by_id( (int) $id );
+
+	if ( false === empty( $slug ) ) {
+
+	    $status = ( 1 === (int) $slug['disabled'] ) ? 0 : 1 ;
+
+		sh_cd_db_shortcodes_update_status( $id, $status );
+
+	    return $status;
+    }
+
+	return NULL;
+}
+
+
+/**
+ * Display a table of premade shortcodes
+ *
+ * @param string $display
+ */
+function sh_cd_display_premade_shortcodes( $display = 'all' ) {
+
+	$premium_user = sh_cd_license_is_premium();
+	$upgrade_link = sprintf( '<a class="button" href="%s"><i class="fas fa-check"></i> Upgrade now</a>', sh_cd_license_upgrade_link() );
+
+	switch ( $display ) {
+		case 'free':
+			$shortcodes = sh_cd_shortcode_presets_free_list();
+			$show_premium_col = false;
+			break;
+		case 'premium':
+			$shortcodes = sh_cd_shortcode_presets_premium_list();
+			$show_premium_col = false;
+			break;
+		default:
+			$shortcodes = sh_cd_presets_both_lists();
+			$show_premium_col = true;
+	}
+
+?>
+	<table class="widefat sh-cd-table" width="100%">
+		<tr class="row-title">
+			<th class="row-title" width="30%">Shortcode</th>
+			<?php if ( true === $show_premium_col): ?>
+				<th class="row-title">Premium</th>
+			<?php endif; ?>
+			<th width="*">Description</th>
+		</tr>
+		<?php
+
+		$class = '';
+
+		foreach ( $shortcodes as $key => $data ):
+
+			$class = ($class == 'alternate') ? '' : 'alternate';
+
+			$shortcode = '[' . SH_CD_SHORTCODE. ' slug="' . $key . '"]';
+
+			$premium_shortcode = ( true === $data['premium'] );
+
+			?>
+			<tr class="<?php echo $class; ?>">
+				<td><?php echo $shortcode; ?></td>
+				<?php
+					if ( true === $show_premium_col) {
+
+						printf( '<td align="middle">%s%s</td>',
+							( true === $premium_shortcode && true === $premium_user ) ? '<i class="fas fa-check"></i>' : '',
+							( true == $premium_shortcode && false === $premium_user ) ? $upgrade_link : ''
+						);
+					}
+				?>
+				<td><?php echo $data['description']; ?></td>
+			</tr>
+		<?php endforeach; ?>
+	</table>
+<?php
+}
+
+/**
+ * Display an upgrade button
+ */
+function sh_cd_upgrade_button( $css_class = '', $link = NULL ) {
+
+    $link = ( false === empty( $link ) ) ? $link : SH_CD_UPGRADE_LINK . '?hash=' . sh_cd_generate_site_hash() ;
+
+	echo sprintf('<a href="%s" class="button-primary sh-cd-upgrade-button%s"><i class="far fa-credit-card"></i> %s £%d %s</a>',
+		esc_url( $link ),
+		esc_attr( ' ' . $css_class ),
+        __('Upgrade to Premium for ', SH_CD_SLUG),
+		SH_CD_PREMIUM_PRICE,
+		__('a year ', SH_CD_SLUG)
+	);
+}

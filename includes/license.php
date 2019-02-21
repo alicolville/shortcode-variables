@@ -18,8 +18,9 @@
 	 */
 	function sh_cd_license_upgrade_link() {
 
-		//TODO
-		return '#';
+		$link = admin_url('admin.php?page=sh-cd-shortcode-variables-license');
+
+		return esc_url( $link );
 	}
 
 	/**
@@ -28,7 +29,7 @@
 	function sh_cd_license_validate( $license ) {
 
 		if ( true === empty( $license ) ) {
-			return __( 'License missing', WE_LS_SLUG );
+			return __( 'License missing', SH_CD_SLUG );
 		}
 
 		// Decode license
@@ -105,6 +106,15 @@
 		}
 
 		return false;
+	}
+
+	/**
+	 * Remove a license
+	 **/
+	function sh_cd_license_remove() {
+
+		delete_option( 'sh-cd-license' );
+		delete_option( 'sh-cd-license-valid' );
 	}
 
 	/**

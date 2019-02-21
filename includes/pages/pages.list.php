@@ -60,6 +60,13 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                 <p style="text-align: right">
                                     <a class="button-primary" href="<?php echo sh_cd_link_your_shortcodes_add() ?>">Add a new Shortcode Variable</a>
                                 </p>
+                                <p style="text-align: right">
+                                    <?php
+
+                                        sh_cd_upgrade_button( 'sh-cd-hide', sh_cd_license_upgrade_link() );
+
+                                    ?>
+                                </p>
                                 <table class="widefat sh-cd-table" width="100%">
                                     <tr class="row-title">
                                         <th class="row-title" width="15%">Slug</th>
@@ -82,24 +89,30 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
 
                                             $class = ($class == 'alternate') ? '' : 'alternate';
 
+                                            $id = (int) $shortcode['id'];
+
                                             printf(
                                                 '<tr class="%1$s">
                                                     <td><a href="%2$s">%3$s</a></td>
                                                     <td>[%4$s slug="%3$s"]</td>
-                                                    <td><textarea class="large-text">%5$s</textarea></td>
-                                                    <td align="middle"><i class="fas %6$s"></i></td>
+                                                    <td align="right">
+                                                        <textarea class="large-text inline-text-shortcode" id="sh-cd-text-area-%8$d" data-id="%8$d">%5$s</textarea>
+                                                        <a class="button button-small sh-cd-inline-save-button" id="sh-cd-save-button-%8$d" data-id="%8$d"><i class="fas fa-save"></i> Save</a>
+                                                    </td>
+                                                    <td align="middle"><a class="button button-small toggle-disable" id="sc-cd-toggle-%8$s" data-id="%8$s"><i class="fas %6$s"></i></a></td>
                                                     <td>
                                                         <a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
                                                         <a class="button button-small" href="%7$s" onclick="return confirm(\'Are you sure you want to delete this shortcode?\');"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>',
                                                 $class,
-                                                $link . '&action=edit&id=' . (int) $shortcode['id'],
+                                                $link . '&action=edit&id=' . $id,
                                                 esc_html( $shortcode['slug'] ),
                                                 SH_CD_SHORTCODE,
                                                 esc_html( stripslashes( $shortcode['data'] ) ),
                                                 ( 0 === (int) $shortcode['disabled'] ) ? 'fa-times' : 'fa-check',
-                                                $link . '&action=delete&id=' . (int) $shortcode['id']
+                                                $link . '&action=delete&id=' . $id,
+	                                            $id
                                             );
                                         }
                                     }

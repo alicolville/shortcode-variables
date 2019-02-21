@@ -67,11 +67,6 @@ Features:
 - Comes with a range of pre-made shortcodes
 - Pass your own parameters into a shortcode
 
-Languages supported:
-
-- English (UK)
-- Need a translation? Email us: email@YeKen.uk
-
 * Developed by YeKen.uk *
 
 Paypal Donate: email@YeKen.uk
@@ -104,10 +99,13 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 
 TODO:
 
-- minify css
-- make sv standard shortcode
 - update product description
+- documentation site (add a shortcode to this plugin to render it all out).
+- update license ( l.php ) to generate a type of "sv-premium"
 
+* New Feature: Added additional premium shortcodes.
+* New Feature: Inline editing of shortcodes from the main list screen.
+* New Feature: Able to disable / enable shortcodes from shortcode list.
 * Improvement: Refactoring and optimisation of the entire plugin code.
 * Improvement: Added Fooicons.
 * Improvement: Added simple form validation when adding a record.

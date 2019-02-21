@@ -162,6 +162,63 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 }
 
 /**
+ * Update a shortcode's status
+ *
+ * @param $shortcode
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_update_status( $id, $data ) {
+
+	if ( false === is_admin() ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->update(
+		$wpdb->prefix . SH_CD_TABLE,
+		[ 'data' => $data ],
+		[ 'id' => $id ],
+		[ '%s' ],
+		[ '%d' ]
+	);
+
+	sh_cd_cache_delete_by_slug_or_key( $id );
+
+	return ( false !== $result );
+}
+
+/**
+ * Update a shortcode's content
+ *
+ * @param $shortcode
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_update_content( $id, $status ) {
+
+	if ( false === is_admin() ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->update(
+		$wpdb->prefix . SH_CD_TABLE,
+		[ 'disabled' => $status ],
+		[ 'id' => $id ],
+		[ '%d' ],
+		[ '%d' ]
+	);
+
+	sh_cd_cache_delete_by_slug_or_key( $id );
+
+	return ( false !== $result );
+}
+
+
+/**
  * Delete a shortcode
  *
  * @param $id

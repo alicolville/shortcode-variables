@@ -34,6 +34,8 @@ define( 'SH_CD_PLUGIN_NAME', 'Shortcode Variables' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
 define( 'SH_CD_SHORTCODE', 'sv' );
+define( 'SH_CD_PREMIUM_PRICE', 5.00 );
+define( 'SH_CD_UPGRADE_LINK', 'https://www.google.com' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
@@ -51,9 +53,25 @@ include_once SH_CD_ABSPATH . 'includes/shortcode.presets.premium.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.list.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.premade.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.edit.php';
+include_once SH_CD_ABSPATH . 'includes/pages/pages.license.php';
 
 // -----------------------------------------------------------------------------------------
 // AC: Load relevant language files
 // -----------------------------------------------------------------------------------------
 
 load_plugin_textdomain( SH_CD_SLUG, false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+
+
+
+// todo: Remove
+//function t_license() {
+//	echo wl_license_generate_new( 'sv-premium', '68bb2b', $expire_in_days = 365 );
+//	die;
+//}
+//add_action('init', 't_license' );
+
+/*
+ *
+ * eyJ0eXBlIjoic3YtcHJlbWl1bSIsImV4cGlyeS1kYXlzIjozNjUsInNpdGUtaGFzaCI6IjY4YmIyYiIsImV4cGlyeS1kYXRlIjoiMjAyMC0wMi0yMSIsImhhc2giOiIwMzZjYzFhODY3NGJmMzk4M2UyYjkwYzM1OTBmMmJlOCJ9
+ *
+ */
