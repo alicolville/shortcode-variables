@@ -27,7 +27,7 @@
                     if ( $valid_license ) {
                         sh_cd_message_display( __('Your license has been applied!', SH_CD_SLUG ) );
                     } else {
-                        sh_cd_message_display(__('An error occurred applying your license: ', SH_CD_SLUG ), 'error');
+                        sh_cd_message_display(__('There was an error applying your license. ', SH_CD_SLUG ), true);
                     }
                 }
 
@@ -50,23 +50,25 @@
                                     <center>
                                         <h3>In case you need, your <strong>Site Hash</strong>
                                             is: <?php echo esc_html( $site_hash ) ; ?></h3>
+
                                         <?php
 
-                                            sh_cd_upgrade_button();
+                                            if ( true === empty( $existing_license ) ) :
 
+                                                sh_cd_upgrade_button();
+                                        ?>
+                                                <br />  <br />
+                                                <hr />
+                                                <h3>Premium Shortcodes</h3>
+                                                <p>Upgrade to the Premium version of Shortcode Variables and receive the following shortcodes:</p>
+
+                                                <br />
+                                        <?php
+	                                            echo sh_cd_display_premade_shortcodes( 'premium' );
+
+                                            endif;
                                         ?>
                                     </center>
-                                    <hr />
-                                    <h3>Premium Shortcodes</h3>
-                                    <p>Upgrade to the Premium version of Shortcode Variables and receive the following shortcodes:</p>
-
-                                    <br />
-
-                                    <?php
-
-                                        sh_cd_display_premade_shortcodes( 'premium' );
-
-                                    ?>
                                 </div>
                             </div>
                         </div>
@@ -133,7 +135,7 @@
                                     </table>
                                 </div>
                             </div>
-
+                    <!--
                             <div class="postbox">
                                 <h3 class="hndle"><span>Documentation</span></h3>
 
@@ -144,6 +146,8 @@
 
                                 </div>
                             </div>
+
+                     -->
                         </div>
                     </div>
                     <div id="post-body" class="metabox-holder columns-3">

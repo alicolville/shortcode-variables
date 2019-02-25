@@ -87,7 +87,7 @@ function sh_cd_ajax_update_shortcode() {
 
 	if ( false === empty( $id ) ) {
 
-		$result = sh_cd_db_shortcodes_update_status( $id, $content );
+		$result = sh_cd_db_shortcodes_update_content( $id, $content );
 
 		wp_send_json( [ 'id' => $id, 'ok' => ( true === $result ) ? 1 : 0 ] );
 	}

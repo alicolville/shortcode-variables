@@ -110,7 +110,7 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                                 esc_html( $shortcode['slug'] ),
                                                 SH_CD_SHORTCODE,
                                                 esc_html( stripslashes( $shortcode['data'] ) ),
-                                                ( 0 === (int) $shortcode['disabled'] ) ? 'fa-times' : 'fa-check',
+                                                ( 1 === (int) $shortcode['disabled'] ) ? 'fa-times' : 'fa-check',
                                                 $link . '&action=delete&id=' . $id,
 	                                            $id
                                             );

@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Shortcode Variables ===
 Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
@@ -10,28 +10,43 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Create your own shortcodes and assign text, html, etc to them. Use these across your site and only change in one place.
 
+== Upgrade Notice ==
+
+* 2.0! More premade shortcodes! Inline editing! One click disabling!
+
 == Description ==
 
-Do you want to use the same snippet throughout your site but only have to change the value in one location? If so, this plugin maybe just what you need.
+= Documentation / UPGRADE =
 
-You can create your own Shortcodes and assign text, HTML, JavaScript, etc to it. You will then be given a shortcode such as:
+[Shortcode Variables Website](https://sv.yeken.uk/ "Shortcode Variables Website")
 
-[sv slug="your-slug-name"]
+= WHAT IS SHORTCODE VARIABLES? =
 
-You can embed this shortcode throughout your site and it will render the same content. Simply update the Shortcode Variable in Tools > Shortcode Variables and it will change throughout the site!
+Do you want to use the same snippet of text or HTML throughout your site but only have to change the value in one location? If so, this plugin maybe just what you need.
 
-** Specify Parameters **
+Create your own Shortcodes and assign content to them. Using the standard WP editor, you can add text, HTML, JavaScript, images or other elements that your WordPress install and plugins allow. The main advantage is ability to create a shortcode once and re-use it throughout your site.
 
-Specify your own parameters:
+[ sv slug="your-slug-name"]
 
-You can now specify your own parameters when inserting a shortcode. For example, say you have a shortcode that renders a HTML table, you can now add parameters to the shortcode and specify where they appear in the shortcode e.g.
+= FEATURES =
 
-[sv slug="render-table" border="0" background="#FFFFFF" width="50%" site-title="YeKen"] to place each parameter within a shortcode use the following syntax %%background%%, %%width%%, etc. See below:
+* Create a shortcode once and place in multiple locations.
+* Update the shortcode in one location and it changes throughout your site.
+* Parameters to extend your shortcodes.
+* Free and Premium helper shortcodes to make life easier.
 
-<table border="%%border%%" style="background:%%background%%" width="%%width%%">
-	<tr>
-		<td>Welcome to our site, %%site-title%%.</td>
-	</tr>
+= SPECIFY PARAMETERS =
+
+In some cases you may wish to make your shortcodes more extendable. This is where parameters come in. For example, you may have a shortcode that renders a HTML table, however, depending on where you place that shortcode on your site, you may wish to specify additional arguments. Take the example below, you can see the additional arguments passed into shortcode, “border”, “background” etc.
+
+[ sv slug="render-table" border="0" background="#FFFFFF" width="50%" site-title="YeKen"]
+
+Each argument can be rendered into the shortcode in the with the following syntax %%background%%, %%width%%, etc. Below is an example:
+
+<table border=”%%border%%” style=”background:%%background%%” width=”%%width%%”>
+<tr>
+<td>Welcome to our site, %%site-title%%.</td>
+</tr>
 </table>
 
 **Premium Shortcodes**
@@ -123,12 +138,6 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 == Changelog ==
 
 = 2.0 =
-
-TODO:
-
-- update product description
-- documentation site (add a shortcode to this plugin to render it all out).
-- update license ( l.php ) to generate a type of "sv-premium"
 
 * New Feature: Added additional premium shortcodes.
 * New Feature: Inline editing of shortcodes from the main list screen.

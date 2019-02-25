@@ -61,7 +61,7 @@ jQuery( document ).ready(function ($) {
 
             var element_id = '#sc-cd-toggle-' + response.id + ' i';
 
-            if ( 0 == response.status ) {
+            if ( 1 == response.status ) {
                 $( element_id ).removeClass( 'fa-check' );
                 $( element_id ).addClass( 'fa-times' );
             } else {
@@ -90,10 +90,8 @@ jQuery( document ).ready(function ($) {
 
         var element_id = '#sh-cd-save-button-' + i;
 
-       // $( element_id ).addClass( 'fa-check' );
-     //   $( element_id ).removeClass( 'fa-save' );
         $( element_id ).html('<i class="fas fa-check"></i> Saved!');
-       // $( element_id ).text('<i class="fas fa-save"></i> Saved!');
+
     }
 
     /**

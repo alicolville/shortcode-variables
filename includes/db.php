@@ -168,7 +168,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
  *
  * @return bool
  */
-function sh_cd_db_shortcodes_update_status( $id, $data ) {
+function sh_cd_db_shortcodes_update_status( $id, $status ) {
 
 	if ( false === is_admin() ) {
 		return false;
@@ -178,9 +178,9 @@ function sh_cd_db_shortcodes_update_status( $id, $data ) {
 
 	$result = $wpdb->update(
 		$wpdb->prefix . SH_CD_TABLE,
-		[ 'data' => $data ],
+		[ 'disabled' => $status ],
 		[ 'id' => $id ],
-		[ '%s' ],
+		[ '%d' ],
 		[ '%d' ]
 	);
 
@@ -196,7 +196,7 @@ function sh_cd_db_shortcodes_update_status( $id, $data ) {
  *
  * @return bool
  */
-function sh_cd_db_shortcodes_update_content( $id, $status ) {
+function sh_cd_db_shortcodes_update_content( $id, $data ) {
 
 	if ( false === is_admin() ) {
 		return false;
@@ -206,9 +206,9 @@ function sh_cd_db_shortcodes_update_content( $id, $status ) {
 
 	$result = $wpdb->update(
 		$wpdb->prefix . SH_CD_TABLE,
-		[ 'disabled' => $status ],
+		[ 'data' => $data ],
 		[ 'id' => $id ],
-		[ '%d' ],
+		[ '%s' ],
 		[ '%d' ]
 	);
 

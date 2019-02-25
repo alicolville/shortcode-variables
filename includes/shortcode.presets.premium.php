@@ -271,20 +271,3 @@ class SV_SC_POST_COUNTS extends SV_Preset {
 		}
 	}
 }
-
-
-
-
-
-// todo
-//
-//function t() {
-//
-//	foreach ( sh_cd_shortcode_presets_premium_list() as $key => $value ) {
-//
-//		printf('<h4>%s</h4><p>[sv slug="%s"]</p>', $key, $key );
-//
-//	}
-//die;
-//}
-//add_action('init', 't');

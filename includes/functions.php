@@ -292,20 +292,20 @@ function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 			$show_premium_col = true;
 	}
 
-?>
-	<table class="widefat sh-cd-table" width="100%">
-		<tr class="row-title">
-			<th class="row-title" width="30%">Shortcode</th>
-			<?php if ( true === $show_premium_col): ?>
-				<th class="row-title">Premium</th>
-			<?php endif; ?>
-			<th width="*">Description</th>
-		</tr>
-		<?php
+	$html = '<table class="widefat sh-cd-table" width="100%">
+                <tr class="row-title">
+                    <th class="row-title" width="30%">Shortcode</th>';
+
+                     if ( true === $show_premium_col) {
+	                     $html .= '<th class="row-title">Premium</th>';
+                     }
+
+	                $html .= '<th width="*">Description</th>
+                </tr>';
 
 		$class = '';
 
-		foreach ( $shortcodes as $key => $data ):
+		foreach ( $shortcodes as $key => $data ) {
 
 			$class = ($class == 'alternate') ? '' : 'alternate';
 
@@ -313,23 +313,24 @@ function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 
 			$premium_shortcode = ( true === $data['premium'] );
 
-			?>
-			<tr class="<?php echo $class; ?>">
-				<td><?php echo $shortcode; ?></td>
-				<?php
-					if ( true === $show_premium_col) {
+			$html .= sprintf( '<tr class="%s"><td>%s</td>', $class, esc_html( $shortcode ) );
 
-						printf( '<td align="middle">%s%s</td>',
-							( true === $premium_shortcode && true === $premium_user ) ? '<i class="fas fa-check"></i>' : '',
-							( true == $premium_shortcode && false === $premium_user ) ? $upgrade_link : ''
-						);
-					}
-				?>
-				<td><?php echo $data['description']; ?></td>
-			</tr>
-		<?php endforeach; ?>
-	</table>
-<?php
+
+            if ( true === $show_premium_col) {
+
+                $html .= sprintf( '<td align="middle">%s%s</td>',
+                    ( true === $premium_shortcode && true === $premium_user ) ? '<i class="fas fa-check"></i>' : '',
+                    ( true == $premium_shortcode && false === $premium_user ) ? $upgrade_link : ''
+                );
+            }
+
+			$html .= sprintf( '<td>%s</td></tr>', esc_html( $data['description'] ) );
+
+        }
+
+    $html .= '</table>';
+
+	return $html;
 }
 
 /**

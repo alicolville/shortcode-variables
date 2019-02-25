@@ -24,7 +24,7 @@ function sh_cd_premade_shortcodes_page() {
 
 								<p><?php echo __('Below is a list of premade shortcode variables that you can use throughout your website.'); ?></p>
                                 <h3>Premade Shortcodes</h3>
-								<?php sh_cd_display_premade_shortcodes(); ?>
+								<?php echo sh_cd_display_premade_shortcodes(); ?>
 								<br />
 								<p><?php echo __('<strong> Suggestion?</strong> Got an idea for a premade tag? If so, email me at: ') . '<a href="mailto:email@yeken.uk">email@yeken.uk</a>'; ?> </p>
 							</div>

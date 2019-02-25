@@ -142,3 +142,39 @@ function sh_cd_shortcode_render_text() {
 
 }
 add_shortcode( 'sv-promo', 'sh_cd_shortcode_render_text' );
+
+/**
+ * Shortcode to render free shortcodes (more for promo purposes)
+ *
+ * @return string
+ */
+function sh_cd_shortcode_render_table_free() {
+
+	return sh_cd_display_premade_shortcodes( 'free' );
+
+}
+add_shortcode( 'sv-promo-free', 'sh_cd_shortcode_render_table_free');
+
+/**
+ * Shortcode to render premium shortcodes (more for promo purposes)
+ *
+ * @return string
+ */
+function sh_cd_shortcode_render_table_premium() {
+
+	return sh_cd_display_premade_shortcodes( 'premium' );
+
+}
+add_shortcode( 'sv-promo-premium', 'sh_cd_shortcode_render_table_premium');
+
+/**
+ * Shortcode to render all shortcodes (more for promo purposes)
+ *
+ * @return string
+ */
+function sh_cd_shortcode_render_table_all() {
+
+	return sh_cd_display_premade_shortcodes();
+
+}
+add_shortcode( 'sv-promo-all', 'sh_cd_shortcode_render_table_all');
