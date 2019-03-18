@@ -7,10 +7,10 @@ defined('ABSPATH') or die('Jog on!');
  */
 function sh_cd_build_admin_menu() {
 
-	add_menu_page( SH_CD_PLUGIN_NAME, SH_CD_PLUGIN_NAME, 'manage_options', 'sh-cd-shortcode-variables-main-menu', 'sh_cd_user_defined_page', 'dashicons-editor-kitchensink' );
+	add_menu_page( SH_CD_PLUGIN_NAME, SH_CD_PLUGIN_NAME, 'manage_options', 'sh-cd-shortcode-variables-main-menu', 'sh_cd_pages_your_shortcodes', 'dashicons-editor-kitchensink' );
 
 	// Hide duplicated sub menu (wee hack!)
-	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', '', '', 'manage_options', 'sh-cd-shortcode-variables-main-menu', 'sh_cd_user_defined_page');
+	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', '', '', 'manage_options', 'sh-cd-shortcode-variables-main-menu', 'sh_cd_pages_your_shortcodes');
 
 	// Add sub menus
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Your Shortcodes', SH_CD_SLUG ),  __('Your shortcodes'), 'manage_options', 'sh-cd-shortcode-variables-your-shortcodes', 'sh_cd_pages_your_shortcodes');
