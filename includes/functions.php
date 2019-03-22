@@ -10,7 +10,7 @@ defined('ABSPATH') or die('Jog on!');
 function sh_cd_shortcodes_save_post() {
 
 	// Capture the raw $_POST fields, the save functions will process and validate the data
-	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'data', 'disabled' ] );
+	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled' ] );
 
 	return sh_cd_db_shortcodes_save( $shortcode );
 }
@@ -44,7 +44,7 @@ function sh_cd_apply_user_defined_parameters( $shortcode, $user_defined_paramete
  *
  * @return string
  */
-function sh_cd_slug_generate( $slug ) {
+function sh_cd_slug_generate( $slug, $exising_id = NULL ) {
 
     if ( true === empty( $slug ) ) {
         return NULL;
@@ -57,7 +57,7 @@ function sh_cd_slug_generate( $slug ) {
     $try = 1;
 
     // Ensure the slug is unique
-    while ( false === sh_cd_slug_is_unique( $slug ) ) {
+    while ( false === sh_cd_slug_is_unique( $slug, $exising_id ) ) {
 
 	    $slug = sprintf( '%s_%d', $original_slug, $try );
 

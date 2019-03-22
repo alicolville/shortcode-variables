@@ -16,6 +16,7 @@ function sh_cd_create_database_table() {
 	$sql = "CREATE TABLE $table_name (
 	  id mediumint(9) NOT NULL AUTO_INCREMENT,
 	  slug varchar(100) NOT NULL,
+	  previous_slug varchar(100) NOT NULL,
 	  data text,
 	  disabled bit default 0,
 	  UNIQUE KEY id (id)
@@ -104,6 +105,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 	$shortcode = wp_parse_args( $shortcode, [
 		'id' => NULL,
 		'slug' => NULL,
+		'previous_slug' => NULL,
 		'data' => NULL,
 		'disabled' => 0
 	]);
@@ -122,8 +124,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 	// Updating an existing shortcode?
 	if ( false === empty( $shortcode['id'] ) && true === is_numeric( $shortcode['id'] ) ){
 
-		// Once set, a slug cannot be updated.
-		unset( $shortcode['slug'] );
+		$shortcode['slug'] = sh_cd_slug_generate( $shortcode['slug'], $shortcode['id'] );
 
 		$formats = sh_cd_db_get_formats( $shortcode );
 
@@ -136,6 +137,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		);
 
 		sh_cd_cache_delete_by_slug_or_key( $shortcode['id'] );
+		sh_cd_cache_delete_by_slug_or_key( $shortcode['previous_slug'] );
 
 		// Adding a new shortcode
 	} else {
@@ -253,6 +255,7 @@ function sh_cd_db_get_formats( $data ) {
 	$lookup = [
 		'id' => '%d',
 		'slug' => '%s',
+		'previous_slug' => '%s',
 		'data' => '%s',
 		'disabled' => '%d'
 	];
@@ -273,10 +276,11 @@ function sh_cd_db_get_formats( $data ) {
  * Check if the slug already exists
  *
  * @param $slug
+ * @param $existing_id
  *
  * @return bool
  */
-function sh_cd_slug_is_unique( $slug ) {
+function sh_cd_slug_is_unique( $slug, $existing_id = NULL ) {
 
 	if ( true === empty( $slug ) ) {
 		return false;
@@ -285,6 +289,10 @@ function sh_cd_slug_is_unique( $slug ) {
 	global $wpdb;
 
 	$sql = $wpdb->prepare( 'SELECT count(slug) FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s', $slug );
+
+	if ( false === empty( $existing_id ) ) {
+		$sql .= $wpdb->prepare( ' and id <> %d', $existing_id );
+	}
 
 	$row = $wpdb->get_var( $sql );
 
