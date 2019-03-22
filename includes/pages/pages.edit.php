@@ -25,7 +25,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 	// Load
 	$shortcode = ( false === empty( $_GET['id'] ) ) ?
 		            sh_cd_db_shortcodes_by_id( (int) $_GET['id'] ) :
-		                sh_cd_get_values_from_post( [ 'id', 'slug', 'data', 'disabled' ] );
+		                sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled' ] );
 
 	$shortcode['data']  = stripslashes( $shortcode['data'] );
 
@@ -54,8 +54,14 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
                                         <h4>Slug</h4>
                                         <p><small>Specify the unique identifier for this shortcode.</small></p>
                                         <input type="text" required class="regular-text" size="100" id="slug" name="slug"
-                                                <?php echo ( ('edit' === $action) ? ' disabled' : ''); ?> placeholder="Slug"
+                                                placeholder="Slug"
                                                     value="<?php echo esc_attr( $shortcode['slug'] )?>" />
+                                        <?php
+
+                                            $previous_slug = ( false === empty( $shortcode['previous_slug'] ) ) ? $shortcode['previous_slug'] : $shortcode['slug'];
+
+                                        ?>
+                                        <input type="hidden" id="previous_slug" name="previous_slug" value="<?php echo esc_attr( $previous_slug )?>" />
                                         <?php if ('edit' == $action): ?>
                                             <p><small>Note: You can not edit a slug name. Editing a slug name may cause issues throughout your site. Please delete this shortcode and create another.</small></p>
                                         <?php endif; ?>
