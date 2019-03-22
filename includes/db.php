@@ -50,7 +50,7 @@ function sh_cd_db_shortcodes_by_id( $id ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare('SELECT id, slug, data, disabled FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
+	$sql = $wpdb->prepare('SELECT id, slug, previous_slug, data, disabled FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
 
 	return $wpdb->get_row( $sql, ARRAY_A );
 }
