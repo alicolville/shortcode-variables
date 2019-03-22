@@ -68,6 +68,34 @@ function sh_cd_slug_generate( $slug ) {
 }
 
 /**
+ * Clone an existing shortcode!
+ *
+ * @param $id
+ *
+ * @return bool
+ */
+function sh_cd_clone( $id ) {
+
+	if( false === sh_cd_license_is_premium() ) {
+		return true;
+	}
+
+	if ( false === is_numeric( $id ) ) {
+		return false;
+	}
+
+	$to_be_cloned = sh_cd_db_shortcodes_by_id( $id );
+
+	if ( true === empty( $to_be_cloned ) ) {
+		return false;
+	}
+
+	unset( $to_be_cloned['id'] );
+
+	return sh_cd_db_shortcodes_save( $to_be_cloned );
+}
+
+/**
  * Display message in admin UI
  *
  * @param $text

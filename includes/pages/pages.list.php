@@ -18,11 +18,8 @@ function sh_cd_pages_your_shortcodes() {
 	    case 'save':
 	        sh_cd_pages_your_shortcodes_edit( $action );
             break;
-        case 'delete':
-            sh_cd_pages_your_shortcodes_list( $action );
-            break;
         default:
-	        sh_cd_pages_your_shortcodes_list();
+	        sh_cd_pages_your_shortcodes_list( $action );
     }
 
 }
@@ -35,6 +32,13 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
 	if ( false === current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
+
+	// Cloning a shortcode?
+    if ( 'clone' === $action && false === empty( $_GET['id'] ) ) {
+
+	    sh_cd_clone( (int) $_GET['id'] );
+
+    }
 
 	// Deleting a shortcode?
     if( 'delete' === $action && false === empty( $_GET['id'] ) ) {
@@ -100,7 +104,8 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                                         <a class="button button-small sh-cd-inline-save-button" id="sh-cd-save-button-%8$d" data-id="%8$d"><i class="fas fa-save"></i> Save</a>
                                                     </td>
                                                     <td align="middle"><a class="button button-small toggle-disable" id="sc-cd-toggle-%8$s" data-id="%8$s"><i class="fas %6$s"></i></a></td>
-                                                    <td>
+                                                    <td width="100">
+                                                        <a class="button button-small" href="%9$s"><i class="far fa-clone"></i></a>
                                                         <a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
                                                         <a class="button button-small" href="%7$s" onclick="return confirm(\'Are you sure you want to delete this shortcode?\');"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
@@ -112,12 +117,13 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                                 esc_html( stripslashes( $shortcode['data'] ) ),
                                                 ( 1 === (int) $shortcode['disabled'] ) ? 'fa-times' : 'fa-check',
                                                 $link . '&action=delete&id=' . $id,
-	                                            $id
+	                                            $id,
+                                                ( true === sh_cd_license_is_premium() ) ? $link . '&action=clone&id=' . $id : sh_cd_license_upgrade_link()
                                             );
                                         }
                                     }
                                     else {
-                                        printf( '<tr><td colspan="4" align="center">You haven\'t created any shortcodes yet. <a href="%s">Add one now!</a></td></tr>', sh_cd_link_your_shortcodes_add() );
+                                        printf( '<tr><td colspan="5" align="center">You haven\'t created any shortcodes yet. <a href="%s">Add one now!</a></td></tr>', sh_cd_link_your_shortcodes_add() );
                                     }
                                     ?>
                                 </table>
