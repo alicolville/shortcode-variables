@@ -81,7 +81,7 @@
 		if( true === empty( $license ) ) {
 			return NULL;
 		}
-		//Todo: Set type to 'sh-cd-pro'
+
 		// Validate hash!
 		$verify_hash = md5( 'yeken.uk' . $license['type'] . $license['expiry-days'] . $license['site-hash'] . $license['expiry-date'] );
 
