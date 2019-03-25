@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 4.2.0
 Tested up to: 5.1
-Stable tag: 2.2.1
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Create your own shortcodes and assign text, html, etc to them. Use these across 
 
 == Upgrade Notice ==
 
-* 2.0! More premade shortcodes! Inline editing! One click disabling!
+* 2.3! Added User Counts shortcode
 
 == Description ==
 
@@ -80,6 +80,7 @@ The plugin comes with the following premium shortcodes:
 - sc-post-id - Display ID for the current post.
 - sc-post-author - Display the author's display name or ID. The optional argument "field" allows you to specify whether you wish to display the author's "display-name" or "id". [sv slug="sc-post-author" field="id" ]
 - sc-post-counts - Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]
+- sc-user-counts - Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"].
 
 **Free Shortcodes**
 
@@ -136,6 +137,10 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 5. Shortcode variables rendered in a page
 
 == Changelog ==
+
+= 2.3 =
+
+* Improvement: sc-user-counts - Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"].
 
 = 2.2.1 =
 
