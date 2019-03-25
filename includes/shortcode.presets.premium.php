@@ -35,7 +35,8 @@ function sh_cd_shortcode_presets_premium_list() {
 		'sc-php-info' => [ 'class' => 'SC_PHP_INFO', 'description' => 'Display PHP Info', 'premium' => true ],
 		'sc-post-id' => [ 'class' => 'SC_POST_ID', 'description' => 'Display ID for the current post.', 'premium' => true ],
 		'sc-post-author' => [ 'class' => 'SC_POST_AUTHOR', 'description' => 'Display the author\'s display name or ID. The optional argument "field" allows you to specify whether you wish to display the author\'s "display-name" or "id". [sv slug="sc-post-author" field="id" ]', 'premium' => true ],
-		'sc-post-counts' => [ 'class' => 'SC_POST_COUNTS', 'description' => 'Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]', 'premium' => true ]
+		'sc-post-counts' => [ 'class' => 'SC_POST_COUNTS', 'description' => 'Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]', 'premium' => true ],
+        'sc-user-counts' => [ 'class' => 'SC_USER_COUNTS', 'description' => 'Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"]', 'premium' => true ]
 
 		// '' => [ 'class' => '', 'description' => '', 'premium' => true ]
 	];
@@ -270,4 +271,29 @@ class SV_SC_POST_COUNTS extends SV_Preset {
 				return $counts->publish;
 		}
 	}
+}
+
+/**
+ * Get a User counts
+ *
+ * Class SV_SC_USER_COUNTS
+ */
+class SV_SC_USER_COUNTS extends SV_Preset {
+
+    protected function unsanitised() {
+
+        $args = $this->get_arguments();
+
+        $role = ( false === empty( $args['role'] ) ) ? $args['role'] : NULL;
+
+        $users = count_users();
+
+        if ( false === empty( $role ) && true === isset( $users['avail_roles'][ $role ] ) ) {
+            return $users['avail_roles'][ $role ];
+        } if ( true === isset( $users['total_users'] ) ) {
+            return $users['total_users'];
+        }
+
+        return '';
+    }
 }
