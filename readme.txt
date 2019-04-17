@@ -12,7 +12,7 @@ Create your own shortcodes and assign text, html, etc to them. Use these across 
 
 == Upgrade Notice ==
 
-* 2.3! Added User Counts shortcode
+* 2.4! Button added WordPress text editor (classic mode) to allow users to easily insert shortcodes.
 
 == Description ==
 
@@ -141,6 +141,7 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 = 2.4 =
 
 * New Feature: Added a button to the WordPress text editor (classic mode) to allow users to easily insert shortcodes.
+* New Fetaure: Added a new shortcode sc-date. Allows you to do render today's date and add or subtract days, months and years.
 
 = 2.3 =
 
