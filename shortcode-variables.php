@@ -5,7 +5,7 @@ defined('ABSPATH') or die("Jog on!");
 /**
  * Plugin Name: Shortcode Variables
  * Description: Create your own shortcodes and assign text / variables to it or use our premade ones. You can then embed these shortcodes throughout your entire site and only have to change the value in one place.
- * Version: 2.3
+ * Version: 2.4
  * Author: YeKen
  * Author URI: http://www.YeKen.uk
  * License: GPL2
@@ -29,7 +29,7 @@ defined('ABSPATH') or die("Jog on!");
 
 define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
-define( 'SH_CD_PLUGIN_VERSION', '2.3' );
+define( 'SH_CD_PLUGIN_VERSION', '2.4' );
 define( 'SH_CD_PLUGIN_NAME', 'Shortcode Variables' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
@@ -54,6 +54,7 @@ include_once SH_CD_ABSPATH . 'includes/pages/pages.list.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.premade.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.edit.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.license.php';
+include_once SH_CD_ABSPATH . 'includes/tinymce.php';
 
 // -----------------------------------------------------------------------------------------
 // AC: Load relevant language files

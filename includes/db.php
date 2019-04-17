@@ -40,6 +40,18 @@ function sh_cd_db_shortcodes_all() {
 }
 
 /**
+ * Fetch all enabled Shortcodes
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_all_enabled() {
+
+	global $wpdb;
+
+	return $wpdb->get_results( 'SELECT * FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where disabled = 0 order by slug asc', ARRAY_A );
+}
+
+/**
  * Fetch a shortcode by ID (mainly used for quick lookups in admin)
  *
  * @param $id
