@@ -352,7 +352,7 @@ function sh_cd_display_premade_shortcodes( $display = 'all' ) {
                 );
             }
 
-			$html .= sprintf( '<td>%s</td></tr>', esc_html( $data['description'] ) );
+			$html .= sprintf( '<td>%s</td></tr>', wp_kses_post( $data['description'] ) );
 
         }
 

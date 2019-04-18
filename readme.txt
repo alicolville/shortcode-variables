@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 4.2.0
 Tested up to: 5.1
-Stable tag: 2.3
+Stable tag: 2.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Create your own shortcodes and assign text, html, etc to them. Use these across 
 
 == Upgrade Notice ==
 
-* 2.3! Added User Counts shortcode
+* 2.4! Button added WordPress text editor (classic mode) to allow users to easily insert shortcodes.
 
 == Description ==
 
@@ -53,6 +53,7 @@ Each argument can be rendered into the shortcode in the with the following synta
 
 The plugin comes with the following premium shortcodes:
 
+- sc-date - A shortcode that displays today's date with the ability to add or subtract days, months and years. To specify an interval to add or subtract onto the date use the parameter "interval" e.g. [sv slug="sc-date" interval="-1 year"], [sv slug="sc-date" interval="+5 days"], [sv slug="sc-date" interval="+3 months"]. Intervals are based upon PHP intervals and are outlined here <a href="https://www.php.net/manual/en/dateinterval.createfromdatestring.php" target="_blank">https://www.php.net/manual/en/dateinterval.createfromdatestring.php</a>. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>
 - sc-site-language - Language code for the current site
 - sc-site-description - Site tagline (set in Settings > General)
 - sc-site-wp-url - The WordPress address (URL) (set in Settings > General)
@@ -137,6 +138,11 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 5. Shortcode variables rendered in a page
 
 == Changelog ==
+
+= 2.4 =
+
+* New Feature: Added a button to the WordPress text editor (classic mode) to allow users to easily insert shortcodes.
+* New Fetaure: Added a new shortcode sc-date. Allows you to do render today's date and add or subtract days, months and years.
 
 = 2.3 =
 

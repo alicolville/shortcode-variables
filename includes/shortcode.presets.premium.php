@@ -9,6 +9,7 @@ defined('ABSPATH') or die("Jog on!");
 function sh_cd_shortcode_presets_premium_list() {
 
 	return [
+		'sc-date' => [ 'class' => 'SC_DATE', 'description' => 'A shortcode that displays today\'s date with the ability to add or subtract days, months and years. To specify an interval to add or subtract onto the date use the parameter "interval" e.g. [sv slug="sc-date" interval="-1 year"], [sv slug="sc-date" interval="+5 days"], [sv slug="sc-date" interval="+3 months"]. Intervals are based upon PHP intervals and are outlined here <a href="https://www.php.net/manual/en/dateinterval.createfromdatestring.php" target="_blank">https://www.php.net/manual/en/dateinterval.createfromdatestring.php</a>. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>', 'premium' => true ],
 		'sc-site-language' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'Language code for the current site', 'args' => [ '_sh_cd_func' => 'language' ], 'premium' => true ],
 		'sc-site-description' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'Site tagline (set in Settings > General)', 'args' => [ '_sh_cd_func' => 'description' ], 'premium' => true ],
 		'sc-site-wp-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The WordPress address (URL) (set in Settings > General)', 'args' => [ '_sh_cd_func' => 'wpurl' ], 'premium' => true ],
@@ -296,4 +297,34 @@ class SV_SC_USER_COUNTS extends SV_Preset {
 
         return '';
     }
+}
+
+/**
+ * Display a date and also support date arithmetic
+ *
+ * Class SV_SC_DATE
+ */
+class SV_SC_DATE extends SV_Preset {
+
+	protected function unsanitised() {
+
+		$args = $this->get_arguments();
+
+		$todays_date = date_create();
+
+		// Do we have an interval?
+		if ( false === empty( $args['interval'] ) ) {
+
+			$interval = date_interval_create_from_date_string( $args['interval'] );
+
+			if ( $interval !== false ) {
+				$todays_date = date_add( $todays_date, $interval );
+			}
+
+		}
+
+		$date_format = ( false === empty( $args['format'] ) ) ? $args['format'] : 'd/m/Y';
+
+		return date_format( $todays_date, $date_format );
+	}
 }
