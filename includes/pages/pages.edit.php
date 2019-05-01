@@ -4,13 +4,15 @@ defined('ABSPATH') or die('Jog on!');
 
 function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 
-	if ( false === in_array( $action, [ 'add', 'edit', 'save' ] ) ) {
+    if ( false === in_array( $action, [ 'add', 'edit', 'save' ] ) ) {
 	    return;
 	}
 
 	if ( false === current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
+
+	$save_result = false;
 
 	// Saving / Inserting a shortcode?
 	if ( $action == 'save' ) {
