@@ -10,7 +10,7 @@ defined('ABSPATH') or die('Jog on!');
 function sh_cd_shortcodes_save_post() {
 
 	// Capture the raw $_POST fields, the save functions will process and validate the data
-	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled' ] );
+	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled', 'multisite' ] );
 
 	return sh_cd_db_shortcodes_save( $shortcode );
 }

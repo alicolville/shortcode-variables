@@ -19,6 +19,7 @@ function sh_cd_create_database_table() {
 	  previous_slug varchar(100) NOT NULL,
 	  data text,
 	  disabled bit default 0,
+	  multisite bit default 0,
 	  UNIQUE KEY id (id)
 	) $charset_collate;";
 
@@ -62,7 +63,7 @@ function sh_cd_db_shortcodes_by_id( $id ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare('SELECT id, slug, previous_slug, data, disabled FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
+	$sql = $wpdb->prepare('SELECT id, slug, previous_slug, data, disabled, multisite FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
 
 	return $wpdb->get_row( $sql, ARRAY_A );
 }
@@ -77,6 +78,8 @@ function sh_cd_db_shortcodes_by_id( $id ) {
 function sh_cd_db_shortcodes_by_slug( $slug ) {
 
 	global $wpdb;
+
+	//TODO: Search multi-side first if here, skip over local
 
 	$sql = $wpdb->prepare('SELECT data FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s and disabled <> 1', $slug);
 
@@ -119,7 +122,8 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		'slug' => NULL,
 		'previous_slug' => NULL,
 		'data' => NULL,
-		'disabled' => 0
+		'disabled' => 0,
+		'multisite' => 0
 	]);
 
 	// We need either a slug or an ID
@@ -128,6 +132,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 	}
 
 	$shortcode['disabled'] = (int) $shortcode['disabled'];
+	$shortcode['multisite'] = (int) $shortcode['multisite'];
 
 	global $wpdb;
 
@@ -269,7 +274,8 @@ function sh_cd_db_get_formats( $data ) {
 		'slug' => '%s',
 		'previous_slug' => '%s',
 		'data' => '%s',
-		'disabled' => '%d'
+		'disabled' => '%d',
+		'multisite' => '%d'
 	];
 
 	$formats = [];

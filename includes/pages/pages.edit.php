@@ -27,7 +27,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 	// Load
 	$shortcode = ( false === empty( $_GET['id'] ) ) ?
 		            sh_cd_db_shortcodes_by_id( (int) $_GET['id'] ) :
-		                sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled' ] );
+		                sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled', 'multisite' ] );
 
 	$shortcode['data']  = stripslashes( $shortcode['data'] );
 
@@ -64,18 +64,27 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 
                                         ?>
                                         <input type="hidden" id="previous_slug" name="previous_slug" value="<?php echo esc_attr( $previous_slug )?>" />
-                                        <?php if ('edit' == $action): ?>
-                                            <p><small>Note: You can not edit a slug name. Editing a slug name may cause issues throughout your site. Please delete this shortcode and create another.</small></p>
-                                        <?php endif; ?>
+
                                         <h4>Shortcode content</h4>
                                         <p><small>Specify the text, HTML, media, data, etc that should be rendered wherever the shortcode is placed.</small></p>
                                         <?php wp_editor( $shortcode['data'], 'data', [ 'textarea_name' => 'data' ] ); ?>
+
                                         <h4>Disable?</h4>
                                         <p>If disabled, nothing will be rendered where the shortcode has been placed.</p>
                                         <select id="disabled" name="disabled">
                                             <option value="0" <?php selected( $shortcode['disabled'], 0 ); ?>>No</option>
                                             <option value="1" <?php selected( $shortcode['disabled'], 1 ); ?>>Yes</option>
                                         </select>
+
+                                        <h4>Global? Can this be used by all sites within your multi-site?</h4>
+                                        <p>If Yes, your shortcode will be promoted so it can be used across your entire multi site.</p>
+                                        <select id="multisite" name="multisite">
+                                            <option value="0" <?php selected( $shortcode['multisite'], 0 ); ?>>No</option>
+                                            <option value="1" <?php selected( $shortcode['multisite'], 1 ); ?>>Yes</option>
+                                        </select>
+
+                                        <p><small>Please note, shortcode slugs are not unique across a multi site. Therefore, if you have two shortcodes with the same slug, the shortcode created or updated most recently will replace a multi site shortcode with the same slug.</small></p>
+
                                         <div class="sh-cd-button-row">
                                             <a class="comment-submit button" href="<?php echo sh_cd_link_your_shortcodes(); ?>">Cancel</a>
                                             <input name="submit_button" type="submit" value="Save Shortcode" class="comment-submit button button-primary">

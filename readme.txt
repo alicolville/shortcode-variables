@@ -3,8 +3,8 @@ Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 4.2.0
-Tested up to: 5.1
-Stable tag: 2.4.1
+Tested up to: 5.2.1
+Stable tag: 3.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,7 +12,7 @@ Create your own shortcodes and assign text, html, etc to them. Use these across 
 
 == Upgrade Notice ==
 
-* 2.4! Button added WordPress text editor (classic mode) to allow users to easily insert shortcodes.
+* 3.0 - Support for multi-site variables!
 
 == Description ==
 
@@ -138,6 +138,10 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 5. Shortcode variables rendered in a page
 
 == Changelog ==
+
+= 3.0 =
+
+* Improvement: Support for multi-site variables.
 
 = 2.4.1 =
 
