@@ -33,6 +33,7 @@ define( 'SH_CD_PLUGIN_VERSION', '3.0' );
 define( 'SH_CD_PLUGIN_NAME', 'Shortcode Variables' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
+define( 'SH_CD_PREFIX', 'sh-cd-' );
 define( 'SH_CD_SHORTCODE', 'sv' );
 define( 'SH_CD_PREMIUM_PRICE', 5.00 );
 define( 'SH_CD_UPGRADE_LINK', 'https://sv.yeken.uk/upgrade' );

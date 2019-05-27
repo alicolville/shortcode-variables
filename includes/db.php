@@ -177,7 +177,23 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		sh_cd_cache_delete_by_slug_or_key( $shortcode['slug'] );
 	}
 
-	return ( false !== $result );
+	if ( false !== $result ) {
+
+		// TODO: Add logic here to only save shortcodes if PRO
+
+		$slug = SH_CD_PREFIX . $shortcode['slug'];
+
+		// If a multisite variable then update or delete variable depending on selected option.
+		if ( 1 === $shortcode['multisite'] ) {
+			update_site_option( $slug, $shortcode['data'] );
+		} else {
+			delete_site_option( $slug );
+		}
+
+		return true;
+	}
+
+	return false;
 }
 
 /**

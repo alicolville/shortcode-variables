@@ -75,7 +75,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
                                             <option value="0" <?php selected( $shortcode['disabled'], 0 ); ?>>No</option>
                                             <option value="1" <?php selected( $shortcode['disabled'], 1 ); ?>>Yes</option>
                                         </select>
-
+<!-- TODO: This is a PRO feature! -->
                                         <h4>Global? Can this be used by all sites within your multi-site?</h4>
                                         <p>If Yes, your shortcode will be promoted so it can be used across your entire multi site.</p>
                                         <select id="multisite" name="multisite">

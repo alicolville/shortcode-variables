@@ -151,11 +151,19 @@ function sh_cd_cache_delete_by_slug_or_key( $slug_or_key ) {
 
     if ( true === is_numeric( $slug_or_key ) ) {
 
-        sh_cd_cache_delete( sh_cd_db_shortcodes_get_slug_by_id( $slug_or_key ) );
+	    $slug_or_key = sh_cd_db_shortcodes_get_slug_by_id( $slug_or_key );
+
+        sh_cd_cache_delete( $slug_or_key );
 
     } else {
 	    sh_cd_cache_delete( $slug_or_key );
     }
+
+    // Delete site option
+	$slug_or_key = SH_CD_PREFIX . $slug_or_key;
+
+	delete_site_option( $slug_or_key );
+
 }
 
 /**
