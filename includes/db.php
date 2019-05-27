@@ -225,6 +225,34 @@ function sh_cd_db_shortcodes_update_status( $id, $status ) {
 }
 
 /**
+ * Update a shortcode's multisite
+ *
+ * @param $shortcode
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_update_multisite( $id, $multisite ) {
+
+	if ( false === is_admin() ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->update(
+		$wpdb->prefix . SH_CD_TABLE,
+		[ 'multisite' => $multisite ],
+		[ 'id' => $id ],
+		[ '%d' ],
+		[ '%d' ]
+	);
+
+	sh_cd_cache_delete_by_slug_or_key( $id );
+
+	return ( false !== $result );
+}
+
+/**
  * Update a shortcode's content
  *
  * @param $shortcode

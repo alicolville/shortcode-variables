@@ -72,6 +72,30 @@ function sh_cd_ajax_toggle_status() {
 add_action( 'wp_ajax_toggle_status', 'sh_cd_ajax_toggle_status' );
 
 /**
+Ajax handler for toggling disable status of a shortcode
+ **/
+function sh_cd_ajax_toggle_multisite() {
+
+	if ( false === sh_cd_license_is_premium() ) {
+		wp_send_json( 'not-premium' );
+	}
+
+	check_ajax_referer( 'sh-cd-security', 'security' );
+
+	$id = ( false === empty( $_POST['id'] ) ) ? (int) $_POST['id'] : NULL;
+
+	if ( false === empty( $id ) ) {
+
+		$new_multisite = sh_cd_toggle_multisite( $id );
+
+		wp_send_json( [ 'id' => $id, 'multisite' => $new_multisite, 'ok' => 1 ] );
+	}
+
+	wp_send_json( 'shortcode-not-found' );
+}
+add_action( 'wp_ajax_toggle_multisite', 'sh_cd_ajax_toggle_multisite' );
+
+/**
 Ajax handler for saving shortcode inline
  **/
 function sh_cd_ajax_update_shortcode() {

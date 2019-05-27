@@ -303,6 +303,27 @@ function sh_cd_toggle_status( $id ) {
 	return NULL;
 }
 
+/**
+ * Toggle the multisite of a shortcode
+ *
+ * @param $id
+ */
+function sh_cd_toggle_multisite( $id ) {
+
+	$slug = sh_cd_db_shortcodes_by_id( (int) $id );
+
+	if ( false === empty( $slug ) ) {
+
+		$multisite = ( 1 === (int) $slug['multisite'] ) ? 0 : 1 ;
+
+		sh_cd_db_shortcodes_update_multisite( $id, $multisite );
+
+		return $multisite;
+	}
+
+	return NULL;
+}
+
 
 /**
  * Display a table of premade shortcodes
