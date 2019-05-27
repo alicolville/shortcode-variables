@@ -79,7 +79,16 @@ function sh_cd_db_shortcodes_by_slug( $slug ) {
 
 	global $wpdb;
 
-	//TODO: Search multi-side first if here, skip over local
+	// If multi site functionality is enabled, look there first for the shortcode!
+	if ( true === sh_cd_is_multisite_enabled() ) {
+
+		$data = get_site_option( SH_CD_PREFIX . $slug );
+
+		if ( false === empty( $data ) ) {
+			return $data;
+		}
+
+	}
 
 	$sql = $wpdb->prepare('SELECT data FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s and disabled <> 1', $slug);
 
@@ -179,12 +188,10 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 
 	if ( false !== $result ) {
 
-		// TODO: Add logic here to only save shortcodes if PRO
-
 		$slug = SH_CD_PREFIX . $shortcode['slug'];
 
 		// If a multisite variable then update or delete variable depending on selected option.
-		if ( 1 === $shortcode['multisite'] ) {
+		if ( true === sh_cd_is_multisite_enabled() && 1 === $shortcode['multisite'] ) {
 			update_site_option( $slug, $shortcode['data'] );
 		} else {
 			delete_site_option( $slug );

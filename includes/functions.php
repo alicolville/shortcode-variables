@@ -405,3 +405,21 @@ function sh_cd_upgrade_button( $css_class = '', $link = NULL ) {
 		__('a year ', SH_CD_SLUG)
 	);
 }
+
+/**
+ * Is multsite functionality active for this install?
+ *
+ * @return bool
+ */
+function sh_cd_is_multisite_enabled() {
+
+	if ( false === is_multisite() ) {
+		return false;
+	}
+
+	if ( false === sh_cd_license_is_premium() ) {
+		return false;
+	}
+
+	return true;
+}
