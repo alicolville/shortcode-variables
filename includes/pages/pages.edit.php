@@ -76,14 +76,17 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
                                             <option value="1" <?php selected( $shortcode['disabled'], 1 ); ?>>Yes</option>
                                         </select>
 <!-- TODO: This is a PRO feature! -->
-                                        <h4>Global? Can this be used by all sites within your multi-site?</h4>
-                                        <p>If Yes, your shortcode will be promoted so it can be used across your entire multi site.</p>
-                                        <select id="multisite" name="multisite">
-                                            <option value="0" <?php selected( $shortcode['multisite'], 0 ); ?>>No</option>
-                                            <option value="1" <?php selected( $shortcode['multisite'], 1 ); ?>>Yes</option>
-                                        </select>
 
-                                        <p><small>Please note, shortcode slugs are not unique across a multi site. Therefore, if you have two shortcodes with the same slug, the shortcode created or updated most recently will replace a multi site shortcode with the same slug.</small></p>
+                                        <?php if ( true === is_multisite() ): ?>
+                                            <h4>Global?</h4>
+                                            <p>Can this be used by all sites within your multi-site? If Yes, your shortcode will be promoted so it can be used across your entire multi site.</p>
+                                            <select id="multisite" name="multisite">
+                                                <option value="0" <?php selected( $shortcode['multisite'], 0 ); ?>>No</option>
+                                                <option value="1" <?php selected( $shortcode['multisite'], 1 ); ?>>Yes</option>
+                                            </select>
+
+                                            <p><small>Please note, shortcode slugs are not unique across a multi site. Therefore, if you have two shortcodes with the same slug, the shortcode created or updated most recently will replace a multi site shortcode with the same slug.</small></p>
+                                        <?php endif; ?>
 
                                         <div class="sh-cd-button-row">
                                             <a class="comment-submit button" href="<?php echo sh_cd_link_your_shortcodes(); ?>">Cancel</a>
