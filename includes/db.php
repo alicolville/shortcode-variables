@@ -126,6 +126,8 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		return false;
 	}
 
+	$multi_site_enabled = sh_cd_is_multisite_enabled();
+
 	$shortcode = wp_parse_args( $shortcode, [
 		'id' => NULL,
 		'slug' => NULL,
@@ -141,7 +143,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 	}
 
 	$shortcode['disabled'] = (int) $shortcode['disabled'];
-	$shortcode['multisite'] = (int) $shortcode['multisite'];
+	$shortcode['multisite'] = ( true === $multi_site_enabled ) ? (int) $shortcode['multisite'] : 0;
 
 	global $wpdb;
 
@@ -191,7 +193,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		$slug = SH_CD_PREFIX . $shortcode['slug'];
 
 		// If a multisite variable then update or delete variable depending on selected option.
-		if ( true === sh_cd_is_multisite_enabled() && 1 === $shortcode['multisite'] ) {
+		if ( true === $multi_site_enabled && 1 === $shortcode['multisite'] ) {
 			update_site_option( $slug, $shortcode['data'] );
 		} else {
 			delete_site_option( $slug );
