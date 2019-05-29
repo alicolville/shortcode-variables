@@ -141,6 +141,8 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 
 = 3.0 =
 
+//TODO: Check what cloning does on multi site
+
 * Improvement: Support for multi-site variables.
 
 = 2.4.1 =

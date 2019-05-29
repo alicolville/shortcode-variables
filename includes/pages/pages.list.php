@@ -76,7 +76,7 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                         <th class="row-title" width="15%">Slug</th>
                                         <th width="20%">Shortcode</th>
                                         <th width="*">Shortcode content</th>
-                                        <th width="60px" align="middle">Multisite</th>
+                                        <th width="60px" align="middle">Global</th>
                                         <th width="60px" align="middle">Enabled</th>
                                         <th width="70px" align="middle">Options</th>
                                     </tr>

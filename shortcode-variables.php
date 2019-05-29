@@ -29,9 +29,10 @@ defined('ABSPATH') or die("Jog on!");
 
 define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
-define( 'SH_CD_PLUGIN_VERSION', '3.0' );
+define( 'SH_CD_PLUGIN_VERSION', '3.011' );
 define( 'SH_CD_PLUGIN_NAME', 'Shortcode Variables' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
+define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
 define( 'SH_CD_PREFIX', 'sh-cd-' );
 define( 'SH_CD_SHORTCODE', 'sv' );
