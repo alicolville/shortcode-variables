@@ -188,7 +188,7 @@ function sh_cd_cache_delete( $key ) {
  * @return string
  */
 function sh_cd_cache_generate_key( $key ) {
-    return SH_CD_SHORTCODE . $key;
+    return SH_CD_SHORTCODE . SH_CD_PLUGIN_VERSION . $key;
 }
 
 /**
