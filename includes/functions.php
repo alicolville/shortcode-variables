@@ -135,11 +135,14 @@ function sh_cd_cache_get( $key ) {
  * @param $key
  * @param $data
  */
-function sh_cd_cache_set( $key, $data ) {
+function sh_cd_cache_set( $key, $data, $expire = NULL ) {
+
+
+	$expire = ( false === empty( $expire ) ) ? (int) $expire : 1 * HOUR_IN_SECONDS;
 
     $key = sh_cd_cache_generate_key( $key );
 
-    set_transient( $key, $data, 1 * HOUR_IN_SECONDS );
+    set_transient( $key, $data, $expire );
 }
 
 /**
@@ -422,4 +425,27 @@ function sh_cd_is_multisite_enabled() {
 	}
 
 	return true;
+}
+
+/**
+ * Fetch all multisite slugs
+ *
+ * @return array|null
+ */
+function sh_cd_multisite_slugs() {
+
+	$cache = sh_cd_cache_get( 'sh-cd-multisite-slugs' );
+
+	if ( false !== $cache ) {
+		return $cache;
+	}
+
+	$slugs = sh_cd_db_shortcodes_multisite_slugs();
+
+	$slugs = ( false === empty( $slugs ) ) ? wp_list_pluck( $slugs, 'slug' ) : NULL;
+
+	// Cache this for a short time
+	sh_cd_cache_set( 'sh-cd-multisite-slugs', $slugs, 30 );
+
+	return ( true === is_array( $slugs ) ) ? $slugs : [];
 }
