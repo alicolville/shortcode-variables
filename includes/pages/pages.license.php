@@ -128,7 +128,7 @@
                                                 <td colspan="2"><textarea rows="5" style="width:100%"><?php echo esc_textarea( $existing_license ); ?></textarea></td>
                                             </tr>
                                             <tr class="last">
-                                                <td colspan="2"><a href="<?php echo admin_url('admin.php?page=sh-cd-shortcode-variables-license&remove-license=true'); ?>" class="button-secondary delete-license"><?php echo __('Remove License', WE_LS_SLUG); ?></a></td>
+                                                <td colspan="2"><a href="<?php echo admin_url('admin.php?page=sh-cd-shortcode-variables-license&remove-license=true'); ?>" class="button-secondary delete-license">Remove License</a></td>
                                             </tr>
 
                                         <?php endif; ?>
