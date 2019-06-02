@@ -34,6 +34,8 @@ Create your own Shortcodes and assign content to them. Using the standard WP edi
 * Update the shortcode in one location and it changes throughout your site.
 * Parameters to extend your shortcodes.
 * Free and Premium helper shortcodes to make life easier.
+* Multi-site support.
+* Process shortcodes within WordPress menu titles.
 
 = SPECIFY PARAMETERS =
 
@@ -141,9 +143,8 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 
 = 3.0 =
 
-//TODO: Check what cloning does on multi site
-
 * Improvement: Support for multi-site variables.
+* Improvement: Replace shortcodes within menu titles.
 
 = 2.4.1 =
 

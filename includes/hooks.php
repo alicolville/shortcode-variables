@@ -125,3 +125,14 @@ function sh_cd_ajax_update_shortcode() {
 	wp_send_json( 'shortcode-not-found' );
 }
 add_action( 'wp_ajax_update_shortcode', 'sh_cd_ajax_update_shortcode' );
+
+/**
+ * Replace shortcodes within menu titles.
+ *
+ * @param $title
+ * @return mixed
+ */
+function sh_cd_menu_replace_shortcodes( $title ) {
+    return do_shortcode( $title );
+}
+add_filter('nav_menu_item_title', 'sh_cd_menu_replace_shortcodes', 10, 1);
