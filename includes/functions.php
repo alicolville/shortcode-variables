@@ -434,6 +434,10 @@ function sh_cd_is_multisite_enabled() {
  */
 function sh_cd_multisite_slugs() {
 
+	if ( false === is_multisite() ) {
+		return [];
+	}
+
 	$cache = sh_cd_cache_get( 'sh-cd-multisite-slugs' );
 
 	if ( false !== $cache ) {

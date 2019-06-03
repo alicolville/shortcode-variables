@@ -5,7 +5,7 @@ defined('ABSPATH') or die("Jog on!");
 /**
  * Plugin Name: Shortcode Variables
  * Description: Create your own shortcodes and assign text / variables to it or use our premade ones. You can then embed these shortcodes throughout your entire site and only have to change the value in one place.
- * Version: 3.0
+ * Version: 3.0.1
  * Author: YeKen
  * Author URI: http://www.YeKen.uk
  * License: GPL2
@@ -29,7 +29,7 @@ defined('ABSPATH') or die("Jog on!");
 
 define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
-define( 'SH_CD_PLUGIN_VERSION', '3.0' );
+define( 'SH_CD_PLUGIN_VERSION', '3.0.1' );
 define( 'SH_CD_PLUGIN_NAME', 'Shortcode Variables' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
