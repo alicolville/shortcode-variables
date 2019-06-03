@@ -19,6 +19,31 @@ function sh_cd_create_database_table() {
 	  previous_slug varchar(100) NOT NULL,
 	  data text,
 	  disabled bit default 0,
+	  multisite bit default 0,
+	  UNIQUE KEY id (id)
+	) $charset_collate;";
+
+	require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
+
+	dbDelta( $sql );
+}
+
+/**
+ * Build database table for multisite
+ */
+function sh_cd_create_database_table_multisite() {
+
+	global $wpdb;
+
+	$table_name = $wpdb->base_prefix . SH_CD_TABLE_MULTISITE;
+
+	$charset_collate = $wpdb->get_charset_collate();
+
+	$sql = "CREATE TABLE $table_name (
+	  id mediumint(9) NOT NULL AUTO_INCREMENT,
+	  slug varchar(100) NOT NULL,
+	  data text,
+	  site_id int default 0,
 	  UNIQUE KEY id (id)
 	) $charset_collate;";
 
@@ -62,7 +87,7 @@ function sh_cd_db_shortcodes_by_id( $id ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare('SELECT id, slug, previous_slug, data, disabled FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
+	$sql = $wpdb->prepare('SELECT id, slug, previous_slug, data, disabled, multisite FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where id = %d', $id);
 
 	return $wpdb->get_row( $sql, ARRAY_A );
 }
@@ -78,11 +103,27 @@ function sh_cd_db_shortcodes_by_slug( $slug ) {
 
 	global $wpdb;
 
-	$sql = $wpdb->prepare('SELECT data FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s and disabled <> 1', $slug);
+	$sqls = [];
 
-	$row = $wpdb->get_var( $sql );
+	// If multi site functionality is enabled, look there first for the shortcode!
+	if ( true === sh_cd_is_multisite_enabled() ) {
 
-	return ( false === empty( $row ) ? stripslashes( $row ) : NULL );
+		$sqls[] = $wpdb->prepare('SELECT data FROM ' . $wpdb->base_prefix . SH_CD_TABLE_MULTISITE . ' where slug = %s', $slug);
+	}
+
+	$sqls[] = $wpdb->prepare('SELECT data FROM ' . $wpdb->prefix . SH_CD_TABLE . ' where slug = %s and disabled <> 1', $slug);
+
+	foreach ( $sqls as $sql ) {
+
+		$row = $wpdb->get_var( $sql );
+
+		if ( false === empty( $row ) ) {
+
+			return stripslashes( $row );
+		}
+	}
+
+	return NULL;
 }
 
 /**
@@ -114,12 +155,15 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		return false;
 	}
 
+	$multi_site_enabled = sh_cd_is_multisite_enabled();
+
 	$shortcode = wp_parse_args( $shortcode, [
 		'id' => NULL,
 		'slug' => NULL,
 		'previous_slug' => NULL,
 		'data' => NULL,
-		'disabled' => 0
+		'disabled' => 0,
+		'multisite' => 0
 	]);
 
 	// We need either a slug or an ID
@@ -128,6 +172,7 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 	}
 
 	$shortcode['disabled'] = (int) $shortcode['disabled'];
+	$shortcode['multisite'] = ( true === $multi_site_enabled ) ? (int) $shortcode['multisite'] : 0;
 
 	global $wpdb;
 
@@ -172,8 +217,93 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 		sh_cd_cache_delete_by_slug_or_key( $shortcode['slug'] );
 	}
 
+	if ( false !== $result ) {
+
+		if ( 1 === $shortcode['multisite'] ) {
+			sh_cd_db_shortcodes_multisite_insert( $shortcode['slug'], $shortcode['data'] );
+		} else {
+			sh_cd_db_shortcodes_multisite_delete( $shortcode['slug'] );
+		}
+
+		sh_cd_cache_delete( $shortcode['slug'] );
+
+		return true;
+	}
+
+	return false;
+}
+
+
+/**
+ * Insert a multisite shortcode
+ *
+ * @param $shortcode
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_multisite_insert( $slug, $data ) {
+
+	if ( false === is_admin() ) {
+		return false;
+	}
+
+	sh_cd_db_shortcodes_multisite_delete( $slug );
+
+	global $wpdb;
+
+	$shortcode = [
+		'slug' => $slug,
+		'data' => $data,
+		'site_id' => get_current_blog_id()
+	];
+
+	$formats = sh_cd_db_get_formats( $shortcode );
+
+	$result = $wpdb->insert(
+		$wpdb->base_prefix . SH_CD_TABLE_MULTISITE,
+		$shortcode,
+		$formats
+	);
+
+	sh_cd_cache_delete( $slug );
+
+	do_action( 'sh_cd_multisite_changed', $slug );
+
 	return ( false !== $result );
 }
+
+/**
+ * Delete a multisite shortcode
+ *
+ * @param $slug
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_multisite_delete( $slug ) {
+
+	global $wpdb;
+
+	$result = $wpdb->delete( $wpdb->base_prefix . SH_CD_TABLE_MULTISITE, [ 'slug' => $slug ], [ '%s' ] );
+
+	sh_cd_cache_delete( $slug );
+
+	do_action( 'sh_cd_multisite_changed', $slug );
+
+	return ( false !== $result );
+}
+
+/**
+ * Fetch all multisite slugs
+
+ * @return null|array
+ */
+function sh_cd_db_shortcodes_multisite_slugs() {
+
+	global $wpdb;
+
+	return $wpdb->get_results( 'SELECT slug FROM ' . $wpdb->base_prefix . SH_CD_TABLE_MULTISITE, ARRAY_A );
+}
+
 
 /**
  * Update a shortcode's status
@@ -204,6 +334,46 @@ function sh_cd_db_shortcodes_update_status( $id, $status ) {
 }
 
 /**
+ * Update a shortcode's multisite
+ *
+ * @param $shortcode
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_update_multisite( $id, $multisite ) {
+
+	if ( false === is_admin() ) {
+		return false;
+	}
+
+	global $wpdb;
+
+	$result = $wpdb->update(
+		$wpdb->prefix . SH_CD_TABLE,
+		[ 'multisite' => $multisite ],
+		[ 'id' => $id ],
+		[ '%d' ],
+		[ '%d' ]
+	);
+
+	$shortcode = sh_cd_db_shortcodes_by_id( $id );
+
+	if ( false === empty( $shortcode ) ) {
+
+		if ( 1 === (int) $multisite ) {
+			sh_cd_db_shortcodes_multisite_insert( $shortcode['slug'], $shortcode['data'] );
+		} else {
+			sh_cd_db_shortcodes_multisite_delete( $shortcode['slug'] );
+		}
+
+	}
+
+	sh_cd_cache_delete_by_slug_or_key( $id );
+
+	return ( false !== $result );
+}
+
+/**
  * Update a shortcode's content
  *
  * @param $shortcode
@@ -226,6 +396,17 @@ function sh_cd_db_shortcodes_update_content( $id, $data ) {
 		[ '%d' ]
 	);
 
+	$shortcode = sh_cd_db_shortcodes_by_id( $id );
+
+	if ( false === empty( $shortcode ) ) {
+
+		if ( 1 === (int) $shortcode[ 'multisite' ] ) {
+			sh_cd_db_shortcodes_multisite_insert( $shortcode['slug'], $shortcode['data'] );
+		} else {
+			sh_cd_db_shortcodes_multisite_delete( $shortcode['slug'] );
+		}
+
+	}
 	sh_cd_cache_delete_by_slug_or_key( $id );
 
 	return ( false !== $result );
@@ -269,7 +450,9 @@ function sh_cd_db_get_formats( $data ) {
 		'slug' => '%s',
 		'previous_slug' => '%s',
 		'data' => '%s',
-		'disabled' => '%d'
+		'disabled' => '%d',
+		'multisite' => '%d',
+		'site_id' => '%d'
 	];
 
 	$formats = [];

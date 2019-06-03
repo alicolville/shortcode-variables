@@ -72,6 +72,44 @@ jQuery( document ).ready(function ($) {
     }
 
     /**
+     * Toggle multisite status
+     */
+    $( '.toggle-multisite' ).on( 'click', function( e ) {
+
+        if ( '1' == sh_cd['premium'] ) {
+
+            var data = {};
+            data['id'] = $( this ).data( 'id' );
+
+            sh_cd_post_data_to_WP( 'toggle_multisite', data, sh_cd_handle_toggle_multisite );
+
+        } else {
+            sh_cd_promo();
+        }
+    });
+
+    /**
+     * Toggle multiside of a shortcode
+     * @param response
+     * @param data
+     */
+    function sh_cd_handle_toggle_multisite( response, data ) {
+
+        if ( 1 == response.ok ) {
+
+            var element_id = '#sc-cd-multisite-' + response.id + ' i';
+
+            if ( 0 == response.multisite ) {
+                $( element_id ).removeClass( 'fa-check' );
+                $( element_id ).addClass( 'fa-times' );
+            } else {
+                $( element_id ).removeClass( 'fa-times' );
+                $( element_id ).addClass( 'fa-check' );
+            }
+        }
+    }
+
+    /**
      * Toggle status of a shortcode
      * @param response
      * @param data

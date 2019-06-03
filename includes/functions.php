@@ -10,7 +10,7 @@ defined('ABSPATH') or die('Jog on!');
 function sh_cd_shortcodes_save_post() {
 
 	// Capture the raw $_POST fields, the save functions will process and validate the data
-	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled' ] );
+	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled', 'multisite' ] );
 
 	return sh_cd_db_shortcodes_save( $shortcode );
 }
@@ -135,11 +135,14 @@ function sh_cd_cache_get( $key ) {
  * @param $key
  * @param $data
  */
-function sh_cd_cache_set( $key, $data ) {
+function sh_cd_cache_set( $key, $data, $expire = NULL ) {
+
+
+	$expire = ( false === empty( $expire ) ) ? (int) $expire : 1 * HOUR_IN_SECONDS;
 
     $key = sh_cd_cache_generate_key( $key );
 
-    set_transient( $key, $data, 1 * HOUR_IN_SECONDS );
+    set_transient( $key, $data, $expire );
 }
 
 /**
@@ -151,11 +154,19 @@ function sh_cd_cache_delete_by_slug_or_key( $slug_or_key ) {
 
     if ( true === is_numeric( $slug_or_key ) ) {
 
-        sh_cd_cache_delete( sh_cd_db_shortcodes_get_slug_by_id( $slug_or_key ) );
+	    $slug_or_key = sh_cd_db_shortcodes_get_slug_by_id( $slug_or_key );
+
+        sh_cd_cache_delete( $slug_or_key );
 
     } else {
 	    sh_cd_cache_delete( $slug_or_key );
     }
+
+    // Delete site option
+	$slug_or_key = SH_CD_PREFIX . $slug_or_key;
+
+	delete_site_option( $slug_or_key );
+
 }
 
 /**
@@ -180,7 +191,7 @@ function sh_cd_cache_delete( $key ) {
  * @return string
  */
 function sh_cd_cache_generate_key( $key ) {
-    return SH_CD_SHORTCODE . $key;
+    return SH_CD_SHORTCODE . SH_CD_PLUGIN_VERSION . $key;
 }
 
 /**
@@ -295,6 +306,27 @@ function sh_cd_toggle_status( $id ) {
 	return NULL;
 }
 
+/**
+ * Toggle the multisite of a shortcode
+ *
+ * @param $id
+ */
+function sh_cd_toggle_multisite( $id ) {
+
+	$slug = sh_cd_db_shortcodes_by_id( (int) $id );
+
+	if ( false === empty( $slug ) ) {
+
+		$multisite = ( 1 === (int) $slug['multisite'] ) ? 0 : 1 ;
+
+		sh_cd_db_shortcodes_update_multisite( $id, $multisite );
+
+		return $multisite;
+	}
+
+	return NULL;
+}
+
 
 /**
  * Display a table of premade shortcodes
@@ -375,4 +407,45 @@ function sh_cd_upgrade_button( $css_class = '', $link = NULL ) {
 		SH_CD_PREMIUM_PRICE,
 		__('a year ', SH_CD_SLUG)
 	);
+}
+
+/**
+ * Is multsite functionality active for this install?
+ *
+ * @return bool
+ */
+function sh_cd_is_multisite_enabled() {
+
+	if ( false === is_multisite() ) {
+		return false;
+	}
+
+	if ( false === sh_cd_license_is_premium() ) {
+		return false;
+	}
+
+	return true;
+}
+
+/**
+ * Fetch all multisite slugs
+ *
+ * @return array|null
+ */
+function sh_cd_multisite_slugs() {
+
+	$cache = sh_cd_cache_get( 'sh-cd-multisite-slugs' );
+
+	if ( false !== $cache ) {
+		return $cache;
+	}
+
+	$slugs = sh_cd_db_shortcodes_multisite_slugs();
+
+	$slugs = ( false === empty( $slugs ) ) ? wp_list_pluck( $slugs, 'slug' ) : NULL;
+
+	// Cache this for a short time
+	sh_cd_cache_set( 'sh-cd-multisite-slugs', $slugs, 30 );
+
+	return ( true === is_array( $slugs ) ) ? $slugs : [];
 }

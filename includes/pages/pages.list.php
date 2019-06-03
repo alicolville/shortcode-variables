@@ -76,6 +76,7 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                         <th class="row-title" width="15%">Slug</th>
                                         <th width="20%">Shortcode</th>
                                         <th width="*">Shortcode content</th>
+                                        <th width="60px" align="middle">Global</th>
                                         <th width="60px" align="middle">Enabled</th>
                                         <th width="70px" align="middle">Options</th>
                                     </tr>
@@ -103,6 +104,7 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                                         <textarea class="large-text inline-text-shortcode" id="sh-cd-text-area-%8$d" data-id="%8$d">%5$s</textarea>
                                                         <a class="button button-small sh-cd-inline-save-button" id="sh-cd-save-button-%8$d" data-id="%8$d"><i class="fas fa-save"></i> Save</a>
                                                     </td>
+                                                    <td align="middle"><a class="button button-small toggle-multisite" id="sc-cd-multisite-%8$s" data-id="%8$s"><i class="fas %10$s"></i></a></td>
                                                     <td align="middle"><a class="button button-small toggle-disable" id="sc-cd-toggle-%8$s" data-id="%8$s"><i class="fas %6$s"></i></a></td>
                                                     <td width="100">
                                                         <a class="button button-small" href="%9$s"><i class="far fa-clone"></i></a>
@@ -118,7 +120,8 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                                 ( 1 === (int) $shortcode['disabled'] ) ? 'fa-times' : 'fa-check',
                                                 $link . '&action=delete&id=' . $id,
 	                                            $id,
-                                                ( true === sh_cd_license_is_premium() ) ? $link . '&action=clone&id=' . $id : sh_cd_license_upgrade_link()
+                                                ( true === sh_cd_license_is_premium() ) ? $link . '&action=clone&id=' . $id : sh_cd_license_upgrade_link(),
+	                                            ( 1 === (int) $shortcode['multisite'] ) ? 'fa-check' : 'fa-times'
                                             );
                                         }
                                     }

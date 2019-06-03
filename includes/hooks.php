@@ -41,7 +41,13 @@ add_action( 'admin_enqueue_scripts', 'sh_cd_enqueue_scripts' );
 function sh_cd_upgrade() {
 
 	if ( true === update_option( 'sh-cd-version-number', SH_CD_PLUGIN_VERSION ) ) {
+
 		sh_cd_create_database_table();
+
+		if ( true === is_multisite() ) {
+			sh_cd_create_database_table_multisite();
+		}
+
 	}
 }
 add_action('admin_init', 'sh_cd_upgrade');
@@ -72,6 +78,30 @@ function sh_cd_ajax_toggle_status() {
 add_action( 'wp_ajax_toggle_status', 'sh_cd_ajax_toggle_status' );
 
 /**
+Ajax handler for toggling disable status of a shortcode
+ **/
+function sh_cd_ajax_toggle_multisite() {
+
+	if ( false === sh_cd_license_is_premium() ) {
+		wp_send_json( 'not-premium' );
+	}
+
+	check_ajax_referer( 'sh-cd-security', 'security' );
+
+	$id = ( false === empty( $_POST['id'] ) ) ? (int) $_POST['id'] : NULL;
+
+	if ( false === empty( $id ) ) {
+
+		$new_multisite = sh_cd_toggle_multisite( $id );
+
+		wp_send_json( [ 'id' => $id, 'multisite' => $new_multisite, 'ok' => 1 ] );
+	}
+
+	wp_send_json( 'shortcode-not-found' );
+}
+add_action( 'wp_ajax_toggle_multisite', 'sh_cd_ajax_toggle_multisite' );
+
+/**
 Ajax handler for saving shortcode inline
  **/
 function sh_cd_ajax_update_shortcode() {
@@ -95,3 +125,14 @@ function sh_cd_ajax_update_shortcode() {
 	wp_send_json( 'shortcode-not-found' );
 }
 add_action( 'wp_ajax_update_shortcode', 'sh_cd_ajax_update_shortcode' );
+
+/**
+ * Replace shortcodes within menu titles.
+ *
+ * @param $title
+ * @return mixed
+ */
+function sh_cd_menu_replace_shortcodes( $title ) {
+    return do_shortcode( $title );
+}
+add_filter('nav_menu_item_title', 'sh_cd_menu_replace_shortcodes', 10, 1);

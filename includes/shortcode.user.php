@@ -42,17 +42,27 @@ function sh_cd_shortcode_render( $args ) {
 	$shortcode = sh_cd_cache_get( $args[ 'slug' ] );
 
 	// If not in cache, hit the database!
-	if ( true === empty( $shortcode ) ) {
+	if ( false === $shortcode ) {
+
 		$shortcode = sh_cd_db_shortcodes_by_slug( $args[ 'slug' ] );
+
+		// Cache it! If a multisite, only cache the shortcode for 30 seconds. Otherwise fall back to default cache time.
+		$cache_time = ( true === sh_cd_license_is_premium() && true === in_array( $args[ 'slug' ], sh_cd_multisite_slugs() ) ) ? 30 : NULL;
+
+		sh_cd_cache_set( $args[ 'slug' ], $shortcode, $cache_time );
+
+	} else {
+		printf( '<!-- %s cached: %s / ms: %s -->' . PHP_EOL,
+				SH_CD_SHORTCODE,
+				$args[ 'slug' ],
+				( true === in_array( $args[ 'slug' ], sh_cd_multisite_slugs() ) ) ? 'y' : 'n'
+		);
 	}
 
 	// If still no reference to a shortcode then slug doesn't exist
 	if ( true === empty( $shortcode ) ) {
 		return '';
 	}
-
-	// Cache it!
-	sh_cd_cache_set( $args[ 'slug' ], $shortcode );
 
 	// Process other shortcodes within this one
 	$shortcode = do_shortcode( $shortcode );
