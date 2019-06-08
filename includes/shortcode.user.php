@@ -51,7 +51,7 @@ function sh_cd_shortcode_render( $args ) {
 
 		sh_cd_cache_set( $args[ 'slug' ], $shortcode, $cache_time );
 
-	} else {
+	} else if ( true === is_page() || true === is_single() ) {
 		printf( '<!-- %s cached: %s / ms: %s -->' . PHP_EOL,
 				SH_CD_SHORTCODE,
 				$args[ 'slug' ],
