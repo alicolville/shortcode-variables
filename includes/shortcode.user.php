@@ -51,12 +51,6 @@ function sh_cd_shortcode_render( $args ) {
 
 		sh_cd_cache_set( $args[ 'slug' ], $shortcode, $cache_time );
 
-	} else if ( true === is_page() || true === is_single() ) {
-		printf( '<!-- %s cached: %s / ms: %s -->' . PHP_EOL,
-				SH_CD_SHORTCODE,
-				$args[ 'slug' ],
-				( true === in_array( $args[ 'slug' ], sh_cd_multisite_slugs() ) ) ? 'y' : 'n'
-		);
 	}
 
 	// If still no reference to a shortcode then slug doesn't exist
