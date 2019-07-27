@@ -157,7 +157,7 @@
         return ( false === empty( $price ) ) ? $price : SH_CD_PREMIUM_PRICE;
     }
 
-	if ( false === function_exists( 'yeken_api_licenses' ) ) {
+	if ( false === function_exists( 'yeken_license_api_fetch_licenses' ) ) {
 
         /**
          * Call out to YeKen API for license prices
