@@ -145,25 +145,78 @@
 		return get_option( 'sh-cd-license', '' );
 	}
 
+    /**
+     * Fetch license price
+     *
+     * @return float|null
+     */
+	function sh_cd_license_price() {
 
-//	function t() {
-//
-//		if ( true === is_admin() ) {
-//			return;
-//		}
-//
-//
-//		$t = sh_cd_generate_site_hash();
-//
-//		var_dump( $t );
-//
-//		$t = sh_cd_license_apply('eyJ0eXBlIjoicHJvIiwiZXhwaXJ5LWRheXMiOjM2Niwic2l0ZS1oYXNoIjoiNjhiYjJiIiwiZXhwaXJ5LWRhdGUiOiIyMDIwLTAyLTE5IiwiaGFzaCI6Ijc0NTdhNjg3NjZlYzI3NjZjMmRmOWVjZTk4YjlkNTA5In0');
-//
-//		$t = sh_cd_license_is_premium();
-//
-//		var_dump( $t );
-//
-//		die;
-//
-//	}
-//	add_action('init', 't');
+        $price = yeken_license_price( 'sv-premium' );
+
+        return ( false === empty( $price ) ) ? $price : SH_CD_PREMIUM_PRICE;
+    }
+
+	if ( false === function_exists( 'yeken_api_licenses' ) ) {
+
+        /**
+         * Call out to YeKen API for license prices
+         */
+        function yeken_license_api_fetch_licenses() {
+
+            if ( $cache = get_transient( 'yeken_api_prices' ) ) {
+                return $cache;
+            }
+
+            $response = wp_remote_get( 'https://shop.yeken.uk/wp-json/yeken/v1/license-prices/' );
+
+            // All ok?
+            if ( 200 === wp_remote_retrieve_response_code( $response ) ) {
+
+                $body = wp_remote_retrieve_body( $response );
+
+                if ( false === empty( $body ) ) {
+
+                    $body = json_decode( $body, true );
+                    set_transient( 'yeken_api_prices', $body, 216000 ); // Cache for 6 hours
+
+                    return $body;
+                }
+            }
+
+            return NULL;
+        }
+
+        /**
+         * Fetch a certain product price
+         * @param $sku
+         * @param string $type
+         */
+        function yeken_license_price( $sku, $type = 'yearly' ) {
+
+            $licenses = yeken_license_api_fetch_licenses();
+
+            return ( false === empty( $licenses[ $sku ][ $type ] ) ) ? $licenses[ $sku ][ $type ] : NULL;
+        }
+
+        /**
+         * Render out license prices
+         *
+         * @param $args
+         * @return mixed|string
+         */
+        function yeken_license_shortcode( $args ) {
+
+            $args = wp_parse_args( $args, [ 'sku' => 'sv-premium', 'type' => 'yearly', 'prefix' => '&pound;' ] );
+
+            $price = yeken_license_price( $args[ 'sku' ], $args[ 'type' ] );
+
+            if ( false === empty( $price ) ) {
+                return sprintf( '%s%d', esc_html(  $args[ 'prefix' ] ), $price );
+            }
+
+            return '';
+        }
+        add_shortcode( 'yeken-license-price', 'yeken_license_shortcode' );
+
+    }

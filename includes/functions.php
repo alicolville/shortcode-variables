@@ -404,7 +404,7 @@ function sh_cd_upgrade_button( $css_class = '', $link = NULL ) {
 		esc_url( $link ),
 		esc_attr( ' ' . $css_class ),
         __('Upgrade to Premium for ', SH_CD_SLUG),
-		SH_CD_PREMIUM_PRICE,
+        esc_html( sh_cd_license_price() ),
 		__('a year ', SH_CD_SLUG)
 	);
 }
