@@ -153,7 +153,6 @@
         function yeken_license_api_fetch_licenses() {
 
             if ( $cache = get_transient( 'yeken_api_prices' ) ) {
-                echo 'cache';
                 return $cache;
             }
 
@@ -187,5 +186,25 @@
 
             return ( false === empty( $licenses[ $sku ][ $type ] ) ) ? $licenses[ $sku ][ $type ] : NULL;
         }
+
+        /**
+         * Render out license prices
+         *
+         * @param $args
+         * @return mixed|string
+         */
+        function yeken_license_shortcode( $args ) {
+
+            $args = wp_parse_args( $args, [ 'sku' => 'sv-premium', 'type' => 'yearly', 'prefix' => '&pound;' ] );
+
+            $price = yeken_license_price( $args[ 'sku' ], $args[ 'type' ] );
+
+            if ( false === empty( $price ) ) {
+                return sprintf( '%s%d', esc_html(  $args[ 'prefix' ] ), $price );
+            }
+
+            return '';
+        }
+        add_shortcode( 'yeken-license-price', 'yeken_license_shortcode' );
 
     }
