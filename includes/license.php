@@ -145,6 +145,18 @@
 		return get_option( 'sh-cd-license', '' );
 	}
 
+    /**
+     * Fetch license price
+     *
+     * @return float|null
+     */
+	function sh_cd_license_price() {
+
+        $price = yeken_license_price( 'sv-premium' );
+
+        return ( false === empty( $price ) ) ? $price : SH_CD_PREMIUM_PRICE;
+    }
+
 	if ( false === function_exists( 'yeken_api_licenses' ) ) {
 
         /**
