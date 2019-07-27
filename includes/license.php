@@ -144,26 +144,4 @@
 	function sh_cd_license() {
 		return get_option( 'sh-cd-license', '' );
 	}
-
-
-//	function t() {
-//
-//		if ( true === is_admin() ) {
-//			return;
-//		}
-//
-//
-//		$t = sh_cd_generate_site_hash();
-//
-//		var_dump( $t );
-//
-//		$t = sh_cd_license_apply('eyJ0eXBlIjoicHJvIiwiZXhwaXJ5LWRheXMiOjM2Niwic2l0ZS1oYXNoIjoiNjhiYjJiIiwiZXhwaXJ5LWRhdGUiOiIyMDIwLTAyLTE5IiwiaGFzaCI6Ijc0NTdhNjg3NjZlYzI3NjZjMmRmOWVjZTk4YjlkNTA5In0');
-//
-//		$t = sh_cd_license_is_premium();
-//
-//		var_dump( $t );
-//
-//		die;
-//
-//	}
-//	add_action('init', 't');
+	
