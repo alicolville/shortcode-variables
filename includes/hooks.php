@@ -44,10 +44,7 @@ function sh_cd_upgrade() {
 
 		sh_cd_create_database_table();
 
-		if ( true === is_multisite() ) {
-			sh_cd_create_database_table_multisite();
-		}
-
+		sh_cd_create_database_table_multisite();
 	}
 }
 add_action('admin_init', 'sh_cd_upgrade');
