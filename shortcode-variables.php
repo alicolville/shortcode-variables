@@ -57,9 +57,3 @@ include_once SH_CD_ABSPATH . 'includes/pages/pages.premade.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.edit.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.license.php';
 include_once SH_CD_ABSPATH . 'includes/tinymce.php';
-
-// -----------------------------------------------------------------------------------------
-// AC: Load relevant language files
-// -----------------------------------------------------------------------------------------
-
-load_plugin_textdomain( SH_CD_SLUG, false, dirname( plugin_basename( __FILE__ ) ) . '/includes/languages/' );

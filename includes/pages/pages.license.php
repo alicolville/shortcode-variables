@@ -101,7 +101,7 @@
                                             <td><?php echo esc_html( sh_cd_generate_site_hash() ); ?></td>
                                         </tr>
                                         <tr>
-                                            <th><?php echo __( '', SH_CD_SLUG ); ?>Expires</th>
+                                            <th><?php echo __( 'Expires', SH_CD_SLUG ); ?></th>
                                             <td>
                                                 <?php
 
