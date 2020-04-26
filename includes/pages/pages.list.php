@@ -7,7 +7,7 @@ defined('ABSPATH') or die('Jog on!');
  */
 function sh_cd_pages_your_shortcodes() {
 
-    echo '<h1>Your Shortcode Variables</h1>';
+    printf( '<h1>%s</h1>', __( 'Your Shortcode Variables', SH_CD_SLUG ) );
 
     $action = ( false === empty( $_GET['action'] ) ) ? $_GET['action'] : NULL;
 
@@ -26,11 +26,12 @@ function sh_cd_pages_your_shortcodes() {
 
 /**
  * Display all shortcodes
+ * @param null $action
  */
 function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
 
 	if ( false === current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+		wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
 	}
 
 	// Cloning a shortcode?
@@ -45,7 +46,7 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
 
 	    $result = sh_cd_db_shortcodes_delete( (int) $_GET['id'] );
 
-	    $message = ( true === $result ) ? 'Your shortcode has been deleted!' : 'There was an error deleting your shortcode!';
+	    $message = ( true === $result ) ? __( 'Your shortcode has been deleted!', SH_CD_SLUG ) : __( 'There was an error deleting your shortcode!', SH_CD_SLUG );
 
 	    sh_cd_message_display( $message, ! $result );
 	}
@@ -59,10 +60,10 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
 				<div id="post-body-content">
                     <div class="meta-box-sortables ui-sortable">
                         <div class="postbox">
-                            <h3 class="hndle"><span>Your existing Shortcode Variables</span></h3>
+                            <h3 class="hndle"><span><?php echo __( 'Your existing Shortcode Variables', SH_CD_SLUG ); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
                                 <p style="text-align: right">
-                                    <a class="button-primary" href="<?php echo sh_cd_link_your_shortcodes_add() ?>">Add a new Shortcode Variable</a>
+                                    <a class="button-primary" href="<?php echo sh_cd_link_your_shortcodes_add() ?>"><?php echo __( 'Add a new Shortcode Variable', SH_CD_SLUG ); ?></a>
                                 </p>
                                 <p style="text-align: right">
                                     <?php
@@ -73,12 +74,12 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                 </p>
                                 <table class="widefat sh-cd-table" width="100%">
                                     <tr class="row-title">
-                                        <th class="row-title" width="15%">Slug</th>
-                                        <th width="20%">Shortcode</th>
-                                        <th width="*">Shortcode content</th>
-                                        <th width="60px" align="middle">Global</th>
-                                        <th width="60px" align="middle">Enabled</th>
-                                        <th width="70px" align="middle">Options</th>
+                                        <th class="row-title" width="15%"><?php echo __( 'Slug', SH_CD_SLUG ); ?></th>
+                                        <th width="20%"><?php echo __( 'Shortcode', SH_CD_SLUG ); ?></th>
+                                        <th width="*"><?php echo __( 'Shortcode content', SH_CD_SLUG ); ?></th>
+                                        <th width="60px" align="middle"><?php echo __( 'Global', SH_CD_SLUG ); ?></th>
+                                        <th width="60px" align="middle"><?php echo __( 'Enabled', SH_CD_SLUG ); ?></th>
+                                        <th width="70px" align="middle"><?php echo __( 'Options', SH_CD_SLUG ); ?></th>
                                     </tr>
                                     <?php
 
@@ -102,14 +103,14 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                                     <td>[%4$s slug="%3$s"]</td>
                                                     <td align="right">
                                                         <textarea class="large-text inline-text-shortcode" id="sh-cd-text-area-%8$d" data-id="%8$d">%5$s</textarea>
-                                                        <a class="button button-small sh-cd-inline-save-button" id="sh-cd-save-button-%8$d" data-id="%8$d"><i class="fas fa-save"></i> Save</a>
+                                                        <a class="button button-small sh-cd-inline-save-button" id="sh-cd-save-button-%8$d" data-id="%8$d"><i class="fas fa-save"></i> %11$s</a>
                                                     </td>
                                                     <td align="middle"><a class="button button-small toggle-multisite" id="sc-cd-multisite-%8$s" data-id="%8$s"><i class="fas %10$s"></i></a></td>
                                                     <td align="middle"><a class="button button-small toggle-disable" id="sc-cd-toggle-%8$s" data-id="%8$s"><i class="fas %6$s"></i></a></td>
                                                     <td width="100">
                                                         <a class="button button-small" href="%9$s"><i class="far fa-clone"></i></a>
                                                         <a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
-                                                        <a class="button button-small" href="%7$s" onclick="return confirm(\'Are you sure you want to delete this shortcode?\');"><i class="fas fa-trash-alt"></i></a>
+                                                        <a class="button button-small" href="%7$s" onclick="return confirm(\'%12$s\');"><i class="fas fa-trash-alt"></i></a>
                                                     </td>
                                                 </tr>',
                                                 $class,
@@ -121,12 +122,18 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
                                                 $link . '&action=delete&id=' . $id,
 	                                            $id,
                                                 ( true === sh_cd_license_is_premium() ) ? $link . '&action=clone&id=' . $id : sh_cd_license_upgrade_link(),
-	                                            ( 1 === (int) $shortcode['multisite'] ) ? 'fa-check' : 'fa-times'
+	                                            ( 1 === (int) $shortcode['multisite'] ) ? 'fa-check' : 'fa-times',
+												__( 'Save', SH_CD_SLUG ),
+												__( 'Are you sure you want to delete this shortcode?', SH_CD_SLUG )
                                             );
                                         }
                                     }
                                     else {
-                                        printf( '<tr><td colspan="5" align="center">You haven\'t created any shortcodes yet. <a href="%s">Add one now!</a></td></tr>', sh_cd_link_your_shortcodes_add() );
+                                        printf( '<tr><td colspan="5" align="center">%1$s. <a href="%2$s">%3$s</a></td></tr>',
+												__( 'You haven\'t created any shortcodes yet', SH_CD_SLUG ),
+												sh_cd_link_your_shortcodes_add(),
+												__( 'Add one now!', SH_CD_SLUG )
+										);
                                     }
                                     ?>
                                 </table>

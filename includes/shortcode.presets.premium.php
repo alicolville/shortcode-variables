@@ -7,7 +7,7 @@ defined('ABSPATH') or die("Jog on!");
  * @return array
  */
 function sh_cd_shortcode_presets_premium_list() {
-	
+
 	return [
 		'sc-date' => [ 'class' => 'SC_DATE', 'description' => __( 'A shortcode that displays today\'s date with the ability to add or subtract days, months and years. To specify an interval to add or subtract onto the date use the parameter "interval" e.g. [sv slug="sc-date" interval="-1 year"], [sv slug="sc-date" interval="+5 days"], [sv slug="sc-date" interval="+3 months"]. Intervals are based upon PHP intervals and are outlined here <a href="https://www.php.net/manual/en/dateinterval.createfromdatestring.php" target="_blank">https://www.php.net/manual/en/dateinterval.createfromdatestring.php</a>. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>', SH_CD_SLUG ), 'premium' => true ],
 		'sc-site-language' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'Language code for the current site', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'language' ], 'premium' => true ],
