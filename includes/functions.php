@@ -233,6 +233,7 @@ function sh_cd_link_your_shortcodes_edit( $id ) {
 /**
  * Return link to delete own shortcode
  *
+ * @param $id
  * @return mixed
  */
 function sh_cd_link_your_shortcodes_delete( $id ) {
@@ -265,8 +266,8 @@ function sh_cd_get_value_from_post_or_obj( $object, $key ) {
 /**
  * Either fetch data from the $_POST object for the given object keys
  *
- * @param $meta_field
- * @return string
+ * @param $keys
+ * @return array
  */
 function sh_cd_get_values_from_post( $keys ) {
 
@@ -310,6 +311,7 @@ function sh_cd_toggle_status( $id ) {
  * Toggle the multisite of a shortcode
  *
  * @param $id
+ * @return int|null
  */
 function sh_cd_toggle_multisite( $id ) {
 
@@ -332,6 +334,7 @@ function sh_cd_toggle_multisite( $id ) {
  * Display a table of premade shortcodes
  *
  * @param string $display
+ * @return string
  */
 function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 
