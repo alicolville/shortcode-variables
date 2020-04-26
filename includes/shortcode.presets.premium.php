@@ -18,7 +18,8 @@ function sh_cd_shortcode_presets_premium_list() {
 		'sc-site-html-type' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The content-type (default: "text/html"). Themes and plugins', 'args' => [ '_sh_cd_func' => 'html_type' ], 'premium' => true ],
 		'sc-site-stylesheet-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'URL to the stylesheet for the active theme.', 'args' => [ '_sh_cd_func' => 'stylesheet_url' ], 'premium' => true ],
 		'sc-site-stylesheet_directory' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'Directory path for the active theme.', 'args' => [ '_sh_cd_func' => 'stylesheet_directory' ], 'premium' => true ],
-		'sc-site-current-url' => [ 'class' => 'SC_CURRENT_URL', 'description' => 'Get the current URL.', 'premium' => true],
+		'sc-site-current-url' => [ 'class' => 'SC_CURRENT_URL', 'description' => 'Get the current URL.', 'args' => [ '_sh_cd_func' => 'current_url' ], 'premium' => true],
+		'sc-site-register-url' => [ 'class' => 'SC_REGISTER_URL', 'description' => 'Get the URL to the WordPress registration page.', 'args' => [ '_sh_cd_func' => 'registration_url' ], 'premium' => true],
 		'sc-site-template-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The URL of the active theme\'s directory.', 'args' => [ '_sh_cd_func' => 'template_url' ], 'premium' => true],
 		'sc-site-pingback-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The pingback XML-RPC file URL (xmlrpc.php)', 'args' => [ '_sh_cd_func' => 'pingback_url' ], 'premium' => true ],
 		'sc-site-atom-feed' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The Atom feed URL (/feed/atom)', 'args' => [ '_sh_cd_func' => 'atom_url' ], 'premium' => true ],
@@ -132,9 +133,19 @@ class SV_SC_CURRENT_URL extends SV_Preset {
 			( isset($_SERVER['SERVER_PORT'] ) && 443 == $_SERVER['SERVER_PORT'] )
 		) ? 'https://' : 'http://';
 
-		$base_url = $protocol . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+		return $protocol . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+	}
+}
 
-		return esc_url_raw( $base_url );
+/**
+ * Register URL
+ *
+ * Class SV_SC_REGISTER_URL
+ */
+class SV_SC_REGISTER_URL extends SV_Preset {
+
+	protected function unsanitised() {
+		return wp_registration_url();
 	}
 }
 

@@ -106,7 +106,8 @@
                                             <td>
                                                 <?php
 
-                                                    if( 'sv-premium' === $license_decoded['type'] ) {
+                                                    if( false === empty( $license_decoded['type'] ) &&
+															'sv-premium' === $license_decoded['type'] ) {
 
                                                         $time = strtotime( $license_decoded['expiry-date'] );
                                                         $formatted = date( 'd/m/Y', $time );
@@ -135,19 +136,6 @@
                                     </table>
                                 </div>
                             </div>
-                    <!--
-                            <div class="postbox">
-                                <h3 class="hndle"><span>Documentation</span></h3>
-
-                                <div class="inside">
-                                    <p><?php echo __( 'Need further help or information, please visit our documentation site:', SH_CD_SLUG ); ?></p>
-                                    <p><strong><a href="#" target="_blank" rel="noopener noreferrer">//todo</a></strong>
-                                    </p>
-
-                                </div>
-                            </div>
-
-                     -->
                         </div>
                     </div>
                     <div id="post-body" class="metabox-holder columns-3">
