@@ -9,7 +9,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 	}
 
 	if ( false === current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+		wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
 	}
 
 	$save_result = false;
@@ -19,7 +19,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 
 		$save_result = sh_cd_shortcodes_save_post();
 
-		$message = ( true === $save_result ) ? 'Your shortcode has been saved!' : 'There was an error saving your shortcode!';
+		$message = ( true === $save_result ) ? __( 'Your shortcode has been saved!', SH_CD_SLUG ) : __( 'There was an error saving your shortcode!' , SH_CD_SLUG );
 
 		sh_cd_message_display( $message, ! $save_result );
 	}
@@ -41,21 +41,26 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
                         <div class="postbox">
-                            <h3 class="hndle"><span>Add / Edit a shortcode</span></h3>
+                            <h3 class="hndle"><span><?php echo __( 'Add / Edit a shortcode', SH_CD_SLUG ); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
                             <?php
 
                                 if ( true === $save_result ) :
 
-                                    printf('<p>Your shortcode has been saved successfully. <a href="%s">Return to all shortcodes</a>.',
-                                        sh_cd_link_your_shortcodes() );
+                                    printf('<p>%1$s.
+														<a href="%2$s">%3$s</a>.
+													</p>',
+                                        			__( 'Your shortcode has been saved successfully', SH_CD_SLUG ),
+                                        			sh_cd_link_your_shortcodes(),
+													__( 'Return to all shortcodes', SH_CD_SLUG )
+									);
 
                                 else:
                                 ?>
                                     <form method="post" action="<?php echo sh_cd_link_your_shortcodes() . '&action=save'; ?>">
                                         <input type="hidden" id="id" name="id" value="<?php echo esc_attr( $shortcode['id'] ); ?>" />
-                                        <h4>Slug</h4>
-                                        <p><small>Specify the unique identifier for this shortcode.</small></p>
+                                        <h4><?php echo __( 'Slug', SH_CD_SLUG ); ?></h4>
+                                        <p><small><?php echo __( 'Specify the unique identifier for this shortcode', SH_CD_SLUG ); ?>.</small></p>
                                         <input type="text" required class="regular-text" size="100" id="slug" name="slug"
                                                 placeholder="Slug"
                                                     value="<?php echo esc_attr( $shortcode['slug'] )?>" />
@@ -66,35 +71,35 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
                                         ?>
                                         <input type="hidden" id="previous_slug" name="previous_slug" value="<?php echo esc_attr( $previous_slug )?>" />
 
-                                        <h4>Shortcode content</h4>
-                                        <p><small>Specify the text, HTML, media, data, etc that should be rendered wherever the shortcode is placed.</small></p>
+                                        <h4><?php echo __( 'Shortcode Content', SH_CD_SLUG ); ?></h4>
+                                        <p><small><?php echo __( 'Specify the text, HTML, media, data, etc that should be rendered wherever the shortcode is placed.', SH_CD_SLUG ); ?></small></p>
                                         <?php wp_editor( $shortcode['data'], 'data', [ 'textarea_name' => 'data' ] ); ?>
 
-                                        <h4>Disable?</h4>
-                                        <p>If disabled, nothing will be rendered where the shortcode has been placed.</p>
+                                        <h4><?php echo __( 'Disable?', SH_CD_SLUG ); ?></h4>
+                                        <p><?php echo __( 'If disabled, nothing will be rendered where the shortcode has been placed.', SH_CD_SLUG ); ?></p>
                                         <select id="disabled" name="disabled">
-                                            <option value="0" <?php selected( $shortcode['disabled'], 0 ); ?>>No</option>
-                                            <option value="1" <?php selected( $shortcode['disabled'], 1 ); ?>>Yes</option>
+                                            <option value="0" <?php selected( $shortcode['disabled'], 0 ); ?>><?php echo __( 'No', SH_CD_SLUG ); ?></option>
+                                            <option value="1" <?php selected( $shortcode['disabled'], 1 ); ?>><?php echo __( 'Yes', SH_CD_SLUG ); ?></option>
                                         </select>
 
-                                        <h4>Global?</h4>
+                                        <h4><?php echo __( 'Global?', SH_CD_SLUG ); ?></h4>
 
-                                        <p>Can this be used by all sites within your multi-site? If Yes, your shortcode will be promoted so it can be used across your entire multi site. Please note, shortcode slugs are not unique across a multi site. Therefore, if you have two Global shortcodes with the same slug, the shortcode created or updated most recently shall be the one rendered. It is best practice to give all Global shortcodes a unique slug. A Global shortcode with always be displayed before a local shortcode with the same slug. Upon saving, it may take a Global shortcode upto 30 seconds to update across all your sites.</p>
+                                        <p><?php echo __( 'Can this be used by all sites within your multi-site? If Yes, your shortcode will be promoted so it can be used across your entire multi site. Please note, shortcode slugs are not unique across a multi site. Therefore, if you have two Global shortcodes with the same slug, the shortcode created or updated most recently shall be the one rendered. It is best practice to give all Global shortcodes a unique slug. A Global shortcode with always be displayed before a local shortcode with the same slug. Upon saving, it may take a Global shortcode upto 30 seconds to update across all your sites.', SH_CD_SLUG ); ?></p>
                                         <select id="multisite" name="multisite" <?php if ( false === sh_cd_license_is_premium() ) { echo 'disabled="disabled"'; } ?>>
-                                            <option value="0" <?php selected( $shortcode['multisite'], 0 ); ?>>No</option>
-                                            <option value="1" <?php selected( $shortcode['multisite'], 1 ); ?>>Yes</option>
+                                            <option value="0" <?php selected( $shortcode['multisite'], 0 ); ?>><?php echo __( 'No', SH_CD_SLUG ); ?></option>
+                                            <option value="1" <?php selected( $shortcode['multisite'], 1 ); ?>><?php echo __( 'Yes', SH_CD_SLUG ); ?></option>
                                         </select>
                                         <?php if ( false === sh_cd_license_is_premium() ) : ?>
                                             <p>
                                                 <i class="far fa-credit-card"></i>
                                                 <a href="<?php echo sh_cd_license_upgrade_link(); ?>">
-                                                     Multi site support is for Premium users. Upgrade now.
+													<?php echo __( 'Multi site support is for Premium users. Upgrade now.', SH_CD_SLUG ); ?>
                                                 </a>
                                             </p>
                                         <?php endif; ?>
 
                                         <div class="sh-cd-button-row">
-                                            <a class="comment-submit button" href="<?php echo sh_cd_link_your_shortcodes(); ?>">Cancel</a>
+                                            <a class="comment-submit button" href="<?php echo sh_cd_link_your_shortcodes(); ?>"><?php echo __( 'Cancel', SH_CD_SLUG ); ?></a>
                                             <input name="submit_button" type="submit" value="Save Shortcode" class="comment-submit button button-primary">
                                         </div>
                                     </form>

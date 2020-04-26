@@ -22,11 +22,11 @@ function sh_cd_premade_shortcodes_page() {
 							<h3 class="hndle"><span><?php _e( 'Pre-made Shortcode Variables' ); ?> </span></h3>
 							<div style="padding: 0px 15px 0px 15px">
 
-								<p><?php echo __('Below is a list of premade shortcode variables that you can use throughout your website.'); ?></p>
-                                <h3>Premade Shortcodes</h3>
+								<p><?php echo __('Below is a list of premade shortcode variables that you can use throughout your website.', SH_CD_SLUG ); ?></p>
+                                <h3><?php echo __('Premade Shortcodes', SH_CD_SLUG ); ?></h3>
 								<?php echo sh_cd_display_premade_shortcodes(); ?>
 								<br />
-								<p><?php echo __('<strong> Suggestion?</strong> Got an idea for a premade tag? If so, email me at: ') . '<a href="mailto:email@yeken.uk">email@yeken.uk</a>'; ?> </p>
+								<p><?php echo __( '<strong> Suggestion?</strong> Got an idea for a premade tag? If so, email me at: ', SH_CD_SLUG ) . '<a href="mailto:email@yeken.uk">email@yeken.uk</a>'; ?> </p>
 							</div>
 						</div>
 

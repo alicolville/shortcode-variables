@@ -3,8 +3,8 @@ Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 4.2.0
-Tested up to: 5.2.1
-Stable tag: 3.0.4
+Tested up to: 5.3
+Stable tag: 3.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -65,6 +65,8 @@ The plugin comes with the following premium shortcodes:
 - sc-site-stylesheet-url - URL to the stylesheet for the active theme.
 - sc-site-stylesheet_directory - Directory path for the active theme.
 - sc-site-template-url - The URL of the active theme's directory.
+- sc-site-current-url - The current URL.
+- sc-site-register-url - The URL to the WordPress registration page.
 - sc-site-pingback-url - The pingback XML-RPC file URL (xmlrpc.php)
 - sc-site-atom-feed - The Atom feed URL (/feed/atom)
 - sc-site-rdf-url - The RDF/RSS 1.0 feed URL (/feed/rfd)
@@ -140,6 +142,16 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 5. Shortcode variables rendered in a page
 
 == Changelog ==
+
+= 3.1 =
+
+* New Shortcode: "sc-site-current-url" - get the current URL.
+* New Shortcode: "sc-site-register-url" - get the URL for the WordPress registration page.
+* Improvement: Added localised strings so plugin can now be translated.
+* Improvement: Licenses are now checked daily and on each upgrade to ensure they are still valid.
+* Bug fix: Missing array element throwing error on shortcode listing page.
+* Bug fix: PHP warning being thrown on license page when one hasn't been added.
+* Bug fix: Always create multisite database table regardless.
 
 = 3.0.4 =
 

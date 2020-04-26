@@ -9,21 +9,21 @@ defined('ABSPATH') or die("Jog on!");
 function sh_cd_shortcode_presets_free_list() {
 
 	return [
-		'sc-todays-date' => [ 'class' => 'SC_TODAYS_DATE', 'description' => 'Displays today\'s date. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>' ],
-		'sc-user-ip' => [ 'class' => 'SC_USER_IP', 'description' => 'Display the current user\'s IP address.'],
-		'sc-user-agent' => [ 'class' => 'SC_USER_AGENT', 'description' => 'Display the current user\'s User Agent' ],
-		'sc-site-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The Site address (URL) (set in Settings > General)', 'args' => [ '_sh_cd_func' => 'url' ] ],
-		'sc-site-title' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'Displays the site title.' ],
-		'sc-admin-email' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'Admin email (set in Settings > General)', 'args' => [ '_sh_cd_func' => 'admin_email' ] ],
-		'sc-page-title' => [ 'class' => 'SC_PAGE_TITLE', 'description' => 'Displays the page title.' ],
-		'sc-login-page' => [ 'class' => 'SC_LOGIN_PAGE', 'description' => 'Wordpress login page. Add the parameter "redirect" to specify where the user is taken after a successful login e.g. redirect="http://www.google.co.uk".' ],
-		'sc-privacy-url' => [ 'class' => 'SC_POLICY_URL', 'description' => 'Displays the privacy page URL.' ],
-		'sc-username' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the logged in username.', 'args' => [ '_sh_cd_func' => 'user_login' ] ],
-		'sc-user-id' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s ID.', 'args' => [ '_sh_cd_func' => 'ID' ] ],
-		'sc-user-email' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s email address.', 'args' => [ '_sh_cd_func' => 'user_email' ] ],
-		'sc-first-name' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s username.', 'args' => [ '_sh_cd_func' => 'user_firstname' ] ],
-		'sc-last-name' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s last name.', 'args' => [ '_sh_cd_func' => 'user_lastname' ] ],
-		'sc-display-name' => [ 'class' => 'SC_USER_INFO', 'description' => 'Display the current user\'s display name.', 'args' => [ '_sh_cd_func' => 'display_name' ] ]
+		'sc-todays-date' => [ 'class' => 'SC_TODAYS_DATE', 'description' => __( 'Displays today\'s date. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>', SH_CD_SLUG ) ],
+		'sc-user-ip' => [ 'class' => 'SC_USER_IP', 'description' => __( 'Display the current user\'s IP address.', SH_CD_SLUG )],
+		'sc-user-agent' => [ 'class' => 'SC_USER_AGENT', 'description' => __( 'Display the current user\'s User Agent', SH_CD_SLUG ) ],
+		'sc-site-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The Site address (URL) (set in Settings > General)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'url' ] ],
+		'sc-site-title' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'Displays the site title.', SH_CD_SLUG ) ],
+		'sc-admin-email' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'Admin email (set in Settings > General)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'admin_email' ] ],
+		'sc-page-title' => [ 'class' => 'SC_PAGE_TITLE', 'description' => __( 'Displays the page title.', SH_CD_SLUG ) ],
+		'sc-login-page' => [ 'class' => 'SC_LOGIN_PAGE', 'description' => __( 'Wordpress login page. Add the parameter "redirect" to specify where the user is taken after a successful login e.g. redirect="http://www.google.co.uk".', SH_CD_SLUG ) ],
+		'sc-privacy-url' => [ 'class' => 'SC_POLICY_URL', 'description' => __( 'Displays the privacy page URL.', SH_CD_SLUG ) ],
+		'sc-username' => [ 'class' => 'SC_USER_INFO', 'description' => __( 'Display the logged in username.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'user_login' ] ],
+		'sc-user-id' => [ 'class' => 'SC_USER_INFO', 'description' => __( 'Display the current user\'s ID.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'ID' ] ],
+		'sc-user-email' => [ 'class' => 'SC_USER_INFO', 'description' => __( 'Display the current user\'s email address.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'user_email' ] ],
+		'sc-first-name' => [ 'class' => 'SC_USER_INFO', 'description' => __( 'Display the current user\'s username.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'user_firstname' ] ],
+		'sc-last-name' => [ 'class' => 'SC_USER_INFO', 'description' => __( 'Display the current user\'s last name.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'user_lastname' ] ],
+		'sc-display-name' => [ 'class' => 'SC_USER_INFO', 'description' => __( 'Display the current user\'s display name.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'display_name' ] ]
 	];
 
 	// '' => [ 'class' => '', 'description' => '', 'args' => [ '_sh_cd_func' => 'admin_email' ] ]

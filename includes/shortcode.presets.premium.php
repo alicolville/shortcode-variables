@@ -9,35 +9,37 @@ defined('ABSPATH') or die("Jog on!");
 function sh_cd_shortcode_presets_premium_list() {
 
 	return [
-		'sc-date' => [ 'class' => 'SC_DATE', 'description' => 'A shortcode that displays today\'s date with the ability to add or subtract days, months and years. To specify an interval to add or subtract onto the date use the parameter "interval" e.g. [sv slug="sc-date" interval="-1 year"], [sv slug="sc-date" interval="+5 days"], [sv slug="sc-date" interval="+3 months"]. Intervals are based upon PHP intervals and are outlined here <a href="https://www.php.net/manual/en/dateinterval.createfromdatestring.php" target="_blank">https://www.php.net/manual/en/dateinterval.createfromdatestring.php</a>. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>', 'premium' => true ],
-		'sc-site-language' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'Language code for the current site', 'args' => [ '_sh_cd_func' => 'language' ], 'premium' => true ],
-		'sc-site-description' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'Site tagline (set in Settings > General)', 'args' => [ '_sh_cd_func' => 'description' ], 'premium' => true ],
-		'sc-site-wp-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The WordPress address (URL) (set in Settings > General)', 'args' => [ '_sh_cd_func' => 'wpurl' ], 'premium' => true ],
-		'sc-site-charset' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The "Encoding for pages and feeds"  (set in Settings > Reading)', 'args' => [ '_sh_cd_func' => 'charset' ], 'premium' => true ],
-		'sc-site-wp-version' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The current WordPress version', 'args' => [ '_sh_cd_func' => 'version' ], 'premium' => true ],
-		'sc-site-html-type' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The content-type (default: "text/html"). Themes and plugins', 'args' => [ '_sh_cd_func' => 'html_type' ], 'premium' => true ],
-		'sc-site-stylesheet-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'URL to the stylesheet for the active theme.', 'args' => [ '_sh_cd_func' => 'stylesheet_url' ], 'premium' => true ],
-		'sc-site-stylesheet_directory' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'Directory path for the active theme.', 'args' => [ '_sh_cd_func' => 'stylesheet_directory' ], 'premium' => true ],
-		'sc-site-template-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The URL of the active theme\'s directory.', 'args' => [ '_sh_cd_func' => 'template_url' ], 'premium' => true],
-		'sc-site-pingback-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The pingback XML-RPC file URL (xmlrpc.php)', 'args' => [ '_sh_cd_func' => 'pingback_url' ], 'premium' => true ],
-		'sc-site-atom-feed' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The Atom feed URL (/feed/atom)', 'args' => [ '_sh_cd_func' => 'atom_url' ], 'premium' => true ],
-		'sc-site-rdf-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The RDF/RSS 1.0 feed URL (/feed/rfd)', 'args' => [ '_sh_cd_func' => 'rdf_url' ], 'premium' => true ],
-		'sc-site-rss-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The RSS 0.92 feed URL (/feed/rss)', 'args' => [ '_sh_cd_func' => 'rss_url' ], 'premium' => true ],
-		'sc-site-rss2-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The RSS 2.0 feed URL (/feed)', 'args' => [ '_sh_cd_func' => 'rss2_url' ], 'premium' => true ],
-		'sc-site-comments-atom-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The comments Atom feed URL (/comments/feed)', 'args' => [ '_sh_cd_func' => 'comments_atom_url' ], 'premium' => true ],
-		'sc-site-comments-rss2-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => 'The comments RSS 2.0 feed URL (/comments/feed)', 'args' => [ '_sh_cd_func' => 'comments_rss2_url' ], 'premium' => true ],
-		'sc-php-server-info' => [ 'class' => 'SC_SERVER_INFO', 'description' => 'Display data from the PHP $_SERVER global e.g. [sv slug="sc-server-info" field="SERVER_SOFTWARE"]. <a href="http://php.net/manual/en/reserved.variables.server.php" rel="noopener" target="_blank">Allowed values for field attribute</a>.', 'premium' => true ],
-		'sc-php-unique-id' => [ 'class' => 'SC_UNIQUE_ID', 'description' => 'Generate a unique ID. Based upon <a href="http://php.net/manual/en/function.uniqid.php" rel="noopener" target="_blank">uniqid()</a>. If you wish the unique ID to be prefixed, add a the prefix attribute e.g. [sv slug="sc-php-unique-id" prefix="yeken"]', 'premium' => true ],
-		'sc-php-timestamp' => [ 'class' => 'SC_TIMESTAMP', 'description' => 'Display the current unix timestamp. Based upon <a href="http://php.net/manual/en/function.time.php" rel="noopener" target="_blank">time()</a>.', 'premium' => true ],
-		'sc-php-random-number' => [ 'class' => 'SC_RAND_NUMBER', 'description' => 'Display a random number. Based upon <a href="http://php.net/manual/en/function.rand.php" rel="noopener" target="_blank">rand()</a>. It also supports the optional arguments of min and max e.g. [sv slug="sc-php-random-number" min="5" max="20" ]', 'premium' => true ],
-		'sc-php-random-string' => [ 'class' => 'SC_RAND_STRING', 'description' => 'Display a random string of characters. It also supports the optional argument of "length". This specifies the number of characters you wish to display (default is 10) [sv slug="sc-php-random-string" length="15"]', 'premium' => true ],
-		'sc-php-post-value' => [ 'class' => 'SC_POST_VALUE', 'description' => 'Display a value from the $_POST array. The "key" arguments specifies which array value to render. It also supports the optional arguments of "default". If there is no value in the array for the given "key" then the "default" will be displayed. [sv slug="sc-php-post-value" key="username" default="Not Found"]', 'premium' => true ],
-		'sc-php-get-value' => [ 'class' => 'SC_GET_VALUE', 'description' => 'Display a value from the $_GET array. The "key" arguments specifies which array value to render. It also supports the optional arguments of "default". If there is no value in the array for the given "key" then the "default" will be displayed. [sv slug="sc-php-get-value" key="username" default="Not Found"]', 'premium' => true ],
-		'sc-php-info' => [ 'class' => 'SC_PHP_INFO', 'description' => 'Display PHP Info', 'premium' => true ],
-		'sc-post-id' => [ 'class' => 'SC_POST_ID', 'description' => 'Display ID for the current post.', 'premium' => true ],
-		'sc-post-author' => [ 'class' => 'SC_POST_AUTHOR', 'description' => 'Display the author\'s display name or ID. The optional argument "field" allows you to specify whether you wish to display the author\'s "display-name" or "id". [sv slug="sc-post-author" field="id" ]', 'premium' => true ],
-		'sc-post-counts' => [ 'class' => 'SC_POST_COUNTS', 'description' => 'Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]', 'premium' => true ],
-        'sc-user-counts' => [ 'class' => 'SC_USER_COUNTS', 'description' => 'Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"]', 'premium' => true ]
+		'sc-date' => [ 'class' => 'SC_DATE', 'description' => __( 'A shortcode that displays today\'s date with the ability to add or subtract days, months and years. To specify an interval to add or subtract onto the date use the parameter "interval" e.g. [sv slug="sc-date" interval="-1 year"], [sv slug="sc-date" interval="+5 days"], [sv slug="sc-date" interval="+3 months"]. Intervals are based upon PHP intervals and are outlined here <a href="https://www.php.net/manual/en/dateinterval.createfromdatestring.php" target="_blank">https://www.php.net/manual/en/dateinterval.createfromdatestring.php</a>. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>', SH_CD_SLUG ), 'premium' => true ],
+		'sc-site-language' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'Language code for the current site', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'language' ], 'premium' => true ],
+		'sc-site-description' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'Site tagline (set in Settings > General)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'description' ], 'premium' => true ],
+		'sc-site-wp-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The WordPress address (URL) (set in Settings > General)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'wpurl' ], 'premium' => true ],
+		'sc-site-charset' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The "Encoding for pages and feeds"  (set in Settings > Reading)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'charset' ], 'premium' => true ],
+		'sc-site-wp-version' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The current WordPress version', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'version' ], 'premium' => true ],
+		'sc-site-html-type' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The content-type (default: "text/html"). Themes and plugins', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'html_type' ], 'premium' => true ],
+		'sc-site-stylesheet-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'URL to the stylesheet for the active theme.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'stylesheet_url' ], 'premium' => true ],
+		'sc-site-stylesheet_directory' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'Directory path for the active theme.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'stylesheet_directory' ], 'premium' => true ],
+		'sc-site-current-url' => [ 'class' => 'SC_CURRENT_URL', 'description' => __( 'Get the current URL.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'current_url' ], 'premium' => true],
+		'sc-site-register-url' => [ 'class' => 'SC_REGISTER_URL', 'description' => __( 'Get the URL to the WordPress registration page.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'registration_url' ], 'premium' => true],
+		'sc-site-template-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The URL of the active theme\'s directory.', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'template_url' ], 'premium' => true],
+		'sc-site-pingback-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The pingback XML-RPC file URL (xmlrpc.php)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'pingback_url' ], 'premium' => true ],
+		'sc-site-atom-feed' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The Atom feed URL (/feed/atom)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'atom_url' ], 'premium' => true ],
+		'sc-site-rdf-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The RDF/RSS 1.0 feed URL (/feed/rfd)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'rdf_url' ], 'premium' => true ],
+		'sc-site-rss-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The RSS 0.92 feed URL (/feed/rss)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'rss_url' ], 'premium' => true ],
+		'sc-site-rss2-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The RSS 2.0 feed URL (/feed)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'rss2_url' ], 'premium' => true ],
+		'sc-site-comments-atom-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The comments Atom feed URL (/comments/feed)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'comments_atom_url' ], 'premium' => true ],
+		'sc-site-comments-rss2-url' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'The comments RSS 2.0 feed URL (/comments/feed)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'comments_rss2_url' ], 'premium' => true ],
+		'sc-php-server-info' => [ 'class' => 'SC_SERVER_INFO', 'description' => __( 'Display data from the PHP $_SERVER global e.g. [sv slug="sc-server-info" field="SERVER_SOFTWARE"]. <a href="http://php.net/manual/en/reserved.variables.server.php" rel="noopener" target="_blank">Allowed values for field attribute</a>.', SH_CD_SLUG ), 'premium' => true ],
+		'sc-php-unique-id' => [ 'class' => 'SC_UNIQUE_ID', 'description' => __( 'Generate a unique ID. Based upon <a href="http://php.net/manual/en/function.uniqid.php" rel="noopener" target="_blank">uniqid()</a>. If you wish the unique ID to be prefixed, add a the prefix attribute e.g. [sv slug="sc-php-unique-id" prefix="yeken"]', SH_CD_SLUG ), 'premium' => true ],
+		'sc-php-timestamp' => [ 'class' => 'SC_TIMESTAMP', 'description' => __( 'Display the current unix timestamp. Based upon <a href="http://php.net/manual/en/function.time.php" rel="noopener" target="_blank">time()</a>.', SH_CD_SLUG ), 'premium' => true ],
+		'sc-php-random-number' => [ 'class' => 'SC_RAND_NUMBER', 'description' => __( 'Display a random number. Based upon <a href="http://php.net/manual/en/function.rand.php" rel="noopener" target="_blank">rand()</a>. It also supports the optional arguments of min and max e.g. [sv slug="sc-php-random-number" min="5" max="20" ]', SH_CD_SLUG ), 'premium' => true ],
+		'sc-php-random-string' => [ 'class' => 'SC_RAND_STRING', 'description' => __( 'Display a random string of characters. It also supports the optional argument of "length". This specifies the number of characters you wish to display (default is 10) [sv slug="sc-php-random-string" length="15"]', SH_CD_SLUG ), 'premium' => true ],
+		'sc-php-post-value' => [ 'class' => 'SC_POST_VALUE', 'description' => __( 'Display a value from the $_POST array. The "key" arguments specifies which array value to render. It also supports the optional arguments of "default". If there is no value in the array for the given "key" then the "default" will be displayed. [sv slug="sc-php-post-value" key="username" default="Not Found"]', SH_CD_SLUG ), 'premium' => true ],
+		'sc-php-get-value' => [ 'class' => 'SC_GET_VALUE', 'description' => __( 'Display a value from the $_GET array. The "key" arguments specifies which array value to render. It also supports the optional arguments of "default". If there is no value in the array for the given "key" then the "default" will be displayed. [sv slug="sc-php-get-value" key="username" default="Not Found"]', SH_CD_SLUG ), 'premium' => true ],
+		'sc-php-info' => [ 'class' => 'SC_PHP_INFO', 'description' => __( 'Display PHP Info', SH_CD_SLUG ), 'premium' => true ],
+		'sc-post-id' => [ 'class' => 'SC_POST_ID', 'description' => __( 'Display ID for the current post.', SH_CD_SLUG ), 'premium' => true ],
+		'sc-post-author' => [ 'class' => 'SC_POST_AUTHOR', 'description' => __( 'Display the author\'s display name or ID. The optional argument "field" allows you to specify whether you wish to display the author\'s "display-name" or "id". [sv slug="sc-post-author" field="id" ]', SH_CD_SLUG ), 'premium' => true ],
+		'sc-post-counts' => [ 'class' => 'SC_POST_COUNTS', 'description' => __( 'Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]', SH_CD_SLUG ), 'premium' => true ],
+        'sc-user-counts' => [ 'class' => 'SC_USER_COUNTS', 'description' => __( 'Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"]', SH_CD_SLUG ), 'premium' => true ]
 
 		// '' => [ 'class' => '', 'description' => '', 'premium' => true ]
 	];
@@ -114,6 +116,36 @@ class SV_SC_PHP_INFO extends SV_Preset {
 
 	protected function unsanitised() {
 		return phpinfo();
+	}
+}
+
+/**
+ * Current URL
+ *
+ * Class SV_SC_CURRENT_URL
+ */
+class SV_SC_CURRENT_URL extends SV_Preset {
+
+	protected function unsanitised() {
+
+		$protocol = (
+			( isset($_SERVER['HTTPS'] ) && 'on' == $_SERVER['HTTPS'] ) ||
+			( isset($_SERVER['SERVER_PORT'] ) && 443 == $_SERVER['SERVER_PORT'] )
+		) ? 'https://' : 'http://';
+
+		return $protocol . $_SERVER["HTTP_HOST"] . $_SERVER["REQUEST_URI"];
+	}
+}
+
+/**
+ * Register URL
+ *
+ * Class SV_SC_REGISTER_URL
+ */
+class SV_SC_REGISTER_URL extends SV_Preset {
+
+	protected function unsanitised() {
+		return wp_registration_url();
 	}
 }
 

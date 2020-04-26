@@ -44,6 +44,8 @@
 					case 'rss2_url':
 					case 'comments_atom_url':
 					case 'comments_rss2_url':
+					case 'registration_url':
+					case 'current_url':
 
 						$this->escape_method = 'esc_url_raw';
 

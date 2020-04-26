@@ -13,10 +13,10 @@ function sh_cd_build_admin_menu() {
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', '', '', 'manage_options', 'sh-cd-shortcode-variables-main-menu', 'sh_cd_pages_your_shortcodes');
 
 	// Add sub menus
-	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Your Shortcodes', SH_CD_SLUG ),  __('Your shortcodes'), 'manage_options', 'sh-cd-shortcode-variables-your-shortcodes', 'sh_cd_pages_your_shortcodes');
-	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Premade Shortcodes', SH_CD_SLUG ),  __('Premade shortcodes'), 'manage_options', 'sh-cd-shortcode-variables-sub-premade', 'sh_cd_premade_shortcodes_page');
+	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Your Shortcodes', SH_CD_SLUG ),  __( 'Your shortcodes', SH_CD_SLUG ), 'manage_options', 'sh-cd-shortcode-variables-your-shortcodes', 'sh_cd_pages_your_shortcodes');
+	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Premade Shortcodes', SH_CD_SLUG ),  __( 'Premade shortcodes', SH_CD_SLUG ), 'manage_options', 'sh-cd-shortcode-variables-sub-premade', 'sh_cd_premade_shortcodes_page');
 
-	$menu_text = ( true === sh_cd_license_is_premium() ) ? __('Your License', SH_CD_SLUG ) : __('Upgrade to Premium', SH_CD_SLUG );
+	$menu_text = ( true === sh_cd_license_is_premium() ) ? __( 'Your License', SH_CD_SLUG ) : __( 'Upgrade to Premium', SH_CD_SLUG );
 
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', $menu_text,  $menu_text, 'manage_options', 'sh-cd-shortcode-variables-license', 'sh_cd_advertise_pro');
 }
@@ -40,14 +40,13 @@ add_action( 'admin_enqueue_scripts', 'sh_cd_enqueue_scripts' );
  */
 function sh_cd_upgrade() {
 
-	if ( true === update_option( 'sh-cd-version-number', SH_CD_PLUGIN_VERSION ) ) {
+	if ( true === update_option( 'sh-cd-version-number-2020', SH_CD_PLUGIN_VERSION ) ) {
 
 		sh_cd_create_database_table();
 
-		if ( true === is_multisite() ) {
-			sh_cd_create_database_table_multisite();
-		}
+		sh_cd_create_database_table_multisite();
 
+		do_action( 'sh-cd-upgrade' );
 	}
 }
 add_action('admin_init', 'sh_cd_upgrade');

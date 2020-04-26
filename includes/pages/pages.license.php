@@ -7,10 +7,10 @@
         $site_hash = sh_cd_generate_site_hash();
 
         if ( ! current_user_can( 'manage_options' ) ) {
-            wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+            wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
         }
 
-        // Remove existing license?
+		// Remove existing license?
         if ( false === empty( $_GET['remove-license'] ) ) {
             sh_cd_license_remove();
         }
@@ -45,11 +45,10 @@
 
                         <div class="meta-box-sortables ui-sortable">
                             <div class="postbox">
-                                <h3 class="hndle"><span>Upgrade / your License</span></h3>
+                                <h3 class="hndle"><span><?php echo __( 'Upgrade / your License', SH_CD_SLUG ); ?></span></h3>
                                 <div class="inside">
                                     <center>
-                                        <h3>In case you need, your <strong>Site Hash</strong>
-                                            is: <?php echo esc_html( $site_hash ) ; ?></h3>
+                                        <h3><?php echo __( 'In case you need, your <strong>Site Hash</strong> is', SH_CD_SLUG ); ?>: <?php echo esc_html( $site_hash ) ; ?></h3>
 
                                         <?php
 
@@ -59,8 +58,8 @@
                                         ?>
                                                 <br />  <br />
                                                 <hr />
-                                                <h3>Premium Shortcodes</h3>
-                                                <p>Upgrade to the Premium version of Shortcode Variables and receive the following shortcodes:</p>
+                                                <h3><?php echo __( 'Premium Shortcodes', SH_CD_SLUG ); ?></h3>
+                                                <p><?php echo __( 'Upgrade to the Premium version of Shortcode Variables and receive the following shortcodes', SH_CD_SLUG ); ?>:</p>
 
                                                 <br />
                                         <?php
@@ -80,33 +79,34 @@
 
                             <div class="postbox">
 
-                                <h3 class="hndle"><span>Add or Update License</span></h3>
+                                <h3 class="hndle"><span><?php echo __( 'Add or Update License', SH_CD_SLUG ); ?></span></h3>
 
                                 <div class="inside">
 
                                     <form action="<?php echo admin_url( 'admin.php?page=sh-cd-shortcode-variables-license&add-license=true' ); ?>"
                                           method="post">
-                                        <p>Copy and paste the license given to you by YeKen into this box and click "Apply License".</p>
+                                        <p><?php echo __( 'Copy and paste the license given to you by YeKen into this box and click "Apply License".', SH_CD_SLUG ); ?></p>
                                         <textarea rows="5" style="width:100%" name="license-key"></textarea>
                                         <br/><br/>
-                                        <input type="submit" class="button-secondary large-text" value="Apply License"/>
+                                        <input type="submit" class="button-secondary large-text" value="<?php echo __( 'Apply License', SH_CD_SLUG ); ?>"/>
                                     </form>
                                 </div>
                             </div>
                             <div class="postbox">
-                                <h3 class="hndle"><span>Your License Information</span></h3>
+                                <h3 class="hndle"><span><?php echo __( 'Your License Information', SH_CD_SLUG ); ?></span></h3>
                                 <div class="inside">
                                     <table class="ws-ls-sidebar-stats">
                                         <tr>
-                                            <th>Site Hash</th>
+                                            <th><?php echo __( 'Site Hash', SH_CD_SLUG ); ?></th>
                                             <td><?php echo esc_html( sh_cd_generate_site_hash() ); ?></td>
                                         </tr>
                                         <tr>
-                                            <th>Expires</th>
+                                            <th><?php echo __( 'Expires', SH_CD_SLUG ); ?></th>
                                             <td>
                                                 <?php
 
-                                                    if( 'sv-premium' === $license_decoded['type'] ) {
+                                                    if( false === empty( $license_decoded['type'] ) &&
+															'sv-premium' === $license_decoded['type'] ) {
 
                                                         $time = strtotime( $license_decoded['expiry-date'] );
                                                         $formatted = date( 'd/m/Y', $time );
@@ -122,32 +122,19 @@
 
                                         <?php if ( false === empty( $existing_license ) ): ?>
                                             <tr class="last">
-                                                <th colspan="2"><?php echo __('Your Existing License', SH_CD_SLUG ); ?></th>
+                                                <th colspan="2"><?php echo __( 'Your Existing License', SH_CD_SLUG ); ?></th>
                                             </tr>
                                             <tr class="last">
                                                 <td colspan="2"><textarea rows="5" style="width:100%"><?php echo esc_textarea( $existing_license ); ?></textarea></td>
                                             </tr>
                                             <tr class="last">
-                                                <td colspan="2"><a href="<?php echo admin_url('admin.php?page=sh-cd-shortcode-variables-license&remove-license=true'); ?>" class="button-secondary delete-license">Remove License</a></td>
+                                                <td colspan="2"><a href="<?php echo admin_url('admin.php?page=sh-cd-shortcode-variables-license&remove-license=true'); ?>" class="button-secondary delete-license"><?php echo __( 'Remove License', SH_CD_SLUG ); ?></a></td>
                                             </tr>
 
                                         <?php endif; ?>
                                     </table>
                                 </div>
                             </div>
-                    <!--
-                            <div class="postbox">
-                                <h3 class="hndle"><span>Documentation</span></h3>
-
-                                <div class="inside">
-                                    <p><?php echo __( 'Need further help or information, please visit our documentation site:', SH_CD_SLUG ); ?></p>
-                                    <p><strong><a href="#" target="_blank" rel="noopener noreferrer">//todo</a></strong>
-                                    </p>
-
-                                </div>
-                            </div>
-
-                     -->
                         </div>
                     </div>
                     <div id="post-body" class="metabox-holder columns-3">
