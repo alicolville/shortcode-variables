@@ -371,7 +371,7 @@ function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 
 			$shortcode = '[' . SH_CD_SHORTCODE. ' slug="' . $key . '"]';
 
-			$premium_shortcode = ( true === $data['premium'] );
+			$premium_shortcode = ( true === isset( $data['premium'] ) && true === $data['premium'] );
 
 			$html .= sprintf( '<tr class="%s"><td>%s</td>', $class, esc_html( $shortcode ) );
 
