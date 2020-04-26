@@ -36,17 +36,17 @@
 		$license = sh_cd_license_decode( $license );
 
 		if ( true === empty( $license ) ) {
-			return 'Could not decode / verify license';
+			return __( 'Could not decode / verify license', SH_CD_SLUG );
 		}
 
 		// Does site hash in license meet this site's actual hash?
 		if ( true === empty( $license['site-hash'] ) ) {
-			return 'Invalid license hash';
+			return __( 'Invalid license hash', SH_CD_SLUG );
 		}
 
 		// Match this site hash?
 		if ( sh_cd_generate_site_hash() !== $license['site-hash']) {
-			return 'This license doesn\'t appear to be for this site (no match on site hash).';
+			return __( 'This license doesn\'t appear to be for this site (no match on site hash).', SH_CD_SLUG );
 		}
 
 		// Valid date?
@@ -54,7 +54,7 @@
 		$expire_time = strtotime( $license['expiry-date'] );
 
 		if ( $expire_time < $today_time ) {
-			return 'This license has expired.';
+			return __( 'This license has expired.', SH_CD_SLUG );
 		}
 
 		return true;
