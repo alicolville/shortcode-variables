@@ -150,6 +150,7 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 * Improvement: Added localised strings so plugin can now be translated.
 * Bug fix: Missing array element throwing error on shortcode listing page.
 * Bug fix: PHP warning being thrown on license page when one hasn't been added.
+* Bug fix: Always create multisite database table regardless.
 
 = 3.0.4 =
 

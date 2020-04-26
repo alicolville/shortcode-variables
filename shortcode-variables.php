@@ -36,7 +36,7 @@ define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
 define( 'SH_CD_PREFIX', 'sh-cd-' );
 define( 'SH_CD_SHORTCODE', 'sv' );
-define( 'SH_CD_PREMIUM_PRICE', 5.00 );
+define( 'SH_CD_PREMIUM_PRICE', 10.00 );
 define( 'SH_CD_UPGRADE_LINK', 'https://sv.yeken.uk/upgrade' );
 
 // -----------------------------------------------------------------------------------------
