@@ -148,6 +148,7 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 * New Shortcode: "sc-site-current-url" - get the current URL.
 * New Shortcode: "sc-site-register-url" - get the URL for the WordPress registration page.
 * Improvement: Added localised strings so plugin can now be translated.
+* Improvement: Licenses are now checked daily and on each upgrade to ensure they are still valid.
 * Bug fix: Missing array element throwing error on shortcode listing page.
 * Bug fix: PHP warning being thrown on license page when one hasn't been added.
 * Bug fix: Always create multisite database table regardless.
