@@ -65,6 +65,7 @@ The plugin comes with the following premium shortcodes:
 - sc-site-stylesheet-url - URL to the stylesheet for the active theme.
 - sc-site-stylesheet_directory - Directory path for the active theme.
 - sc-site-template-url - The URL of the active theme's directory.
+- sc-site-current-url - The current URL.
 - sc-site-pingback-url - The pingback XML-RPC file URL (xmlrpc.php)
 - sc-site-atom-feed - The Atom feed URL (/feed/atom)
 - sc-site-rdf-url - The RDF/RSS 1.0 feed URL (/feed/rfd)
@@ -140,6 +141,10 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 5. Shortcode variables rendered in a page
 
 == Changelog ==
+
+= 3.1 =
+
+* New Shortcode: "sc-site-current-url" - get the current URL.
 
 = 3.0.4 =
 
