@@ -339,7 +339,7 @@ function sh_cd_toggle_multisite( $id ) {
 function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 
 	$premium_user = sh_cd_license_is_premium();
-	$upgrade_link = sprintf( '<a class="button" href="%s"><i class="fas fa-check"></i> Upgrade now</a>', sh_cd_license_upgrade_link() );
+	$upgrade_link = sprintf( '<a class="button" href="%1$s"><i class="fas fa-check"></i> %2$s</a>', sh_cd_license_upgrade_link(), __('Upgrade now', SH_CD_SLUG ) );
 
 	switch ( $display ) {
 		case 'free':
@@ -355,18 +355,18 @@ function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 			$show_premium_col = true;
 	}
 
-	$html = '<table class="widefat sh-cd-table" width="100%">
+	$html = sprintf('<table class="widefat sh-cd-table" width="100%%">
                 <tr class="row-title">
-                    <th class="row-title" width="30%">Shortcode</th>';
+                    <th class="row-title" width="30%%">%s</th>', __('Shortcode', SH_CD_SLUG ) );
 
                      if ( true === $show_premium_col) {
-	                     $html .= '<th class="row-title">Premium</th>';
+	                     $html .= sprintf( '<th class="row-title">%s</th>', __('Premium', SH_CD_SLUG ) );
                      }
 
-	                $html .= '<th width="*">Description</th>
-                </tr>';
+					$html .= sprintf( '<th width="*">%s</th>
+											</tr>', __('Description', SH_CD_SLUG ) );
 
-		$class = '';
+	$class = '';
 
 		foreach ( $shortcodes as $key => $data ) {
 
@@ -406,9 +406,9 @@ function sh_cd_upgrade_button( $css_class = '', $link = NULL ) {
 	echo sprintf('<a href="%s" class="button-primary sh-cd-upgrade-button%s"><i class="far fa-credit-card"></i> %s £%d %s</a>',
 		esc_url( $link ),
 		esc_attr( ' ' . $css_class ),
-        __('Upgrade to Premium for ', SH_CD_SLUG),
+        __( 'Upgrade to Premium for ', SH_CD_SLUG ),
         esc_html( sh_cd_license_price() ),
-		__('a year ', SH_CD_SLUG)
+		__( 'a year ', SH_CD_SLUG )
 	);
 }
 
