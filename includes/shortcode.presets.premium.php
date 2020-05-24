@@ -197,7 +197,7 @@ class SV_SC_AVATAR extends SV_Preset {
 			return '';
 		}
 
-		return sprintf( '<img src="%1$s" />', $profile_url );
+		return sprintf( '<img src="%1$s" />', esc_url( $profile_url ) );
 	}
 }
 
