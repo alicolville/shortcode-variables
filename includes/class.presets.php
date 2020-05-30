@@ -64,6 +64,8 @@
 
 			$escape_function = $this->escape_method;
 
-			return $escape_function( $this->unsanitised() );
+			return ( false !== $escape_function ) ?
+					$escape_function( $this->unsanitised() ) :
+						$this->unsanitised();
 		}
 	}

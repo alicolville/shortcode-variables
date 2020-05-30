@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 4.2.0
 Tested up to: 5.4.1
-Stable tag: 3.1.1
+Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -86,6 +86,7 @@ The plugin comes with the following premium shortcodes:
 - sc-post-author - Display the author's display name or ID. The optional argument "field" allows you to specify whether you wish to display the author's "display-name" or "id". [sv slug="sc-post-author" field="id" ]
 - sc-post-counts - Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]
 - sc-user-counts - Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"].
+- sc-user-profile-photo - Display the WordPress profile photo for the logged in user e.g. [sv slug="sc-user-profile-photo" width="150"] or [sv slug="sc-user-profile-photo"]. Please note, width defaults to 96px.
 
 **Free Shortcodes**
 
@@ -142,6 +143,10 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 5. Shortcode variables rendered in a page
 
 == Changelog ==
+
+= 3.2 =
+
+* New Shortcode: "sc-user-profile-photo" - display the current user's profile photo.
 
 = 3.1.1 =
 

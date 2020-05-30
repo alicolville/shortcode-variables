@@ -39,7 +39,8 @@ function sh_cd_shortcode_presets_premium_list() {
 		'sc-post-id' => [ 'class' => 'SC_POST_ID', 'description' => __( 'Display ID for the current post.', SH_CD_SLUG ), 'premium' => true ],
 		'sc-post-author' => [ 'class' => 'SC_POST_AUTHOR', 'description' => __( 'Display the author\'s display name or ID. The optional argument "field" allows you to specify whether you wish to display the author\'s "display-name" or "id". [sv slug="sc-post-author" field="id" ]', SH_CD_SLUG ), 'premium' => true ],
 		'sc-post-counts' => [ 'class' => 'SC_POST_COUNTS', 'description' => __( 'Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]', SH_CD_SLUG ), 'premium' => true ],
-        'sc-user-counts' => [ 'class' => 'SC_USER_COUNTS', 'description' => __( 'Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"]', SH_CD_SLUG ), 'premium' => true ]
+        'sc-user-counts' => [ 'class' => 'SC_USER_COUNTS', 'description' => __( 'Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"]', SH_CD_SLUG ), 'premium' => true ],
+		'sc-user-profile-photo' => [ 'class' => 'SC_AVATAR', 'description' => __( 'Display the WordPress profile photo for the logged in user e.g. [sv slug="sc-user-profile-photo" width="150"] or [sv slug="sc-user-profile-photo"]. Please note, width defaults to 96px.', SH_CD_SLUG ), 'premium' => true ]
 
 		// '' => [ 'class' => '', 'description' => '', 'premium' => true ]
 	];
@@ -165,6 +166,38 @@ class SV_SC_RAND_NUMBER extends SV_Preset {
 		$max = ( false === empty( $args['max'] ) ) ? (int) $args['max'] : getrandmax();
 
 		return rand( $min, $max );
+	}
+}
+
+/**
+ * Avatar URL
+ *
+ * Class SV_SC_AVATAR
+ */
+class SV_SC_AVATAR extends SV_Preset {
+
+	public function init() {
+
+		$this->escape_method = false;
+	}
+
+	protected function unsanitised() {
+
+		$args 		= $this->get_arguments();
+		$user_id 	= get_current_user_id();
+
+//		if ( true === empty( $user_id ) ) {
+//			return '';
+//		}
+
+		$width 			= ( false === empty( $args['width'] ) ) ? (int) $args['width'] : 96;
+		$profile_url 	= get_avatar_url( $user_id, [ 'size' => $width ] );
+
+		if ( true === empty( $profile_url ) ){
+			return '';
+		}
+
+		return sprintf( '<img src="%1$s" />', esc_url( $profile_url ) );
 	}
 }
 
