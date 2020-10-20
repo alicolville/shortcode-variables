@@ -8,7 +8,7 @@ Stable tag: 3.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create your own shortcodes and assign text, html, etc to them. Use these across your site and only change in one place.
+Create your own shortcodes and assign text, html, etc to them. Use these across your site and only change in one place - saving time and effort!
 
 == Upgrade Notice ==
 
