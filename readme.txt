@@ -2,11 +2,13 @@
 Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
-Requires at least: 4.2.0
-Tested up to: 5.5.1
-Stable tag: 3.2.1
+Requires at least: 4.4.9
+Tested up to: 5.5.2
+Stable tag: 3.3
+Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Donate Link: https://www.paypal.me/yeken
 
 Create your own shortcodes and assign text, html, etc to them. Use these across your site and only change in one place - saving time and effort!
 
