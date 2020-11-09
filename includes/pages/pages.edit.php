@@ -2,7 +2,7 @@
 
 defined('ABSPATH') or die('Jog on!');
 
-function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
+function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL ) {
 
     if ( false === in_array( $action, [ 'add', 'edit', 'save' ] ) ) {
 	    return;
@@ -12,16 +12,9 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add' ) {
 		wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
 	}
 
-	$save_result = false;
-
 	// Saving / Inserting a shortcode?
-	if ( $action == 'save' ) {
-
-		$save_result = sh_cd_shortcodes_save_post();
-
-		$message = ( true === $save_result ) ? __( 'Your shortcode has been saved!', SH_CD_SLUG ) : __( 'There was an error saving your shortcode!' , SH_CD_SLUG );
-
-		sh_cd_message_display( $message, ! $save_result );
+	if ( false === $save_result ) {
+		sh_cd_message_display(  __( 'There was an error saving your shortcode!' , SH_CD_SLUG ), ! $save_result );
 	}
 	global $wpdb;
 
