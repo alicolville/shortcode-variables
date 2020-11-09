@@ -11,15 +11,28 @@ function sh_cd_pages_your_shortcodes() {
 
     $action = ( false === empty( $_GET['action'] ) ) ? $_GET['action'] : NULL;
 
+	$save_result = NULL;
+
+	// Do we have a save event?
+	if ( 'save' === $action ) {
+
+		$save_result = sh_cd_shortcodes_save_post();
+
+		// Success?
+		if ( true === $save_result ) {
+			$action = 'list';
+		}
+	}
+
     switch ( $action ) {
 
         case 'add':
         case 'edit':
-	    case 'save':
-	        sh_cd_pages_your_shortcodes_edit( $action );
+		case 'save':
+	        sh_cd_pages_your_shortcodes_edit( $action, $save_result );
             break;
         default:
-	        sh_cd_pages_your_shortcodes_list( $action );
+	        sh_cd_pages_your_shortcodes_list( $action, $save_result );
     }
 
 }
@@ -27,8 +40,9 @@ function sh_cd_pages_your_shortcodes() {
 /**
  * Display all shortcodes
  * @param null $action
+ * @param null $save_result
  */
-function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
+function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
 	if ( false === current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
@@ -49,6 +63,10 @@ function sh_cd_pages_your_shortcodes_list( $action = NULL ) {
 	    $message = ( true === $result ) ? __( 'Your shortcode has been deleted!', SH_CD_SLUG ) : __( 'There was an error deleting your shortcode!', SH_CD_SLUG );
 
 	    sh_cd_message_display( $message, ! $result );
+	}
+
+	if ( true == $save_result ) {
+		sh_cd_message_display( __( 'Your shortcode has been saved!', SH_CD_SLUG ) );
 	}
 
 	?>

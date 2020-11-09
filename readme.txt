@@ -146,6 +146,10 @@ Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
 
 == Changelog ==
 
+= 3.2 =
+
+* Improvement: Removed "Your shortcode has been saved" confirmation page.
+
 = 3.2.1 =
 
 * Readme tweaks.
