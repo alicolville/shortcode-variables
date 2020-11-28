@@ -19,10 +19,10 @@ function sh_cd_premade_shortcodes_page() {
 
 					<div class="meta-box-sortables ui-sortable">
 						<div class="postbox">
-							<h3 class="hndle"><span><?php _e( 'Pre-made Shortcode Variables' ); ?> </span></h3>
+							<h3 class="hndle"><span><?php _e( 'Pre-made Snippet Shortcodes' ); ?> </span></h3>
 							<div style="padding: 0px 15px 0px 15px">
 
-								<p><?php echo __('Below is a list of premade shortcode variables that you can use throughout your website.', SH_CD_SLUG ); ?></p>
+								<p><?php echo __('Below is a list of premade Snippet Shortcodes that you can use throughout your website.', SH_CD_SLUG ); ?></p>
                                 <h3><?php echo __('Premade Shortcodes', SH_CD_SLUG ); ?></h3>
 								<?php echo sh_cd_display_premade_shortcodes(); ?>
 								<br />

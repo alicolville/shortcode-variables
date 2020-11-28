@@ -59,7 +59,7 @@
                                                 <br />  <br />
                                                 <hr />
                                                 <h3><?php echo __( 'Premium Shortcodes', SH_CD_SLUG ); ?></h3>
-                                                <p><?php echo __( 'Upgrade to the Premium version of Shortcode Variables and receive the following shortcodes', SH_CD_SLUG ); ?>:</p>
+                                                <p><?php echo __( 'Upgrade to the Premium version of Snippet Shortcodes and receive the following shortcodes', SH_CD_SLUG ); ?>:</p>
 
                                                 <br />
                                         <?php

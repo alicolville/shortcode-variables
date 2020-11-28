@@ -29,11 +29,11 @@
 	function sh_cd_tinymce_js_variables() {
 
 		$config = [
-			'button-text' => 'Shortcode Variables',
+			'button-text' => 'Snippet Shortcodes',
 			'select-text' => 'Premade Variables',
 			'premium' => sh_cd_license_is_premium(),
 			'upgrade-url' => sh_cd_license_upgrade_link(),
-			'upgrade-text' => 'This is a premium feature. Would you like to upgrade Shortcode Variables?',
+			'upgrade-text' => 'This is a premium feature. Would you like to upgrade Snippet Shortcodes?',
 			'dialog-title' => 'Select a shortcode',
 			'dialog-label' => 'Shortcode',
 			'values-your' => sh_cd_tinymce_js_varables_shortcodes( 'your' ),
