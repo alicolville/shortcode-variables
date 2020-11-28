@@ -55,7 +55,7 @@ function sh_cd_shortcode_presets_render( $args ) {
 	if ( 'premium' === $preset['sh-cd-type'] && false === sh_cd_license_is_premium() ) {
 		return sprintf( '<p><strong>%s</strong> %s. <a href="%s">%s</a>.<p>',
 						__( 'Ooops!', SH_CD_SLUG ),
-						__('Unfortunately this is a Premium shortcode. You need to upgrade "Shortcode Variables" to use it', SH_CD_SLUG ),
+						__('Unfortunately this is a Premium shortcode. You need to upgrade "Snippet Shortcodes" to use it', SH_CD_SLUG ),
 						sh_cd_license_upgrade_link(),
 						__('Upgrade now', SH_CD_SLUG )
 		);

@@ -1,10 +1,10 @@
-=== Shortcode Variables ===
+=== Snippet Shortcodes ===
 Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 5.2
 Tested up to: 5.6
-Stable tag: 3.3.1
+Stable tag: 3.3.2
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,15 +14,15 @@ Create your own shortcodes and assign text, html, etc to them. Use these across 
 
 == Upgrade Notice ==
 
-* 3.0 - Support for multi-site variables!
+* 3.3.2 - Renamed plugin to Snippet Shortcodes!
 
 == Description ==
 
 = Documentation / UPGRADE =
 
-[Shortcode Variables Website](https://sv.yeken.uk/ "Shortcode Variables Website")
+[Snippet Shortcodes Website](https://sv.yeken.uk/ "Snippet Shortcodes Website")
 
-= WHAT IS SHORTCODE VARIABLES? =
+= WHAT IS Snippet Shortcodes? =
 
 Do you want to use the same snippet of text or HTML throughout your site but only have to change the value in one location? If so, this plugin maybe just what you need.
 
@@ -126,25 +126,29 @@ Paypal Donate: email@YeKen.uk
 
 1. Login into Wordpress Admin Panel
 2. Goto Plugins > Add New
-3. Search for "Shortcode Variables"
+3. Search for "Snippet Shortcodes"
 4. Click Install now and activate plugin
-5. Goto Settings > Shortcode Variables
+5. Goto Settings > Snippet Shortcodes
 
 == Frequently Asked Questions ==
 
-= How do I add / edit / delete Shortcode Variables =
+= How do I add / edit / delete Snippet Shortcodes =
 
-Login into Wordpress Admin Panel and goto Settings > Shortcode Variables
+Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 
 == Screenshots ==
 
-1. View all shortcode variables created.
-2. Add a new shortcode variable
-3. Edit an existing shortcode variable
-4. Using the shortcode variables into a page
-5. Shortcode variables rendered in a page
+1. View all Snippet Shortcodes created.
+2. Add a new Snippet Shortcode
+3. Edit an existing Snippet Shortcode
+4. Using the Snippet Shortcodes into a page
+5. Snippet Shortcodes rendered in a page
 
 == Changelog ==
+
+= 3.3.2 =
+
+* Renamed plugin to Snippet Shortcodes!
 
 = 3.3.1 =
 
@@ -311,7 +315,7 @@ This was a dummy release to fix an SVN issue with the 1.2 release!
 = 1.1 =
 * Added caching to SQL queries. Therefore making shortcode rendering faster and reduce load on mySQL.
 * TinyMCE editor for editing shortcode content.
-* You can now specify other shortcodes within your shortcode variables.
+* You can now specify other shortcodes within your Snippet Shortcodes.
 * Readme.txt fixes
 
 = 1.0 =
