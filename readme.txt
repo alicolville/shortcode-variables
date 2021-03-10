@@ -146,6 +146,10 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 
 == Changelog ==
 
+= 3.3.3 =
+
+* Updated "Tested upto" statement within readme.txt.
+
 = 3.3.2 =
 
 * Renamed plugin to Snippet Shortcodes!
