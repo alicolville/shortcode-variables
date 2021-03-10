@@ -3,8 +3,8 @@ Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 5.2
-Tested up to: 5.6
-Stable tag: 3.3.2
+Tested up to: 5.7
+Stable tag: 3.3.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -145,6 +145,10 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 5. Snippet Shortcodes rendered in a page
 
 == Changelog ==
+
+= 3.3.3 =
+
+* Updated "Tested upto" statement within readme.txt.
 
 = 3.3.2 =
 
