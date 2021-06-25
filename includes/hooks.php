@@ -41,11 +41,13 @@ add_action( 'admin_enqueue_scripts', 'sh_cd_enqueue_scripts' );
  */
 function sh_cd_upgrade() {
 
-	if ( true === update_option( 'sh-cd-version-number-2020', SH_CD_PLUGIN_VERSION ) ) {
+	if ( true === update_option( 'sh-cd-version-number-2021', SH_CD_PLUGIN_VERSION ) ) {
 
 		sh_cd_create_database_table();
 
 		sh_cd_create_database_table_multisite();
+
+		sh_cd_cron_licence_check();
 
 		do_action( 'sh-cd-upgrade' );
 	}
