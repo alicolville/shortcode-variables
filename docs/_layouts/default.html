@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: "en-US" }}">
+<head>
+
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  {% seo %}
+  <link rel="stylesheet" href="{{ "/assets/css/style.css?v=" | append: site.github.build_revision | relative_url }}">
+  <style>
+    .menu, .menu ul {
+      background: none;
+      border: none;
+      list-style: disc;
+      height: auto;
+    }
+    .menu li {
+      border: none;
+      display: list-item;
+      float: none;
+      height: auto;
+      margin-left:20px;
+      width: 100%;
+    }
+    .menu li a {
+      font-size: 14px;
+      color: #e72c59;
+      text-align: left;
+        height: 16px;
+    }
+      .menu ul {
+          margin-bottom: 0px;
+      }
+    blockquote {
+      color: green;
+    }
+    h1 {
+      font-size: 23px;
+    }
+
+    h1, h1 a:hover, h1 a:visited,
+      h2, h3, h4, h5, h6, th
+    {
+      color: #e72c59;
+    }
+    .product-logo {
+      margin-right: 10px;
+    }
+    a:hover {
+      font-weight: normal !important;
+    }
+      @media only screen and (max-width: 600px) {
+          .site-description {
+            display: none;
+          }
+        }
+
+
+        /* Hide checkbox */
+        #navcheck {
+          visibility: hidden;
+        }
+
+        /* Mobile breakpoint */
+        @media (max-width: 767px) {
+
+          .menu-label {
+            user-select: none;
+          }
+
+          .menu {
+                display: none;
+                border-top: 1px solid #e5e5e5;
+                padding-top: 5px;
+
+          }
+
+         .view {
+              text-align: right;
+              display: none;
+          }
+
+          #navcheck:checked + .menu {
+            display: block;
+          }
+
+            #navcheck:checked + .view {
+                display: block;
+            }
+        }
+
+        /* Desktop breakpoint */
+        @media (min-width: 768px) {
+          .menu-label {
+            display: none;
+          }
+        }
+  </style>
+  <!--[if lt IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<div class="wrapper">
+  <header>
+
+
+    <h1>
+        <a href="{{ site.baseurl }}/">
+          <img src="{{site.logo | relative_url}}" alt="Logo" width="50" height="50" align="left" class="product-logo" />
+          {{ site.title | default: site.github.repository_name }}
+        </a>
+    </h1>
+
+    <p class="site-description">{{ site.description | default: site.github.project_tagline }}</p>
+      <label class="menu-label" for="navcheck"><img src="{{ site.baseurl }}/assets/images/menu.png"/></label>
+      <input type="checkbox" id="navcheck" name="navcheck" />
+    <ul class="menu">
+        <li><a href="{{ site.baseurl }}/">Home</a></li>
+        <li><a href="https://shop.yeken.uk/get-a-trial-license/">Get a trial</a></li>
+        <li><a href="https://shop.yeken.uk/product/shortcode-variables/">Upgrade</a></li>
+        <li><a href="https://github.com/alicolville/shortcode-variables/releases">Release notes</a></li>
+        <li>
+            <a href="{{ site.baseurl }}/features.html">Features</a>
+            <ul>
+              <li><a href="{{ site.baseurl }}/shortcodes-own.html">Your own shortcodes</a></li>
+              <li><a href="{{ site.baseurl }}/shortcodes-free.html">Free helper shortcodes</a></li>
+              <li><a href="{{ site.baseurl }}/shortcodes-premium.html">Premium helper shortcodes</a></li>
+            </ul>
+        </li>
+        <li><a href="https://profiles.wordpress.org/aliakro/#content-plugins">Other Plugins</a></li>
+        <li><a href="{{ site.baseurl }}/contact.html">Contact</a></li>
+    </ul>
+
+    <p class="view">
+        <small>More:</small><br />
+        <a href="https://wordpress.org/plugins/shortcode-variables/">WordPress.org</a> / <a href="{{ site.github.repository_url }}">GitHub</a> / <a href="https://www.yeken.uk">YeKen.uk</a>
+    </p>
+
+  </header>
+  <section>
+
+    {{ content }}
+
+  </section>
+</div>
+<script src="{{ "/assets/js/scale.fix.js" | relative_url }}"></script>
+{% if site.google_analytics %}
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', '{{ site.google_analytics }}', 'auto');
+  ga('send', 'pageview');
+</script>
+{% endif %}
+</body>
+</html>
