@@ -5,7 +5,7 @@
 Create your own Shortcodes and assign content to them. Using the standard WP editor, you can add text, HTML, JavaScript, images or other elements that your WordPress install and plugins allow. The main advantage is ability to create a shortcode once and re-use it throughout your site.
 
 ```
-[ sv slug="your-slug-name"]
+[sv slug="your-slug-name"]
 ```
 
 The plugin is available in a [Free](https://wordpress.org/plugins/shortcode-variables/) and [Premium](https://shop.yeken.uk/product/shortcode-variables/) versions. This documentation will help you to set up Meal Tracker to suit your business.  
