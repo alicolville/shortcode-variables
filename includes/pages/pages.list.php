@@ -16,7 +16,8 @@ function sh_cd_pages_your_shortcodes() {
 
 		$save_result = false;
 
-		if ( false === sh_cd_reached_free_limit() ) {
+		if ( false === empty( $_POST[ 'id'] ) ||
+			  	false === sh_cd_reached_free_limit() ) {
 			$save_result = sh_cd_shortcodes_save_post();
 
 			// Success?
