@@ -53,6 +53,8 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 		wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
 	}
 
+	$is_premium = sh_cd_license_is_premium();
+
 	// Cloning a shortcode?
     if ( 'clone' === $action && false === empty( $_GET['id'] ) ) {
 
@@ -75,7 +77,6 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 	}
 
 	?>
-
 	<div class="wrap">
 		<div id="icon-options-general" class="icon32"></div>
 		<div id="poststuff">
@@ -86,23 +87,17 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
                             <h3 class="hndle"><span><?php echo __( 'Your existing Snippet Shortcodes', SH_CD_SLUG ); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
                                 <p style="text-align: right">
-									<?php if ( false === sh_cd_reached_free_limit() ): ?>
-                                    	<a class="button-primary" href="<?php echo sh_cd_link_your_shortcodes_add() ?>"><?php echo __( 'Add a new Snippet Shortcode', SH_CD_SLUG ); ?></a>
-									<?php else: ?>
-										<a class="button-primary" href="<?php echo sh_cd_license_upgrade_link() ?>"><?php echo __( 'Free limit reached: Upgrade now', SH_CD_SLUG ); ?></a>
-									<?php endif; ?>
-                                </p>
-                                <p style="text-align: right">
-                                    <?php
+									<?php
+										if ( false === $is_premium ) {
+											sh_cd_upgrade_button( 'button-secondary', sh_cd_license_upgrade_link() );
+										}
 
-                                        sh_cd_upgrade_button( 'sh-cd-hide', sh_cd_license_upgrade_link() );
-
-                                    ?>
+										sc_cd_display_add_button();
+									?>
                                 </p>
                                 <table class="widefat sh-cd-table" width="100%">
                                     <tr class="row-title">
-                                        <th class="row-title" width="15%"><?php echo __( 'Slug', SH_CD_SLUG ); ?></th>
-                                        <th width="20%"><?php echo __( 'Shortcode', SH_CD_SLUG ); ?></th>
+                                        <th class="row-title" width="20%"><?php echo __( 'Shortcode', SH_CD_SLUG ); ?></th>
                                         <th width="*"><?php echo __( 'Shortcode content', SH_CD_SLUG ); ?></th>
                                         <th width="60px" align="middle"><?php echo __( 'Global', SH_CD_SLUG ); ?></th>
                                         <th width="60px" align="middle"><?php echo __( 'Enabled', SH_CD_SLUG ); ?></th>
@@ -124,34 +119,33 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
                                             $id = (int) $shortcode['id'];
 
-                                            printf(
-                                                '<tr class="%1$s">
-                                                    <td><a href="%2$s">%3$s</a></td>
-                                                    <td>[%4$s slug="%3$s"]</td>
-                                                    <td align="right">
-                                                        <textarea class="large-text inline-text-shortcode" id="sh-cd-text-area-%8$d" data-id="%8$d">%5$s</textarea>
-                                                        <a class="button button-small sh-cd-inline-save-button" id="sh-cd-save-button-%8$d" data-id="%8$d"><i class="fas fa-save"></i> %11$s</a>
-                                                    </td>
-                                                    <td align="middle"><a class="button button-small toggle-multisite" id="sc-cd-multisite-%8$s" data-id="%8$s"><i class="fas %10$s"></i></a></td>
-                                                    <td align="middle"><a class="button button-small toggle-disable" id="sc-cd-toggle-%8$s" data-id="%8$s"><i class="fas %6$s"></i></a></td>
-                                                    <td width="100">
-                                                        <a class="button button-small" href="%9$s"><i class="far fa-clone"></i></a>
-                                                        <a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
-                                                        <a class="button button-small" href="%7$s" onclick="return confirm(\'%12$s\');"><i class="fas fa-trash-alt"></i></a>
-                                                    </td>
-                                                </tr>',
-                                                $class,
-                                                $link . '&action=edit&id=' . $id,
-                                                esc_html( $shortcode['slug'] ),
-                                                SH_CD_SHORTCODE,
-                                                esc_html( stripslashes( $shortcode['data'] ) ),
-                                                ( 1 === (int) $shortcode['disabled'] ) ? 'fa-times' : 'fa-check',
-                                                $link . '&action=delete&id=' . $id,
-	                                            $id,
-                                                ( true === sh_cd_license_is_premium() ) ? $link . '&action=clone&id=' . $id : sh_cd_license_upgrade_link(),
-	                                            ( 1 === (int) $shortcode['multisite'] ) ? 'fa-check' : 'fa-times',
-												__( 'Save', SH_CD_SLUG ),
-												__( 'Are you sure you want to delete this shortcode?', SH_CD_SLUG )
+                                            printf(	'<tr class="%1$s">
+														<td><a href="%2$s">[%4$s slug="%3$s"]</a></td>
+														<td align="right">
+															<textarea class="large-text inline-text-shortcode sh-cd-toggle-%13$s" id="sh-cd-text-area-%8$d" data-id="%8$d" %13$s>%5$s</textarea>
+															<a class="button button-small sh-cd-inline-save-button sh-cd-toggle-%13$s" id="sh-cd-save-button-%8$d" data-id="%8$d" %13$s><i class="fas fa-save"></i> %11$s</a>
+														</td>
+														<td align="middle"><a class="button button-small toggle-multisite sh-cd-toggle-%13$s" id="sc-cd-multisite-%8$s" data-id="%8$s" %13$s ><i class="fas %10$s"></i></a></td>
+														<td align="middle"><a class="button button-small toggle-disable sh-cd-toggle-%13$s" id="sc-cd-toggle-%8$s" data-id="%8$s" %13$s ><i class="fas %6$s"></i></a></td>
+														<td width="100">
+															<a class="button button-small sh-cd-toggle-%13$s" %13$s href="%9$s"><i class="far fa-clone"></i></a>
+															<a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
+															<a class="button button-small" href="%7$s" onclick="return confirm(\'%12$s\');"><i class="fas fa-trash-alt"></i></a>
+														</td>
+													</tr>',
+													$class,
+													$link . '&action=edit&id=' . $id,
+													esc_html( $shortcode['slug'] ),
+													SH_CD_SHORTCODE,
+													( true === $is_premium ) ? esc_html( stripslashes( $shortcode['data'] ) ) : __( 'Upgrade for inline editing and toggles.', SH_CD_SLUG ),
+													( 1 === (int) $shortcode['disabled'] ) ? 'fa-times' : 'fa-check',
+													$link . '&action=delete&id=' . $id,
+													$id,
+													( true === $is_premium ) ? $link . '&action=clone&id=' . $id : sh_cd_license_upgrade_link(),
+													( 1 === (int) $shortcode['multisite'] ) ? 'fa-check' : 'fa-times',
+													__( 'Save', SH_CD_SLUG ),
+													__( 'Are you sure you want to delete this shortcode?', SH_CD_SLUG ),
+													( false === $is_premium ) ? 'disabled' : ''
                                             );
                                         }
                                     }
@@ -164,6 +158,9 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
                                     }
                                     ?>
                                 </table>
+								<p style="text-align: right">
+									<?php sc_cd_display_add_button(); ?>
+								</p>
                                 <br clear="all" />
                             </div>
                         </div>
@@ -175,3 +172,15 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 	<?php
 }
 
+/**
+ * Render button for adding a shortcode
+ */
+function sc_cd_display_add_button() {
+
+	$limit_reached = sh_cd_reached_free_limit();
+
+	printf( '&nbsp;<a class="button-primary" href="%1$s">%2$s</a>',
+		( false === $limit_reached ) ? sh_cd_link_your_shortcodes_add() : sh_cd_license_upgrade_link(),
+		( false === $limit_reached ) ? __( 'Add a new Snippet Shortcode', SH_CD_SLUG ) : __( 'Free limit reached: Upgrade now', SH_CD_SLUG )
+	);
+}

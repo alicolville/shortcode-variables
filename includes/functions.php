@@ -398,6 +398,9 @@ function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 
 /**
  * Display an upgrade button
+ *
+ * @param string $css_class
+ * @param null $link
  */
 function sh_cd_upgrade_button( $css_class = '', $link = NULL ) {
 
