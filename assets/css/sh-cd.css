@@ -14,9 +14,15 @@
   border-bottom: 1px solid #CCCCCC;
 }
 .sh-cd-button-row {
-	border-top: 1px solid #CCCCCC;
-	margin-top: 20px;
-	padding: 20px 0px 10px 0px;
+	margin-top: 10px;
+	padding: 10px 0px 10px 0px;
+  text-align: right;
+}
+.sh-cd-border-bottom {
+  border-bottom: 1px solid #CCCCCC;
+}
+.sh-cd-border-top {
+  border-top: 1px solid #CCCCCC;
 }
 .sh-cd-hide {
 	display: none !important;
