@@ -148,8 +148,10 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 
 = 3.4 =
 
-* Updated links to new documentation website: https://snippet-shortcodes.yeken.uk/
-* Tweaked Upgrade URL and default price.
+* Bug fix: Fixed an issue where license price wasn't being displayed correctly.
+* Change: Updated links to new documentation website: https://snippet-shortcodes.yeken.uk/
+* Change: Free users are now limited to 15 shortcodes.
+* Change: Tweaked Upgrade URL and default price.
 
 = 3.3.3 =
 

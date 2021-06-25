@@ -16,6 +16,11 @@ function sh_cd_pages_your_shortcodes() {
 	// Do we have a save event?
 	if ( 'save' === $action ) {
 
+		// Have we reached the free limit of shortcodes?
+		if ( true === sh_cd_reached_free_limit() ) {
+
+		}
+
 		$save_result = sh_cd_shortcodes_save_post();
 
 		// Success?
@@ -81,7 +86,11 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
                             <h3 class="hndle"><span><?php echo __( 'Your existing Snippet Shortcodes', SH_CD_SLUG ); ?></span></h3>
                             <div style="padding: 0px 15px 0px 15px">
                                 <p style="text-align: right">
-                                    <a class="button-primary" href="<?php echo sh_cd_link_your_shortcodes_add() ?>"><?php echo __( 'Add a new Snippet Shortcode', SH_CD_SLUG ); ?></a>
+									<?php if ( false === sh_cd_reached_free_limit() ): ?>
+                                    	<a class="button-primary" href="<?php echo sh_cd_link_your_shortcodes_add() ?>"><?php echo __( 'Add a new Snippet Shortcode', SH_CD_SLUG ); ?></a>
+									<?php else: ?>
+										<a class="button-primary" href="<?php echo sh_cd_license_upgrade_link() ?>"><?php echo __( 'Free limit reached: Upgrade now', SH_CD_SLUG ); ?></a>
+									<?php endif; ?>
                                 </p>
                                 <p style="text-align: right">
                                     <?php

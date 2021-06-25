@@ -403,7 +403,7 @@ function sh_cd_upgrade_button( $css_class = '', $link = NULL ) {
 
     $link = ( false === empty( $link ) ) ? $link : SH_CD_UPGRADE_LINK . '?hash=' . sh_cd_generate_site_hash() ;
 
-	echo sprintf('<a href="%s" class="button-primary sh-cd-upgrade-button%s"><i class="far fa-credit-card"></i> %s £%d %s</a>',
+	echo sprintf('<a href="%s" class="button-primary sh-cd-upgrade-button%s"><i class="far fa-credit-card"></i> %s £%s %s</a>',
 		esc_url( $link ),
 		esc_attr( ' ' . $css_class ),
         __( 'Upgrade to Premium for ', SH_CD_SLUG ),
@@ -455,4 +455,23 @@ function sh_cd_multisite_slugs() {
 	sh_cd_cache_set( 'sh-cd-multisite-slugs', $slugs, 30 );
 
 	return ( true === is_array( $slugs ) ) ? $slugs : [];
+}
+
+/**
+ * Have we reached the limit of free shortcodes?
+ * @return bool
+ */
+function sh_cd_reached_free_limit() {
+
+	if ( true === sh_cd_license_is_premium() ) {
+		return false;
+	}
+
+	$existing_shortcodes = sh_cd_db_shortcodes_count();
+
+	if ( true === empty( $existing_shortcodes ) ) {
+		return false;
+	}
+
+	return ( (int) $existing_shortcodes >= 15 );
 }
