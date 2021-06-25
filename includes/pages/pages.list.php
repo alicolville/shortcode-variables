@@ -14,11 +14,6 @@ function sh_cd_pages_your_shortcodes() {
 	// Do we have a save event?
 	if ( 'save' === $action ) {
 
-		// Have we reached the free limit of shortcodes?
-		if ( true === sh_cd_reached_free_limit() ) {
-
-		}
-
 		$save_result = sh_cd_shortcodes_save_post();
 
 		// Success?
