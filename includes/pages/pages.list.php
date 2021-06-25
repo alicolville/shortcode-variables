@@ -7,8 +7,6 @@ defined('ABSPATH') or die('Jog on!');
  */
 function sh_cd_pages_your_shortcodes() {
 
-    printf( '<h1>%s</h1>', __( 'Your Snippet Shortcodes', SH_CD_SLUG ) );
-
     $action = ( false === empty( $_GET['action'] ) ) ? $_GET['action'] : NULL;
 
 	$save_result = NULL;
@@ -84,12 +82,14 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 				<div id="post-body-content">
                     <div class="meta-box-sortables ui-sortable">
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __( 'Your existing Snippet Shortcodes', SH_CD_SLUG ); ?></span></h3>
+							<div class="postbox-header">
+                            	<h2 class="hndle"><span><?php echo __( 'Your existing Snippet Shortcodes', SH_CD_SLUG ); ?></span></h2>
+							</div>
                             <div style="padding: 0px 15px 0px 15px">
                                 <p style="text-align: right">
 									<?php
 										if ( false === $is_premium ) {
-											sh_cd_upgrade_button( 'button-secondary', sh_cd_license_upgrade_link() );
+											sh_cd_upgrade_button( 'sh-cd-hide', sh_cd_license_upgrade_link() );
 										}
 
 										sc_cd_display_add_button();
