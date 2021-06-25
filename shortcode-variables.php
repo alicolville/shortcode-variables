@@ -5,9 +5,9 @@ defined('ABSPATH') or die("Jog on!");
 /**
  * Plugin Name: Snippet Shortcodes
  * Description: Create your own shortcodes and assign text / variables to it or use our premade ones. You can then embed these shortcodes throughout your entire site and only have to change the value in one place.
- * Version: 3.3.3
+ * Version: 3.4
  * Requires at least:   5.2
- * Tested up to: 		5.7
+ * Tested up to: 		5.7.2
  * Requires PHP:        7.2
  * Author:              Ali Colville
  * Author URI:          https://www.YeKen.uk
@@ -16,7 +16,7 @@ defined('ABSPATH') or die("Jog on!");
  * Text Domain:         shortcode-variables
  */
 
-/*  Copyright 2020 YeKen.uk
+/*  Copyright 2021 YeKen.uk
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -34,15 +34,15 @@ defined('ABSPATH') or die("Jog on!");
 
 define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
-define( 'SH_CD_PLUGIN_VERSION', '3.3.3' );
+define( 'SH_CD_PLUGIN_VERSION', '3.4' );
 define( 'SH_CD_PLUGIN_NAME', 'Snippet Shortcodes' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
 define( 'SH_CD_PREFIX', 'sh-cd-' );
 define( 'SH_CD_SHORTCODE', 'sv' );
-define( 'SH_CD_PREMIUM_PRICE', 10.00 );
-define( 'SH_CD_UPGRADE_LINK', 'https://sv.yeken.uk/upgrade' );
+define( 'SH_CD_PREMIUM_PRICE', 2.99 );
+define( 'SH_CD_UPGRADE_LINK', 'https://shop.yeken.uk/product/shortcode-variables/' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files

@@ -7,7 +7,7 @@
 * [Free helper shortcodes]({{ site.baseurl }}/shortcodes-free.html) to make life easier.
 * Process shortcodes within WordPress menu titles.
 
-## Premium license (£3.99 a year)
+## Premium license (£2.99 a year)
 ### *Includes core features and the following:*
 
 Besides the features listed under core, the Premium version benefits from the following:  
