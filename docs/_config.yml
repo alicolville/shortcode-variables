@@ -1,0 +1,7 @@
+theme: jekyll-theme-minimal
+title: Snippet Shortcodes
+description: Documentation and tips for setting up Snippet Shortcodes on your WordPress site.
+baseurl: /
+logo: assets/images/product-logo.png
+kramdown:
+  smart_quotes: ["apos", "apos", "quot", "quot"]
