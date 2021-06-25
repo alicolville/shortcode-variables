@@ -14,11 +14,15 @@ function sh_cd_pages_your_shortcodes() {
 	// Do we have a save event?
 	if ( 'save' === $action ) {
 
-		$save_result = sh_cd_shortcodes_save_post();
+		$save_result = false;
 
-		// Success?
-		if ( true === $save_result ) {
-			$action = 'list';
+		if ( false === sh_cd_reached_free_limit() ) {
+			$save_result = sh_cd_shortcodes_save_post();
+
+			// Success?
+			if ( true === $save_result ) {
+				$action = 'list';
+			}
 		}
 	}
 
@@ -176,6 +180,6 @@ function sc_cd_display_add_button() {
 
 	printf( '&nbsp;<a class="button-primary" href="%1$s">%2$s</a>',
 		( false === $limit_reached ) ? sh_cd_link_your_shortcodes_add() : sh_cd_license_upgrade_link(),
-		( false === $limit_reached ) ? __( 'Add a new Snippet Shortcode', SH_CD_SLUG ) : __( 'Free limit reached: Upgrade now', SH_CD_SLUG )
+		( false === $limit_reached ) ? __( 'Add a new Snippet Shortcode', SH_CD_SLUG ) : __( 'You must upgrade to add more shortcodes', SH_CD_SLUG )
 	);
 }

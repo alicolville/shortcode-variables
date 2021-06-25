@@ -1,7 +1,7 @@
   
 ## Core (free) features
 
-* Create your [own shortcodes]({{ site.baseurl }}/shortcodes-own.html) once and place in multiple locations throughout your website.
+* Create up to 15 of your [own shortcodes]({{ site.baseurl }}/shortcodes-own.html).
 * Update the shortcode and watch it change throughout the website.
 * [Parameters]({{ site.baseurl }}/shortcodes-own.html) to extend your shortcodes.
 * [Free helper shortcodes]({{ site.baseurl }}/shortcodes-free.html) to make life easier.
@@ -12,6 +12,7 @@
 
 Besides the features listed under core, the Premium version benefits from the following:  
 
+* **Unlimited shortcodes**. Create as many of your own shortcodes as you like.
 * Multi-site support (a license is required per site).
 * Inline editing of your own shortcodes.
 * The ability to enable and disable your shortcodes with one click.

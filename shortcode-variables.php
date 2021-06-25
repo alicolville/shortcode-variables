@@ -62,4 +62,5 @@ include_once SH_CD_ABSPATH . 'includes/pages/pages.list.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.premade.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.edit.php';
 include_once SH_CD_ABSPATH . 'includes/pages/pages.license.php';
+include_once SH_CD_ABSPATH . 'includes/pages/pages.help.php';
 include_once SH_CD_ABSPATH . 'includes/tinymce.php';
