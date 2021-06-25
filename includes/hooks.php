@@ -19,6 +19,7 @@ function sh_cd_build_admin_menu() {
 	$menu_text = ( true === sh_cd_license_is_premium() ) ? __( 'Your License', SH_CD_SLUG ) : __( 'Upgrade to Premium', SH_CD_SLUG );
 
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', $menu_text,  $menu_text, 'manage_options', 'sh-cd-shortcode-variables-license', 'sh_cd_advertise_pro');
+	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Help', SH_CD_SLUG ),  __( 'Help', SH_CD_SLUG ), 'manage_options', 'sh-cd-help', 'sh_cd_help_page' );
 }
 add_action( 'admin_menu', 'sh_cd_build_admin_menu' );
 
@@ -40,11 +41,13 @@ add_action( 'admin_enqueue_scripts', 'sh_cd_enqueue_scripts' );
  */
 function sh_cd_upgrade() {
 
-	if ( true === update_option( 'sh-cd-version-number-2020', SH_CD_PLUGIN_VERSION ) ) {
+	if ( true === update_option( 'sh-cd-version-number-2021', SH_CD_PLUGIN_VERSION ) ) {
 
 		sh_cd_create_database_table();
 
 		sh_cd_create_database_table_multisite();
+
+		sh_cd_cron_licence_check();
 
 		do_action( 'sh-cd-upgrade' );
 	}

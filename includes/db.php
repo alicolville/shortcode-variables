@@ -77,6 +77,18 @@ function sh_cd_db_shortcodes_all_enabled() {
 }
 
 /**
+ * Fetch a count of all shortcodes
+ *
+ * @return bool
+ */
+function sh_cd_db_shortcodes_count() {
+
+	global $wpdb;
+
+	return $wpdb->get_var( 'SELECT count(id) FROM ' . $wpdb->prefix . SH_CD_TABLE );
+}
+
+/**
  * Fetch a shortcode by ID (mainly used for quick lookups in admin)
  *
  * @param $id

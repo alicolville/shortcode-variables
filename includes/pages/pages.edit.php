@@ -34,7 +34,9 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
                         <div class="postbox">
-                            <h3 class="hndle"><span><?php echo __( 'Add / Edit a shortcode', SH_CD_SLUG ); ?></span></h3>
+							<div class="postbox-header">
+                          	  <h2 class="hndle"><span><?php echo __( 'Add / Edit a shortcode', SH_CD_SLUG ); ?></span></h2>
+							</div>
                             <div style="padding: 0px 15px 0px 15px">
                             <?php
 
@@ -51,7 +53,12 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
                                 else:
                                 ?>
                                     <form method="post" action="<?php echo sh_cd_link_your_shortcodes() . '&action=save'; ?>">
-                                        <input type="hidden" id="id" name="id" value="<?php echo esc_attr( $shortcode['id'] ); ?>" />
+										<input type="hidden" id="id" name="id" value="<?php echo esc_attr( $shortcode['id'] ); ?>" />
+
+										<div class="sh-cd-button-row sh-cd-border-bottom">
+											<a class="comment-submit button" href="<?php echo sh_cd_link_your_shortcodes(); ?>"><?php echo __( 'Cancel', SH_CD_SLUG ); ?></a>
+											<input name="submit_button" type="submit" value="Save Shortcode" class="comment-submit button button-primary">
+										</div>
                                         <h4><?php echo __( 'Slug', SH_CD_SLUG ); ?></h4>
                                         <p><small><?php echo __( 'Specify the unique identifier for this shortcode', SH_CD_SLUG ); ?>.</small></p>
                                         <input type="text" required class="regular-text" size="100" id="slug" name="slug"
@@ -91,7 +98,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
                                             </p>
                                         <?php endif; ?>
 
-                                        <div class="sh-cd-button-row">
+                                        <div class="sh-cd-button-row sh-cd-border-top">
                                             <a class="comment-submit button" href="<?php echo sh_cd_link_your_shortcodes(); ?>"><?php echo __( 'Cancel', SH_CD_SLUG ); ?></a>
                                             <input name="submit_button" type="submit" value="Save Shortcode" class="comment-submit button button-primary">
                                         </div>

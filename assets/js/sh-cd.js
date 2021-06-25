@@ -169,7 +169,6 @@ jQuery( document ).ready(function ($) {
      */
     function sh_cd_promo() {
         sh_cd_show_upgrade_buttons();
-        alert( 'Upgrade to Premium to enable this feature');
     }
 
     /**

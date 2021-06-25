@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 3.3.3
+Stable tag: 3.4
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,15 +14,15 @@ Create your own shortcodes and assign text, html, etc to them. Use these across 
 
 == Upgrade Notice ==
 
-* 3.3.2 - Renamed plugin to Snippet Shortcodes!
+* 3.4 -
 
 == Description ==
 
-= Documentation / UPGRADE =
+= DOCUMENTATON / UPGRADE =
 
-[Snippet Shortcodes Website](https://sv.yeken.uk/ "Snippet Shortcodes Website")
+[Snippet Shortcodes Website](https://snippet-shortcodes.yeken.uk/ "Snippet Shortcodes Website")
 
-= WHAT IS Snippet Shortcodes? =
+= WHAT IS SNIPPET SHORTCODES? =
 
 Do you want to use the same snippet of text or HTML throughout your site but only have to change the value in one location? If so, this plugin maybe just what you need.
 
@@ -145,6 +145,14 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 5. Snippet Shortcodes rendered in a page
 
 == Changelog ==
+
+= 3.4 =
+
+* Improvement: Cosmetic tweaks to shortcode list table.
+* Bug fix: Fixed an issue where license price wasn't being displayed correctly.
+* Change: Updated links to new documentation website: https://snippet-shortcodes.yeken.uk/
+* Change: Free users are now limited to 15 shortcodes.
+* Change: Tweaked Upgrade URL and default price.
 
 = 3.3.3 =
 

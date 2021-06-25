@@ -19,7 +19,9 @@ function sh_cd_premade_shortcodes_page() {
 
 					<div class="meta-box-sortables ui-sortable">
 						<div class="postbox">
-							<h3 class="hndle"><span><?php _e( 'Pre-made Snippet Shortcodes' ); ?> </span></h3>
+							<div class="postbox-header">
+								<h2 class="hndle"><span><?php echo __( 'Pre-made Snippet Shortcodes', SH_CD_SLUG ); ?> </span></h2>
+							</div>
 							<div style="padding: 0px 15px 0px 15px">
 
 								<p><?php echo __('Below is a list of premade Snippet Shortcodes that you can use throughout your website.', SH_CD_SLUG ); ?></p>
