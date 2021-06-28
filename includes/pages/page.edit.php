@@ -8,9 +8,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
 	    return;
 	}
 
-	if ( false === current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
-	}
+	sh_cd_permission_check();
 
 	// Saving / Inserting a shortcode?
 	if ( false === $save_result ) {

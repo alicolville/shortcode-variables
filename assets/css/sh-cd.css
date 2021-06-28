@@ -33,3 +33,19 @@
 .sh-cd-toggle-disabled i {
  color: #CCCCCC !important;
 }
+.sh-cd-disabled *, .sh-cd-disabled-pro-plus *
+{
+  color: #CCCCCC !important;
+}
+.sh-cd-disabled th::after {
+  content: "\A(Premium feature)";
+  color: #ef8988;
+  font-weight: bold;
+  clear: both;
+  width:100%;
+  white-space: pre;
+}
+.sh-cd-advertise-premium .hndle {
+  background-color: #92a8d1;
+  color: #FFFFFF;
+}

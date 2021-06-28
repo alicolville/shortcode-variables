@@ -4,6 +4,8 @@ defined('ABSPATH') or die('Jog on!');
 
 function sh_cd_premade_shortcodes_page() {
 
+	sh_cd_permission_check();
+
 	?>
 
 	<div class="wrap">

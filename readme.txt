@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 5.2
 Tested up to: 5.7
-Stable tag: 3.4.1
+Stable tag: 3.5
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -14,7 +14,7 @@ Create your own shortcodes and assign text, html, etc to them. Use these across 
 
 == Upgrade Notice ==
 
-* 3.4 -
+* 3.5 - New settings page. Allow authors and editors to update your shortcodes.
 
 == Description ==
 
@@ -145,6 +145,11 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 5. Snippet Shortcodes rendered in a page
 
 == Changelog ==
+
+= 3.5 =
+
+* New Feature: New settings page.
+* New Feature: Allow authors and editors to view and edit your shortcodes.
 
 = 3.4.1 =
 

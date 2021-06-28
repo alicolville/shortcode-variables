@@ -5,7 +5,7 @@ defined('ABSPATH') or die("Jog on!");
 /**
  * Plugin Name: Snippet Shortcodes
  * Description: Create your own shortcodes and assign text / variables to it or use our premade ones. You can then embed these shortcodes throughout your entire site and only have to change the value in one place.
- * Version: 3.4.1
+ * Version: 3.5
  * Requires at least:   5.2
  * Tested up to: 		5.7.2
  * Requires PHP:        7.2
@@ -41,7 +41,7 @@ define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
 define( 'SH_CD_PREFIX', 'sh-cd-' );
 define( 'SH_CD_SHORTCODE', 'sv' );
-define( 'SH_CD_PREMIUM_PRICE', 2.99 );
+define( 'SH_CD_PREMIUM_PRICE', 1.99 );
 define( 'SH_CD_UPGRADE_LINK', 'https://shop.yeken.uk/product/shortcode-variables/' );
 
 // -----------------------------------------------------------------------------------------
@@ -58,9 +58,10 @@ include_once SH_CD_ABSPATH . 'includes/shortcode.user.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.presets.core.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.presets.free.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.presets.premium.php';
-include_once SH_CD_ABSPATH . 'includes/pages/pages.list.php';
-include_once SH_CD_ABSPATH . 'includes/pages/pages.premade.php';
-include_once SH_CD_ABSPATH . 'includes/pages/pages.edit.php';
-include_once SH_CD_ABSPATH . 'includes/pages/pages.license.php';
-include_once SH_CD_ABSPATH . 'includes/pages/pages.help.php';
+include_once SH_CD_ABSPATH . 'includes/pages/page.list.php';
+include_once SH_CD_ABSPATH . 'includes/pages/page.premade.php';
+include_once SH_CD_ABSPATH . 'includes/pages/page.edit.php';
+include_once SH_CD_ABSPATH . 'includes/pages/page.settings.php';
+include_once SH_CD_ABSPATH . 'includes/pages/page.license.php';
+include_once SH_CD_ABSPATH . 'includes/pages/page.help.php';
 include_once SH_CD_ABSPATH . 'includes/tinymce.php';

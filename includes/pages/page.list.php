@@ -47,9 +47,7 @@ function sh_cd_pages_your_shortcodes() {
  */
 function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
-	if ( false === current_user_can( 'manage_options' ) )  {
-		wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
-	}
+	sh_cd_permission_check();
 
 	$is_premium = sh_cd_license_is_premium();
 

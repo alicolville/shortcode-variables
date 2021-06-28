@@ -478,3 +478,49 @@ function sh_cd_reached_free_limit() {
 
 	return ( (int) $existing_shortcodes >= 15 );
 }
+
+/**
+ * Get the minimum user role allowed for viewing data pages in admin
+ * @return mixed|void
+ */
+function sh_cd_permission_role() {
+
+	// If not premium, then admin only
+	if ( false === sh_cd_license_is_premium() ) {
+		return 'manage_options';
+	}
+
+	$permission_role = get_option( 'sh-cd-edit-permissions', 'manage_options' );
+
+	return ( false === empty( $permission_role ) ) ? $permission_role : 'manage_options';
+}
+
+/**
+ * Does the user have the correct permissions to view this page?
+ */
+function sh_cd_permission_check() {
+
+	$allowed_viewer = sh_cd_permission_role();
+
+	if ( false === current_user_can( $allowed_viewer ) )  {
+		wp_die( __( 'You do not have sufficient permissions to access this page.', SH_CD_SLUG ) );
+	}
+}
+
+/**
+ * Display upgrade notice
+ *
+ * @param bool $pro_plus
+ */
+function sh_cd_display_pro_upgrade_notice( ) {
+	?>
+
+	<div class="postbox sh-cd-advertise-premium">
+		<h3 class="hndle"><span><?php echo __( 'Upgrade Snippet Shortcodes and get more features!', SH_CD_SLUG ); ?> </span></h3>
+		<div style="padding: 0px 15px 0px 15px">
+			<p><a href="<?php echo esc_url( admin_url('admin.php?page=sh-cd-shortcode-variables-license') ); ?>" class="button-primary"><?php echo __( 'Upgrade now', SH_CD_SLUG ); ?></a></p>
+		</div>
+	</div>
+
+	<?php
+}
