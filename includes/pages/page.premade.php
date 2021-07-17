@@ -26,7 +26,9 @@ function sh_cd_premade_shortcodes_page() {
 							</div>
 							<div style="padding: 0px 15px 0px 15px">
 
-								<p><?php echo __('Below is a list of premade Snippet Shortcodes that you can use throughout your website.', SH_CD_SLUG ); ?></p>
+								<p><?php echo __('Below is a list of premade Snippet Shortcodes that you can use throughout your website.', SH_CD_SLUG ); ?>
+									<strong><?php echo __('Suggestions', SH_CD_SLUG ); ?>:</strong>
+									<?php echo __('Please email shortcode suggestions to ', SH_CD_SLUG ); ?><a href="mailto:email@yeken.uk">email@yeken.uk</a></p>
                                 <h3><?php echo __('Premade Shortcodes', SH_CD_SLUG ); ?></h3>
 								<?php echo sh_cd_display_premade_shortcodes(); ?>
 								<br />
