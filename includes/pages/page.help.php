@@ -34,8 +34,8 @@ function sh_cd_help_page() {
 						<div style="padding: 0px 15px 0px 15px">
 							<p><?php echo __( 'You can find detailed documentation for this plugin at our site:', SH_CD_SLUG ); ?></p>
 							<p>
-								<a href="https://mealtracker.yeken.uk" rel="noopener noreferrer"  class="button"  target="_blank"><?php echo __( 'View Documentation', SH_CD_SLUG ); ?></a>
-								<a href="https://github.com/alicolville/meal-tracker/releases"  class="button"  rel="noopener noreferrer" target="_blank"><?php echo __( 'Release Notes', SH_CD_SLUG ); ?></a>
+								<a href="https://snippet-shortcodes.yeken.uk/" rel="noopener noreferrer"  class="button"  target="_blank"><?php echo __( 'View Documentation', SH_CD_SLUG ); ?></a>
+								<a href="https://github.com/alicolville/shortcode-variables/issues"  class="button"  rel="noopener noreferrer" target="_blank"><?php echo __( 'Release Notes', SH_CD_SLUG ); ?></a>
 							</p>
 						</div>
 					</div>
