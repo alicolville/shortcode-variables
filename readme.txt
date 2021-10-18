@@ -2,9 +2,9 @@
 Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
-Requires at least: 5.2
-Tested up to: 5.7.2
-Stable tag: 3.5.2
+Requires at least: 5.7
+Tested up to: 5.8.1
+Stable tag: 3.5.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -149,6 +149,10 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 = 3.5.2 =
 
 * Updated version WP compatibility statement.
+
+= 3.5.3 =
+
+* Version bump.
 
 = 3.5.1 =
 
