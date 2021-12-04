@@ -5,7 +5,7 @@ defined('ABSPATH') or die("Jog on!");
 /**
  * Plugin Name: Snippet Shortcodes
  * Description: Create your own shortcodes and assign text / variables to it or use our premade ones. You can then embed these shortcodes throughout your entire site and only have to change the value in one place.
- * Version: 3.5.1
+ * Version: 3.5.4
  * Requires at least:   5.7
  * Tested up to: 		5.8.1
  * Requires PHP:        7.2
