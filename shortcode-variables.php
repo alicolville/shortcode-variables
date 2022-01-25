@@ -41,7 +41,7 @@ define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
 define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
 define( 'SH_CD_PREFIX', 'sh-cd-' );
 define( 'SH_CD_SHORTCODE', 'sv' );
-define( 'SH_CD_PREMIUM_PRICE', 1.99 );
+define( 'SH_CD_PREMIUM_PRICE', 2.99 );
 define( 'SH_CD_UPGRADE_LINK', 'https://shop.yeken.uk/product/shortcode-variables/' );
 
 // -----------------------------------------------------------------------------------------
@@ -58,7 +58,6 @@ include_once SH_CD_ABSPATH . 'includes/license.php';
 $sh_cd_is_premium = sh_cd_license_is_premium();
 
 define( 'SH_CD_IS_PREMIUM', $sh_cd_is_premium );
-
 
 include_once SH_CD_ABSPATH . 'includes/shortcode.user.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.presets.core.php';
