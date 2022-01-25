@@ -69,5 +69,57 @@ function sh_cd_admin_page_import() {
         </div>
         <br class="clear">
     </div>
+	<script>
+		jQuery( document ).ready(function ($) {
+
+			// CSV import for
+			let file_frame;
+
+			$( '#select_csv').on('click', function( event ){
+
+				event.preventDefault();
+
+				<?php if ( false === SH_CD_IS_PREMIUM ) : ?>
+					alert( '<?php echo __( "Please upgrade to bulk import shortcodes via CSV.", SH_CD_SLUG ); ?>' );
+					return;
+				<?php else: ?>
+
+					// If the media frame already exists, reopen it.
+					if ( file_frame ) {
+
+						// Open frame
+						file_frame.open();
+						return;
+					}
+
+					// Create the media frame.
+					file_frame = wp.media.frames.file_frame = wp.media({
+						title: '<?php echo __( "Select a CSV", SH_CD_SLUG ); ?>',
+						button: {
+							text: '<?php echo __( "Use this file", SH_CD_SLUG ); ?>',
+						},
+						library : {
+							type : ['application/csv', 'text/csv'],
+						},
+						multiple: false
+					});
+
+					// When an image is selected, run a callback.
+					file_frame.on( 'select', function() {
+
+						attachment = file_frame.state().get('selection').first().toJSON();
+
+						$( '#attachment-id' ).val( attachment.id );
+						$( '#attachment-path' ).val( attachment.url );
+						$( '#selected-form' ).removeClass( 'sh-cd-hide' );
+
+					});
+
+					file_frame.open();
+
+				<?php endif; ?>
+			});
+		});
+	</script>
     <?php
 }
