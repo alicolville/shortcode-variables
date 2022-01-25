@@ -169,13 +169,12 @@ function sh_cd_db_shortcodes_save( $shortcode ) {
 
 	$multi_site_enabled = sh_cd_is_multisite_enabled();
 
-	$shortcode = wp_parse_args( $shortcode, [
-		'id' => NULL,
-		'slug' => NULL,
-		'previous_slug' => NULL,
-		'data' => NULL,
-		'disabled' => 0,
-		'multisite' => 0
+	$shortcode = wp_parse_args( $shortcode, [   'id'            => NULL,
+												'slug'          => NULL,
+												'previous_slug' => NULL,
+												'data'          => NULL,
+												'disabled'      => 0,
+												'multisite'     => 0
 	]);
 
 	// We need either a slug or an ID

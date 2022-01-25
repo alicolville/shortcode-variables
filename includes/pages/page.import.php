@@ -16,7 +16,7 @@ function sh_cd_admin_page_import() {
 
 		$importing 	= true;
 		$dry_run	= ( false === empty( $_POST[ 'dry-run' ] ) );
-	//	$output 	= sh_cd_import_csv( $_POST[ 'attachment-id' ], $dry_run );
+		$output 	= sh_cd_import_csv( $_POST[ 'attachment-id' ], $dry_run );
 	}
 
     ?>
@@ -54,7 +54,7 @@ function sh_cd_admin_page_import() {
 											<label for="dry-run"><?php echo __( 'Dry run mode. This will do basic tests on the file without performing an import.', SH_CD_SLUG ); ?></label>
 										</div>
 										<div class="sh-cd-form-row">
-											<input type="submit" class="button button-primary" value="<?php echo __( 'Import CSV', SH_CD_SLUG ); ?>" <?php if ( false === YK_MT_IS_PREMIUM ) { echo 'disabled="disabled"'; } ?> />
+											<input type="submit" class="button button-primary" value="<?php echo __( 'Import CSV', SH_CD_SLUG ); ?>" <?php if ( false === SH_CD_IS_PREMIUM ) { echo 'disabled="disabled"'; } ?> />
 										</div>
 									</form>
 								</div>
