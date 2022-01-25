@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 5.7
 Tested up to: 5.8.2
-Stable tag: 3.5.4
+Stable tag: 4.0
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -144,7 +144,15 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 4. Using the Snippet Shortcodes into a page
 5. Snippet Shortcodes rendered in a page
 
+== Upgrade Notice ==
+
+4.0 -
+
 == Changelog ==
+
+= 4.0 =
+
+* Improvement: General code refactoring.
 
 = 3.5.4 =
 

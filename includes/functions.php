@@ -76,7 +76,7 @@ function sh_cd_slug_generate( $slug, $exising_id = NULL ) {
  */
 function sh_cd_clone( $id ) {
 
-	if( false === sh_cd_license_is_premium() ) {
+	if( false === SH_CD_IS_PREMIUM ) {
 		return true;
 	}
 
@@ -338,7 +338,7 @@ function sh_cd_toggle_multisite( $id ) {
  */
 function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 
-	$premium_user = sh_cd_license_is_premium();
+	$premium_user = SH_CD_IS_PREMIUM;
 	$upgrade_link = sprintf( '<a class="button" href="%1$s"><i class="fas fa-check"></i> %2$s</a>', sh_cd_license_upgrade_link(), __('Upgrade now', SH_CD_SLUG ) );
 
 	switch ( $display ) {
@@ -426,7 +426,7 @@ function sh_cd_is_multisite_enabled() {
 		return false;
 	}
 
-	if ( false === sh_cd_license_is_premium() ) {
+	if ( false === SH_CD_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -466,7 +466,7 @@ function sh_cd_multisite_slugs() {
  */
 function sh_cd_reached_free_limit() {
 
-	if ( true === sh_cd_license_is_premium() ) {
+	if ( true === SH_CD_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -486,7 +486,7 @@ function sh_cd_reached_free_limit() {
 function sh_cd_permission_role() {
 
 	// If not premium, then admin only
-	if ( false === sh_cd_license_is_premium() ) {
+	if ( false === SH_CD_IS_PREMIUM ) {
 		return 'manage_options';
 	}
 

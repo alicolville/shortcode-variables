@@ -83,11 +83,11 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
                                         <h4><?php echo __( 'Global?', SH_CD_SLUG ); ?></h4>
 
                                         <p><?php echo __( 'Can this be used by all sites within your multi-site? If Yes, your shortcode will be promoted so it can be used across your entire multi site. Please note, shortcode slugs are not unique across a multi site. Therefore, if you have two Global shortcodes with the same slug, the shortcode created or updated most recently shall be the one rendered. It is best practice to give all Global shortcodes a unique slug. A Global shortcode with always be displayed before a local shortcode with the same slug. Upon saving, it may take a Global shortcode upto 30 seconds to update across all your sites.', SH_CD_SLUG ); ?></p>
-                                        <select id="multisite" name="multisite" <?php if ( false === sh_cd_license_is_premium() ) { echo 'disabled="disabled"'; } ?>>
+                                        <select id="multisite" name="multisite" <?php if ( false === SH_CD_IS_PREMIUM ) { echo 'disabled="disabled"'; } ?>>
                                             <option value="0" <?php selected( $shortcode['multisite'], 0 ); ?>><?php echo __( 'No', SH_CD_SLUG ); ?></option>
                                             <option value="1" <?php selected( $shortcode['multisite'], 1 ); ?>><?php echo __( 'Yes', SH_CD_SLUG ); ?></option>
                                         </select>
-                                        <?php if ( false === sh_cd_license_is_premium() ) : ?>
+                                        <?php if ( false === SH_CD_IS_PREMIUM ) : ?>
                                             <p>
                                                 <i class="far fa-credit-card"></i>
                                                 <a href="<?php echo sh_cd_license_upgrade_link(); ?>">

@@ -20,7 +20,10 @@ function sh_cd_build_admin_menu() {
 
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Settings', SH_CD_SLUG ),  __( 'Settings', SH_CD_SLUG ), 'manage_options', 'sh-cd-settings', 'sh_cd_settings_page_generic' );
 
-	$menu_text = ( true === sh_cd_license_is_premium() ) ? __( 'Your License', SH_CD_SLUG ) : __( 'Upgrade to Premium', SH_CD_SLUG );
+	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Import shortcodes', SH_CD_SLUG ),  __( 'Import shortcodes', SH_CD_SLUG ), 'manage_options', 'sh-cd-import', 'sh_cd_admin_page_import' );
+
+
+	$menu_text = ( true === SH_CD_IS_PREMIUM ) ? __( 'Your License', SH_CD_SLUG ) : __( 'Upgrade to Premium', SH_CD_SLUG );
 
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', $menu_text,  $menu_text, 'manage_options', 'sh-cd-shortcode-variables-license', 'sh_cd_advertise_pro');
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Help', SH_CD_SLUG ),  __( 'Help', SH_CD_SLUG ), 'manage_options', 'sh-cd-help', 'sh_cd_help_page' );
@@ -35,7 +38,7 @@ function sh_cd_enqueue_scripts() {
 	wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.7.2/css/all.css', [], SH_CD_PLUGIN_VERSION);
 	wp_enqueue_script( 'sh-cd', plugins_url( '../assets/js/sh-cd.js', __FILE__ ), [ 'jquery' ], SH_CD_PLUGIN_VERSION);
 
-	wp_localize_script( 'sh-cd', 'sh_cd', [ 'security' => wp_create_nonce( 'sh-cd-security' ), 'premium' => sh_cd_license_is_premium() ] );
+	wp_localize_script( 'sh-cd', 'sh_cd', [ 'security' => wp_create_nonce( 'sh-cd-security' ), 'premium' => SH_CD_IS_PREMIUM ] );
 
 }
 add_action( 'admin_enqueue_scripts', 'sh_cd_enqueue_scripts' );
@@ -64,7 +67,7 @@ add_action('admin_init', 'sh_cd_upgrade');
  **/
 function sh_cd_ajax_toggle_status() {
 
-	if ( false === sh_cd_license_is_premium() ) {
+	if ( false === SH_CD_IS_PREMIUM ) {
 		wp_send_json( 'not-premium' );
 	}
 
@@ -88,7 +91,7 @@ Ajax handler for toggling disable status of a shortcode
  **/
 function sh_cd_ajax_toggle_multisite() {
 
-	if ( false === sh_cd_license_is_premium() ) {
+	if ( false === SH_CD_IS_PREMIUM ) {
 		wp_send_json( 'not-premium' );
 	}
 
@@ -112,7 +115,7 @@ Ajax handler for saving shortcode inline
  **/
 function sh_cd_ajax_update_shortcode() {
 
-	if ( false === sh_cd_license_is_premium() ) {
+	if ( false === SH_CD_IS_PREMIUM ) {
 		wp_send_json( 'not-premium' );
 	}
 

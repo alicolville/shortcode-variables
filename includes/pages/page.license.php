@@ -31,7 +31,7 @@
                     }
                 }
 
-                $existing_license = ( true === sh_cd_license_is_premium() ) ? sh_cd_license() : NULL;
+                $existing_license = ( true === SH_CD_IS_PREMIUM ) ? sh_cd_license() : NULL;
 
                 if ( false === empty( $existing_license ) ) {
                     $license_decoded = sh_cd_license_decode( $existing_license );

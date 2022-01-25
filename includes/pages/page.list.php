@@ -49,13 +49,11 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
 	sh_cd_permission_check();
 
-	$is_premium = sh_cd_license_is_premium();
+	$is_premium = SH_CD_IS_PREMIUM;
 
 	// Cloning a shortcode?
     if ( 'clone' === $action && false === empty( $_GET['id'] ) ) {
-
 	    sh_cd_clone( (int) $_GET['id'] );
-
     }
 
 	// Deleting a shortcode?

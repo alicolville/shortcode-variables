@@ -8,7 +8,7 @@ function sh_cd_settings_page_generic() {
         wp_die( __( 'You do not have sufficient permissions to access this page.' , SH_CD_SLUG ) );
     }
 
-	$disable_if_not_premium_class = ( sh_cd_license_is_premium() ) ? '' : 'sh-cd-disabled';
+	$disable_if_not_premium_class = ( SH_CD_IS_PREMIUM ) ? '' : 'sh-cd-disabled';
 
     ?>
 
@@ -39,7 +39,7 @@ function sh_cd_settings_page_generic() {
                                 ?>
 
 								<?php
-									if ( false === sh_cd_license_is_premium() ) {
+									if ( false === SH_CD_IS_PREMIUM ) {
 										sh_cd_display_pro_upgrade_notice();
 									}
 								?>

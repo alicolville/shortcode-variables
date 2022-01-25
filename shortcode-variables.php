@@ -5,9 +5,9 @@ defined('ABSPATH') or die("Jog on!");
 /**
  * Plugin Name: Snippet Shortcodes
  * Description: Create your own shortcodes and assign text / variables to it or use our premade ones. You can then embed these shortcodes throughout your entire site and only have to change the value in one place.
- * Version: 3.5.4
+ * Version: 4.0
  * Requires at least:   5.7
- * Tested up to: 		5.8.1
+ * Tested up to: 		5.9
  * Requires PHP:        7.2
  * Author:              Ali Colville
  * Author URI:          https://www.YeKen.uk
@@ -34,7 +34,7 @@ defined('ABSPATH') or die("Jog on!");
 
 define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
-define( 'SH_CD_PLUGIN_VERSION', '3.5.3' );
+define( 'SH_CD_PLUGIN_VERSION', '4.0' );
 define( 'SH_CD_PLUGIN_NAME', 'Snippet Shortcodes' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
@@ -54,6 +54,12 @@ include_once SH_CD_ABSPATH . 'includes/functions.php';
 include_once SH_CD_ABSPATH . 'includes/db.php';
 include_once SH_CD_ABSPATH . 'includes/cron.php';
 include_once SH_CD_ABSPATH . 'includes/license.php';
+
+$sh_cd_is_premium = sh_cd_license_is_premium();
+
+define( 'SH_CD_IS_PREMIUM', $sh_cd_is_premium );
+
+
 include_once SH_CD_ABSPATH . 'includes/shortcode.user.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.presets.core.php';
 include_once SH_CD_ABSPATH . 'includes/shortcode.presets.free.php';
@@ -64,4 +70,5 @@ include_once SH_CD_ABSPATH . 'includes/pages/page.edit.php';
 include_once SH_CD_ABSPATH . 'includes/pages/page.settings.php';
 include_once SH_CD_ABSPATH . 'includes/pages/page.license.php';
 include_once SH_CD_ABSPATH . 'includes/pages/page.help.php';
+include_once SH_CD_ABSPATH . 'includes/pages/page.import.php';
 include_once SH_CD_ABSPATH . 'includes/tinymce.php';
