@@ -581,7 +581,8 @@ function sh_cd_import_csv( $attachment_id, $dry_run = true ) {
 	if ( true === $dry_run ) {
 		$output .= 'DRY RUN MODE! No data will be imported.' . PHP_EOL;
 	}
-foreach ( $csv as $row ) {
+
+	foreach ( $csv as $row ) {
 
 		if ( $errors >= 50 ) {
 			$output .= 'Aborted! More than 50 errors have been detected in this file.' . PHP_EOL;
