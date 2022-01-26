@@ -5,13 +5,11 @@ jQuery( document ).ready(function ($) {
      */
     $( '.inline-text-shortcode' ).bind('input propertychange', function( e ) {
 
-        var id = $( this ).data( 'id' );
-
-        var element_id = '#sh-cd-save-button-' + id;
+        let id = $( this ).data( 'id' );
 
         sh_cd_save_button_reset( id );
 
-        $( element_id ).removeClass( 'sh-cd-hide' );
+        $( '#sh-cd-save-button-' + id ).removeClass( 'sh-cd-hide' );
 
     });
 
@@ -22,7 +20,7 @@ jQuery( document ).ready(function ($) {
 
         if ( '1' == sh_cd['premium'] ) {
 
-            var data = {};
+            let data = {};
             data['id'] = $( this ).data( 'id' );
             data['content'] = $( '#sh-cd-text-area-' + data['id'] ).val();
 
@@ -40,7 +38,7 @@ jQuery( document ).ready(function ($) {
 
         if ( '1' == sh_cd['premium'] ) {
 
-            var data = {};
+            let data = {};
             data['id'] = $( this ).data( 'id' );
 
             sh_cd_post_data_to_WP( 'toggle_status', data, sh_cd_handle_toggle_disable );
@@ -59,7 +57,7 @@ jQuery( document ).ready(function ($) {
 
         if ( 1 == response.ok ) {
 
-            var element_id = '#sc-cd-toggle-' + response.id + ' i';
+            let element_id = '#sc-cd-toggle-' + response.id + ' i';
 
             if ( 1 == response.status ) {
                 $( element_id ).removeClass( 'fa-check' );
@@ -78,7 +76,7 @@ jQuery( document ).ready(function ($) {
 
         if ( '1' == sh_cd['premium'] ) {
 
-            var data = {};
+            let data = {};
             data['id'] = $( this ).data( 'id' );
 
             sh_cd_post_data_to_WP( 'toggle_multisite', data, sh_cd_handle_toggle_multisite );
@@ -97,7 +95,7 @@ jQuery( document ).ready(function ($) {
 
         if ( 1 == response.ok ) {
 
-            var element_id = '#sc-cd-multisite-' + response.id + ' i';
+            let element_id = '#sc-cd-multisite-' + response.id + ' i';
 
             if ( 0 == response.multisite ) {
                 $( element_id ).removeClass( 'fa-check' );
@@ -125,11 +123,7 @@ jQuery( document ).ready(function ($) {
      * @param i
      */
     function sh_cd_save_button_success( i ) {
-
-        var element_id = '#sh-cd-save-button-' + i;
-
-        $( element_id ).html('<i class="fas fa-check"></i> Saved!');
-
+      $( '#sh-cd-save-button-' + i ).html('<i class="fas fa-check"></i> Saved!');
     }
 
     /**
@@ -137,10 +131,7 @@ jQuery( document ).ready(function ($) {
      * @param i
      */
     function sh_cd_save_button_reset( i ) {
-
-        var element_id = '#sh-cd-save-button-' + i;
-
-        $( element_id ).html('<i class="fas fa-save"></i> Save');
+      $( '#sh-cd-save-button-' + i ).html('<i class="fas fa-save"></i> Save');
     }
 
     /**
@@ -156,8 +147,7 @@ jQuery( document ).ready(function ($) {
         post_data['action'] = action;
         post_data['security'] = sh_cd['security'];
 
-        // var post_data = $.merge(post_data, data);
-        var post_data = obj3 = $.extend( post_data, data );
+        let post_data = obj3 = $.extend( post_data, data );
 
         $.post( ajaxurl, post_data, function( response, post_data ) {
             callback && callback( response, post_data );
