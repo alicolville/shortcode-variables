@@ -34,7 +34,7 @@ add_action( 'admin_menu', 'sh_cd_build_admin_menu' );
 function sh_cd_enqueue_scripts() {
 	wp_enqueue_style( 'sh-cd', plugins_url( '../assets/css/sh-cd.css', __FILE__ ), [], SH_CD_PLUGIN_VERSION ) ;
 	wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.7.2/css/all.css', [], SH_CD_PLUGIN_VERSION);
-	wp_enqueue_script( 'sh-cd', plugins_url( '../assets/js/sh-cd.js', __FILE__ ), [ 'jquery' ], SH_CD_PLUGIN_VERSION);
+	wp_enqueue_script( 'sh-cd', plugins_url( '../assets/js/sh-cd.js', __FILE__ ), [ 'jquery' ], SH_CD_PLUGIN_VERSION, true );
 
 	wp_localize_script( 'sh-cd', 'sh_cd', sh_cd_js_config() );
 
@@ -49,7 +49,9 @@ function sh_cd_js_config() {
 	return [
 				'security'                  => wp_create_nonce( 'sh-cd-security' ),
 				'premium'                   => SH_CD_IS_PREMIUM,
-				'text-delete-confirm'       => __( 'Are you sure you wish to delete this shortcode?', SH_CD_SLUG )
+				'text-delete-confirm'       => __( 'Are you sure you wish to delete this shortcode?', SH_CD_SLUG ),
+				'text-save'                 => __( 'Save', SH_CD_SLUG ),
+				'text-saved'                => __( 'Saved!', SH_CD_SLUG )
 	];
 }
 

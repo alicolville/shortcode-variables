@@ -151,7 +151,7 @@ jQuery( document ).ready(function ($) {
      * @param i
      */
     function sh_cd_save_button_success( i ) {
-      $( '#sh-cd-save-button-' + i ).html('<i class="fas fa-check"></i> Saved!');
+      $( '#sh-cd-save-button-' + i ).html('<i class="fas fa-check"></i> ' + sh_cd[ 'text-saved' ]);
     }
 
     /**
@@ -159,7 +159,7 @@ jQuery( document ).ready(function ($) {
      * @param i
      */
     function sh_cd_save_button_reset( i ) {
-      $( '#sh-cd-save-button-' + i ).html('<i class="fas fa-save"></i> Save');
+      $( '#sh-cd-save-button-' + i ).html('<i class="fas fa-save"></i> ' + sh_cd[ 'text-save' ]);
     }
 
     /**
