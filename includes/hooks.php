@@ -51,7 +51,8 @@ function sh_cd_js_config() {
 				'premium'                   => SH_CD_IS_PREMIUM,
 				'text-delete-confirm'       => __( 'Are you sure you wish to delete this shortcode?', SH_CD_SLUG ),
 				'text-save'                 => __( 'Save', SH_CD_SLUG ),
-				'text-saved'                => __( 'Saved!', SH_CD_SLUG )
+				'text-saved'                => __( 'Saved!', SH_CD_SLUG ),
+				'text-error'                => __( 'Unfortunately something went wrong!', SH_CD_SLUG )
 	];
 }
 

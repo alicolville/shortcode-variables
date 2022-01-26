@@ -24,6 +24,8 @@ jQuery( document ).ready(function ($) {
             data['id'] = $( this ).data( 'id' );
             data['content'] = $( '#sh-cd-text-area-' + data['id'] ).val();
 
+            $( '#sh-cd-save-button-' + data['id'] ).html('<i class="fas fa-spinner fa-spin"></i>' );
+
             sh_cd_post_data_to_WP( 'update_shortcode', data, sh_cd_handle_update_shortcode );
 
         } else {
@@ -40,10 +42,12 @@ jQuery( document ).ready(function ($) {
           return;
         }
 
-      let data = {};
-      data['id'] = $( this ).data( 'id' );
+        let data = {};
+        data['id'] = $( this ).data( 'id' );
 
-      sh_cd_post_data_to_WP( 'delete_shortcode', data, sh_cd_handle_delete_shortcode );
+        $( '#' + $( this ).attr( 'id' ) + ' i' ).removeClass( 'fa-trash-alt' ).addClass( 'fa-spinner fa-spin' );
+
+        sh_cd_post_data_to_WP( 'delete_shortcode', data, sh_cd_handle_delete_shortcode );
 
     });
 
@@ -56,6 +60,9 @@ jQuery( document ).ready(function ($) {
 
     if ( 1 == response.ok ) {
       $( '#sh-cd-row-' + response.id ).remove();
+    } else {
+      $( '#sc-cd-delete-' + response.id + ' i' ).addClass( 'fa-trash-alt' ).removeClass( 'fa-spinner fa-spin' );
+      alert( sh_cd[ 'text-error' ] );
     }
   }
 
@@ -68,6 +75,8 @@ jQuery( document ).ready(function ($) {
 
             let data = {};
             data['id'] = $( this ).data( 'id' );
+
+            $( '#' + $( this ).attr( 'id' ) + ' i' ).removeClass( 'fa-check' ).removeClass( 'fa-times' ).addClass( 'fa-spinner fa-spin' );
 
             sh_cd_post_data_to_WP( 'toggle_status', data, sh_cd_handle_toggle_disable );
 
@@ -86,6 +95,8 @@ jQuery( document ).ready(function ($) {
         if ( 1 == response.ok ) {
 
             let element_id = '#sc-cd-toggle-' + response.id + ' i';
+
+            $( element_id ).removeClass( 'fa-spinner fa-spin' )
 
             if ( 1 == response.status ) {
                 $( element_id ).removeClass( 'fa-check' );
@@ -107,6 +118,8 @@ jQuery( document ).ready(function ($) {
             let data = {};
             data['id'] = $( this ).data( 'id' );
 
+            $( '#' + $( this ).attr( 'id' ) + ' i' ).removeClass( 'fa-check' ).removeClass( 'fa-times' ).addClass( 'fa-spinner fa-spin' );
+
             sh_cd_post_data_to_WP( 'toggle_multisite', data, sh_cd_handle_toggle_multisite );
 
         } else {
@@ -124,6 +137,8 @@ jQuery( document ).ready(function ($) {
         if ( 1 == response.ok ) {
 
             let element_id = '#sc-cd-multisite-' + response.id + ' i';
+
+            $( element_id ).removeClass( 'fa-spinner fa-spin' )
 
             if ( 0 == response.multisite ) {
                 $( element_id ).removeClass( 'fa-check' );

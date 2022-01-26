@@ -154,6 +154,7 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 
 * New feature: Bulk import of shortcodes via CSV.
 * Improvement: Shortcodes can be deleted via Ajax on the list page. This saves waiting for a page refresh.
+* Improvement: Added "loading" animations on relevant UI elements.
 * Improvement: General code refactoring.
 * Bug fix: Allowed text in JS files to be correctly localised.
 

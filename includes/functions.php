@@ -720,7 +720,7 @@ function sh_cd_layout_row( $new_row = false ) {
 					<td width="100">
 						<a class="button button-small sh-cd-toggle-%13$s" %13$s href="%9$s"><i class="far fa-clone"></i></a>
 						<a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
-						<a class="button button-small delete-shortcode" data-id="%8$s"><i class="fas fa-trash-alt"></i></a>
+						<a class="button button-small delete-shortcode" id="sc-cd-delete-%8$s" data-id="%8$s"><i class="fas fa-trash-alt"></i></a>
 					</td>';
 	}
 
