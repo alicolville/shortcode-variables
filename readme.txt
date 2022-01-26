@@ -146,12 +146,13 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 
 == Upgrade Notice ==
 
-4.0 -
+4.0 - Bulk import shortcodes via CSV!
 
 == Changelog ==
 
 = 4.0 =
 
+* New feature: Bulk import of shortcodes via CSV.
 * Improvement: General code refactoring.
 
 = 3.5.4 =
