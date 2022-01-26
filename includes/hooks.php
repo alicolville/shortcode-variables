@@ -36,10 +36,22 @@ function sh_cd_enqueue_scripts() {
 	wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.7.2/css/all.css', [], SH_CD_PLUGIN_VERSION);
 	wp_enqueue_script( 'sh-cd', plugins_url( '../assets/js/sh-cd.js', __FILE__ ), [ 'jquery' ], SH_CD_PLUGIN_VERSION);
 
-	wp_localize_script( 'sh-cd', 'sh_cd', [ 'security' => wp_create_nonce( 'sh-cd-security' ), 'premium' => SH_CD_IS_PREMIUM ] );
+	wp_localize_script( 'sh-cd', 'sh_cd', sh_cd_js_config() );
 
 }
 add_action( 'admin_enqueue_scripts', 'sh_cd_enqueue_scripts' );
+
+/**
+ * Config for JS
+ * @return array
+ */
+function sh_cd_js_config() {
+	return [
+				'security'                  => wp_create_nonce( 'sh-cd-security' ),
+				'premium'                   => SH_CD_IS_PREMIUM,
+				'text-delete-confirm'       => __( 'Are you sure you wish to delete this shortcode?', SH_CD_SLUG )
+	];
+}
 
 /**
  * Run installer on each version number change or install
@@ -83,6 +95,26 @@ function sh_cd_ajax_toggle_status() {
 	wp_send_json( 'shortcode-not-found' );
 }
 add_action( 'wp_ajax_toggle_status', 'sh_cd_ajax_toggle_status' );
+
+/**
+Ajax handler for deleting a shortcode
+ **/
+function sh_cd_ajax_delete_shortcode() {
+
+	check_ajax_referer( 'sh-cd-security', 'security' );
+
+	$id = ( false === empty( $_POST['id'] ) ) ? (int) $_POST['id'] : NULL;
+
+	if ( false === empty( $id ) ) {
+
+		$result = sh_cd_db_shortcodes_delete( $id );
+
+		wp_send_json( [ 'id' => $id, 'ok' => $result ] );
+	}
+
+	wp_send_json( 'shortcode-not-found' );
+}
+add_action( 'wp_ajax_delete_shortcode', 'sh_cd_ajax_delete_shortcode' );
 
 /**
 Ajax handler for toggling disable status of a shortcode

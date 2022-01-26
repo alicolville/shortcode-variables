@@ -32,6 +32,34 @@ jQuery( document ).ready(function ($) {
     });
 
     /**
+     * Delete shortcode
+     */
+    $( '.delete-shortcode' ).on( 'click', function( e ) {
+
+        if ( false === confirm( sh_cd[ 'text-delete-confirm' ] ) ) {
+          return;
+        }
+
+      let data = {};
+      data['id'] = $( this ).data( 'id' );
+
+      sh_cd_post_data_to_WP( 'delete_shortcode', data, sh_cd_handle_delete_shortcode );
+
+    });
+
+  /**
+   * Handle deleting of shortcode
+   * @param response
+   * @param data
+   */
+  function sh_cd_handle_delete_shortcode( response, data ) {
+
+    if ( 1 == response.ok ) {
+      $( '#sh-cd-row-' + response.id ).remove();
+    }
+  }
+
+    /**
      * Toggle shortcode status
      */
     $( '.toggle-disable' ).on( 'click', function( e ) {
@@ -143,11 +171,11 @@ jQuery( document ).ready(function ($) {
      */
     function sh_cd_post_data_to_WP( action, data, callback ) {
 
-        post_data = {};
+        var post_data = {};
         post_data['action'] = action;
         post_data['security'] = sh_cd['security'];
 
-        let post_data = obj3 = $.extend( post_data, data );
+        var post_data = obj3 = $.extend( post_data, data );
 
         $.post( ajaxurl, post_data, function( response, post_data ) {
             callback && callback( response, post_data );
