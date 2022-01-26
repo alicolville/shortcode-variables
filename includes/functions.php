@@ -695,7 +695,7 @@ function sh_cd_to_bool( $string ) {
  *
  * @return string
  */
-function sh_cd_layout_row( $new_row = true ) {
+function sh_cd_layout_row( $new_row = false ) {
 
 	$html = '<tr class="%1$s" id="sh-cd-row-%8$s">';
 
