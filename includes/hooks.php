@@ -18,14 +18,12 @@ function sh_cd_build_admin_menu() {
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Your Shortcodes', SH_CD_SLUG ),  __( 'Your shortcodes', SH_CD_SLUG ), $allowed_viewer, 'sh-cd-shortcode-variables-your-shortcodes', 'sh_cd_pages_your_shortcodes');
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Premade Shortcodes', SH_CD_SLUG ),  __( 'Premade shortcodes', SH_CD_SLUG ), $allowed_viewer, 'sh-cd-shortcode-variables-sub-premade', 'sh_cd_premade_shortcodes_page');
 
-	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Settings', SH_CD_SLUG ),  __( 'Settings', SH_CD_SLUG ), 'manage_options', 'sh-cd-settings', 'sh_cd_settings_page_generic' );
-
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Import shortcodes', SH_CD_SLUG ),  __( 'Import shortcodes', SH_CD_SLUG ), 'manage_options', 'sh-cd-import', 'sh_cd_admin_page_import' );
-
 
 	$menu_text = ( true === SH_CD_IS_PREMIUM ) ? __( 'Your License', SH_CD_SLUG ) : __( 'Upgrade to Premium', SH_CD_SLUG );
 
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', $menu_text,  $menu_text, 'manage_options', 'sh-cd-shortcode-variables-license', 'sh_cd_advertise_pro');
+	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Settings', SH_CD_SLUG ),  __( 'Settings', SH_CD_SLUG ), 'manage_options', 'sh-cd-settings', 'sh_cd_settings_page_generic' );
 	add_submenu_page( 'sh-cd-shortcode-variables-main-menu', __( 'Help', SH_CD_SLUG ),  __( 'Help', SH_CD_SLUG ), 'manage_options', 'sh-cd-help', 'sh_cd_help_page' );
 }
 add_action( 'admin_menu', 'sh_cd_build_admin_menu' );
