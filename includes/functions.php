@@ -665,12 +665,12 @@ function sh_cd_import_csv_validate_row( $csv_row ) {
 
 	$allowed_bools = [ 'yes', 'no', 'true', 'false', '1', '0' ];
 
-	if ( false === empty( $csv_row[ 'global' ] ) &&
+	if ( true === empty( $csv_row[ 'global' ] ) ||
 		 false === in_array( $csv_row[ 'global' ], $allowed_bools ) ) {
 		return 'Skipped: Invalid "global" value. Must be "yes" or "no": ' . implode( ',', $csv_row );
 	}
 
-	if ( false === empty( $csv_row[ 'enabled' ] ) &&
+	if ( true === empty( $csv_row[ 'enabled' ] ) ||
 		 false === in_array( $csv_row[ 'enabled' ], $allowed_bools ) ) {
 		return 'Skipped: Invalid "enabled" value. Must be "yes" or "no": ' . implode( ',', $csv_row );
 	}
