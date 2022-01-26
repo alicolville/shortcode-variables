@@ -56,16 +56,6 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 	    sh_cd_clone( (int) $_GET['id'] );
     }
 
-	// Deleting a shortcode?
-    if( 'delete' === $action && false === empty( $_GET['id'] ) ) {
-
-	    $result = sh_cd_db_shortcodes_delete( (int) $_GET['id'] );
-
-	    $message = ( true === $result ) ? __( 'Your shortcode has been deleted!', SH_CD_SLUG ) : __( 'There was an error deleting your shortcode!', SH_CD_SLUG );
-
-	    sh_cd_message_display( $message, ! $result );
-	}
-
 	if ( true == $save_result ) {
 		sh_cd_message_display( __( 'Your shortcode has been saved!', SH_CD_SLUG ) );
 	}
@@ -115,7 +105,7 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
                                             $id = (int) $shortcode['id'];
 
-                                            printf(	'<tr class="%1$s">
+                                            printf(	'<tr class="%1$s" id="sh-cd-row-%8$s">
 														<td><a href="%2$s">[%4$s slug="%3$s"]</a></td>
 														<td align="right">
 															<textarea class="large-text inline-text-shortcode sh-cd-toggle-%13$s" id="sh-cd-text-area-%8$d" data-id="%8$d" %13$s>%5$s</textarea>
@@ -126,7 +116,7 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 														<td width="100">
 															<a class="button button-small sh-cd-toggle-%13$s" %13$s href="%9$s"><i class="far fa-clone"></i></a>
 															<a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
-															<a class="button button-small" href="%7$s" onclick="return confirm(\'%12$s\');"><i class="fas fa-trash-alt"></i></a>
+															<a class="button button-small delete-shortcode" data-id="%8$s"><i class="fas fa-trash-alt"></i></a>
 														</td>
 													</tr>',
 													$class,
