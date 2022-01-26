@@ -105,20 +105,7 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
                                             $id = (int) $shortcode['id'];
 
-                                            printf(	'<tr class="%1$s" id="sh-cd-row-%8$s">
-														<td><a href="%2$s">[%4$s slug="%3$s"]</a></td>
-														<td align="right">
-															<textarea class="large-text inline-text-shortcode sh-cd-toggle-%13$s" id="sh-cd-text-area-%8$d" data-id="%8$d" %13$s>%5$s</textarea>
-															<a class="button button-small sh-cd-inline-save-button sh-cd-toggle-%13$s" id="sh-cd-save-button-%8$d" data-id="%8$d" %13$s><i class="fas fa-save"></i> %11$s</a>
-														</td>
-														<td align="middle"><a class="button button-small toggle-multisite sh-cd-toggle-%13$s" id="sc-cd-multisite-%8$s" data-id="%8$s" %13$s ><i class="fas %10$s"></i></a></td>
-														<td align="middle"><a class="button button-small toggle-disable sh-cd-toggle-%13$s" id="sc-cd-toggle-%8$s" data-id="%8$s" %13$s ><i class="fas %6$s"></i></a></td>
-														<td width="100">
-															<a class="button button-small sh-cd-toggle-%13$s" %13$s href="%9$s"><i class="far fa-clone"></i></a>
-															<a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
-															<a class="button button-small delete-shortcode" data-id="%8$s"><i class="fas fa-trash-alt"></i></a>
-														</td>
-													</tr>',
+                                            printf(	sh_cd_layout_row(),
 													$class,
 													$link . '&action=edit&id=' . $id,
 													esc_html( $shortcode['slug'] ),
@@ -165,8 +152,12 @@ function sc_cd_display_add_button() {
 
 	$limit_reached = sh_cd_reached_free_limit();
 
+	// SH_CD_IS_PREMIUM
+
+	printf( '&nbsp;<a class="button-primary" %1$s>%2$s</a>', ( false === SH_CD_IS_PREMIUM ) ? ' disabled="disabled"' : '', __( 'Add Inline', SH_CD_SLUG ) );
+
 	printf( '&nbsp;<a class="button-primary" href="%1$s">%2$s</a>',
 		( false === $limit_reached ) ? sh_cd_link_your_shortcodes_add() : sh_cd_license_upgrade_link(),
-		( false === $limit_reached ) ? __( 'Add a new Snippet Shortcode', SH_CD_SLUG ) : __( 'You must upgrade to add more shortcodes', SH_CD_SLUG )
+		( false === $limit_reached ) ? __( 'Add via Editor', SH_CD_SLUG ) : __( 'You must upgrade to add more shortcodes', SH_CD_SLUG )
 	);
 }

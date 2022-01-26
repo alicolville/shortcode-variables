@@ -687,3 +687,44 @@ function sh_cd_import_csv_validate_row( $csv_row ) {
 function sh_cd_to_bool( $string ) {
 	return filter_var( $string, FILTER_VALIDATE_BOOLEAN );
 }
+
+/**
+ * HTML layout for shortcode row
+ *
+ * @param bool $new_row
+ *
+ * @return string
+ */
+function sh_cd_layout_row( $new_row = true ) {
+
+	$html = '<tr class="%1$s" id="sh-cd-row-%8$s">';
+
+	if ( true === $new_row ) {
+		$html .= sprintf( '<td><input type="text" maxlength="100" placeholder="%s" /></td>', __( 'Slug', SH_CD_SLUG ) );
+	} else {
+		$html .= '<td><a href="%2$s">[%4$s slug="%3$s"]</a></td>';
+	}
+
+	$html .= '<td align="right">
+					<textarea class="large-text inline-text-shortcode sh-cd-toggle-%13$s" id="sh-cd-text-area-%8$d" data-id="%8$d" %13$s>%5$s</textarea>
+					<a class="button button-small sh-cd-inline-save-button sh-cd-toggle-%13$s" id="sh-cd-save-button-%8$d" data-id="%8$d" %13$s><i class="fas fa-save"></i> %11$s</a>
+				</td>';
+
+	if ( true === $new_row ) {
+		$html .= '	<td align="middle"><input type="checkbox" id="sc-cd-multisite-%8$s" data-id="%8$s" %13$s /></td>
+					<td align="middle"><input type="checkbox" id="sc-cd-toggle-%8$s" data-id="%8$s" %13$s /></td>
+					<td width="100"></td>';
+	} else {
+		$html .= '	<td align="middle"><a class="button button-small toggle-multisite sh-cd-toggle-%13$s" id="sc-cd-multisite-%8$s" data-id="%8$s" %13$s ><i class="fas %10$s"></i></a></td>
+					<td align="middle"><a class="button button-small toggle-disable sh-cd-toggle-%13$s" id="sc-cd-toggle-%8$s" data-id="%8$s" %13$s ><i class="fas %6$s"></i></a></td>
+					<td width="100">
+						<a class="button button-small sh-cd-toggle-%13$s" %13$s href="%9$s"><i class="far fa-clone"></i></a>
+						<a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
+						<a class="button button-small delete-shortcode" data-id="%8$s"><i class="fas fa-trash-alt"></i></a>
+					</td>';
+	}
+
+	$html .= '</tr>';
+
+	return $html;
+}
