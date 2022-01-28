@@ -49,8 +49,6 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
 	sh_cd_permission_check();
 
-	$is_premium = SH_CD_IS_PREMIUM;
-
 	// Cloning a shortcode?
     if ( 'clone' === $action && false === empty( $_GET['id'] ) ) {
 	    sh_cd_clone( (int) $_GET['id'] );
@@ -88,12 +86,12 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 														__( 'Go unlimited!', SH_CD_SLUG )
 													);
 												}
-												
+
 											?>
 										</td>
 										<td align="right">
 											<?php
-												if ( false === $is_premium ) {
+												if ( false === SH_CD_IS_PREMIUM ) {
 													sh_cd_upgrade_button( 'sh-cd-hide', sh_cd_license_upgrade_link() );
 												}
 
@@ -176,15 +174,15 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 													( true === $limit_reached && $i > SH_CD_FREE_SHORTCODE_LIMIT ) ? sh_cd_license_upgrade_link() : $link . '&action=edit&id=' . $id,
 													esc_html( $shortcode['slug'] ),
 													SH_CD_SHORTCODE,
-													( true === $is_premium ) ? esc_html( stripslashes( $shortcode['data'] ) ) : __( 'Upgrade for inline editing and toggles.', SH_CD_SLUG ),
+													( true === SH_CD_IS_PREMIUM ) ? esc_html( stripslashes( $shortcode['data'] ) ) : __( 'Upgrade for inline editing and toggles.', SH_CD_SLUG ),
 													( 1 === (int) $shortcode['disabled'] ) ? 'fa-times' : 'fa-check',
 													$link . '&action=delete&id=' . $id,
 													$id,
-													( true === $is_premium ) ? $link . '&action=clone&id=' . $id : sh_cd_license_upgrade_link(),
+													( true === SH_CD_IS_PREMIUM ) ? $link . '&action=clone&id=' . $id : sh_cd_license_upgrade_link(),
 													( 1 === (int) $shortcode['multisite'] ) ? 'fa-check' : 'fa-times',
 													__( 'Save', SH_CD_SLUG ),
 													__( 'Are you sure you want to delete this shortcode?', SH_CD_SLUG ),
-													( false === $is_premium ) ? 'disabled' : '',
+													( false === SH_CD_IS_PREMIUM ) ? 'disabled' : '',
 													( true === $limit_reached && $i > SH_CD_FREE_SHORTCODE_LIMIT ) ? 'disabled' : ''
                                             );
 
