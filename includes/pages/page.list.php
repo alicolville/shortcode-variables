@@ -72,14 +72,38 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
                             	<h2 class="hndle"><span><?php echo __( 'Your existing Snippet Shortcodes', SH_CD_SLUG ); ?></span></h2>
 							</div>
                             <div style="padding: 0px 15px 0px 15px">
-                                <p style="text-align: right">
-									<?php
-										if ( false === $is_premium ) {
-											sh_cd_upgrade_button( 'sh-cd-hide', sh_cd_license_upgrade_link() );
-										}
+								<table width="100%" style="margin-top: 10px">
+									<tr>
+										<td>
+											<?php
 
-										sc_cd_display_add_button();
-									?>
+												if ( false === SH_CD_IS_PREMIUM ) {
+													printf( '%s %d %s %d %s. <a href="%s">%s</a>',
+														__( 'Used', SH_CD_SLUG ),
+														sh_cd_db_shortcodes_count(),
+														__( 'of', SH_CD_SLUG ),
+														SH_CD_FREE_SHORTCODE_LIMIT,
+														__( 'shortcodes', SH_CD_SLUG ),
+														sh_cd_license_upgrade_link(),
+														__( 'Go unlimited!', SH_CD_SLUG )
+													);
+												}
+												
+											?>
+										</td>
+										<td align="right">
+											<?php
+												if ( false === $is_premium ) {
+													sh_cd_upgrade_button( 'sh-cd-hide', sh_cd_license_upgrade_link() );
+												}
+
+												sc_cd_display_add_button();
+											?>
+										</td>
+									</tr>
+								</table>
+                                <p style="text-align: right">
+
                                 </p>
                                 <table class="widefat sh-cd-table" width="100%">
                                     <tr class="row-title">
