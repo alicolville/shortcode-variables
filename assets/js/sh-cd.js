@@ -13,6 +13,72 @@ jQuery( document ).ready(function ($) {
 
     });
 
+   /**
+   * Show inline form
+   */
+    $( '.button-add-inline' ).on( 'click', function( e ) {
+
+      if ( '1' == sh_cd['premium'] ) {
+        $( '#sh-cd-add-inline' ).toggleClass( 'sh-cd-hide' );
+      } else {
+        sh_cd_promo();
+      }
+    });
+
+    /**
+     * Save inline form
+     */
+    $( '#sh-cd-add-button' ).on( 'click', function( e ) {
+
+      if ( '1' == sh_cd['premium'] ) {
+
+        $( '#sh-cd-add-button' ).html('<i class="fas fa-spinner fa-spin"></i>' );
+
+        let data = {};
+        data['content']       = $( '#sh-cd-add-inline-text' ).val();
+        data['slug']          = $( '#sh-cd-add-inline-slug' ).val();
+        data['multisite']     = $( '#sh-cd-add-inline-global' ).is(':checked');
+        data['enabled']       = $( '#sh-cd-add-inline-enabled' ).is(':checked');
+
+        sh_cd_post_data_to_WP( 'add_shortcode', data, sh_cd_handle_add_shortcode );
+
+      } else {
+        sh_cd_promo();
+      }
+    });
+
+    /**
+     * Reset Add button state
+     */
+    $( '#sh-cd-add-inline-text, #sh-cd-add-inline-slug, #sh-cd-add-inline-global, #sh-cd-add-inline-enabled' ).bind('input propertychange', function( e ) {
+      $( '#sh-cd-add-button' ).html('<i class="fas fa-save"></i> ' + sh_cd[ 'text-add' ])
+    });
+
+    /**
+     * Handle add of shortcode
+     * @param response
+     * @param data
+     */
+    function sh_cd_handle_add_shortcode( response, data ) {
+
+      if ( 1 == response.ok ) {
+
+        if ( $( '#sh-cd-add-inline-clear' ).is(':checked') ) {
+          $( '#sh-cd-add-inline-text' ).val( '' );
+          $( '#sh-cd-add-inline-slug' ).val( '' );
+          $( '#sh-cd-add-inline-global' ).prop( "checked", false )
+          $( '#sh-cd-add-inline-enabled' ).prop( "checked", false )
+
+          $( '#sh-cd-add-button' ).html('<i class="fas fa-check"></i> ' + sh_cd[ 'text-saved' ]);
+        }
+
+        $( '#sh-cd-add-inline-results' ).removeClass( 'sh-cd-hide' );
+
+      } else {
+        alert( response.error_message );
+      }
+    }
+
     /**
      * Save inline shortcode changes
      */

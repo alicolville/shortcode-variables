@@ -50,6 +50,7 @@ function sh_cd_js_config() {
 				'security'                  => wp_create_nonce( 'sh-cd-security' ),
 				'premium'                   => SH_CD_IS_PREMIUM,
 				'text-delete-confirm'       => __( 'Are you sure you wish to delete this shortcode?', SH_CD_SLUG ),
+				'text-add'                  => __( 'Add', SH_CD_SLUG ),
 				'text-save'                 => __( 'Save', SH_CD_SLUG ),
 				'text-saved'                => __( 'Saved!', SH_CD_SLUG ),
 				'text-error'                => __( 'Unfortunately something went wrong!', SH_CD_SLUG )
@@ -167,6 +168,39 @@ function sh_cd_ajax_update_shortcode() {
 	wp_send_json( 'shortcode-not-found' );
 }
 add_action( 'wp_ajax_update_shortcode', 'sh_cd_ajax_update_shortcode' );
+
+/**
+Ajax handler for adding shortcode inline
+ **/
+function sh_cd_ajax_add_shortcode() {
+
+	if ( false === SH_CD_IS_PREMIUM ) {
+		wp_send_json( 'not-premium' );
+	}
+
+	check_ajax_referer( 'sh-cd-security', 'security' );
+
+	if( true === empty( $_POST['slug'] ) ) {
+		wp_send_json( [ 'id' => 0, 'ok' => 0, 'error_message' => __( 'Error: Please specify a "Slug".', SH_CD_SLUG ) ] );
+	}
+
+	if( true === empty( $_POST['content'] ) ) {
+		wp_send_json( [ 'id' => 0, 'ok' => 0, 'error_message' => __( 'Error: Please add something for "Content".', SH_CD_SLUG ) ] );
+	}
+
+	$shortcode = [	  'slug' 			=> $_POST['slug'],
+	                  'previous_slug'   => '',
+	                  'data' 			=> $_POST['content'],
+	                  'disabled' 		=> ! sh_cd_to_bool( $_POST[ 'enabled' ] ),
+	                  'multisite' 	    => sh_cd_to_bool( $_POST[ 'multisite' ] )
+	];
+
+	$result = sh_cd_db_shortcodes_save( $shortcode, true );
+
+	wp_send_json( [ 'shortcode' => $result, 'ok' => ( false !== $result ), 'error_message' => __( 'Error: There was an error when saving your shortcode.', SH_CD_SLUG ) ] );
+
+}
+add_action( 'wp_ajax_add_shortcode', 'sh_cd_ajax_add_shortcode' );
 
 /**
  * Replace shortcodes within menu titles.
