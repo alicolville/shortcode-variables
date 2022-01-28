@@ -173,7 +173,7 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
                                     ?>
                                 </table>
 								<p style="text-align: right">
-									<?php sc_cd_display_add_button(); ?>
+									<?php sc_cd_display_add_button( false ); ?>
 								</p>
                                 <br clear="all" />
                             </div>
@@ -188,12 +188,16 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
 /**
  * Render button for adding a shortcode
+ *
+ * @param bool $show_quick_add
  */
-function sc_cd_display_add_button() {
+function sc_cd_display_add_button( $show_quick_add = true ) {
 
 	$limit_reached = sh_cd_reached_free_limit();
 
-	printf( '&nbsp;<a class="button-primary button-add-inline">%1$s</a>', __( 'Add Inline', SH_CD_SLUG ) );
+	if ( true === $show_quick_add ) {
+		printf( '&nbsp;<a class="button-primary button-add-inline">%1$s</a>', __( 'Quick Add', SH_CD_SLUG ) );
+	}
 
 	printf( '&nbsp;<a class="button-primary" href="%1$s">%2$s</a>',
 		( false === $limit_reached ) ? sh_cd_link_your_shortcodes_add() : sh_cd_license_upgrade_link(),
