@@ -100,7 +100,7 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 												<td align="middle"><input type="checkbox" id="sh-cd-add-inline-global" value="true" /></td>
 												<td align="middle"><input type="checkbox" id="sh-cd-add-inline-enabled" value="true" checked="checked" /></td>
 												<td width="100">
-													<a class="button button-small sh-cd-inline-add-button" id="sh-cd-add-button"><i class="fas fa-save"></i> %2$s</a>
+													<a class="button button-small sh-cd-inline-add-button" id="sh-cd-add-button" %5$s><i class="fas fa-save"></i> %2$s</a>
 												</td>
 											</tr>
 											<tr class="sh-cd-hide" id="sh-cd-add-inline-results">
@@ -115,7 +115,8 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 											__( 'Slug', SH_CD_SLUG ),
 											__( 'Add', SH_CD_SLUG ),
 											__( 'Clear form after save', SH_CD_SLUG ),
-											__( 'Shortcode(s) added (refresh page to edit)', SH_CD_SLUG )
+											__( 'Shortcode(s) added (refresh page to edit)', SH_CD_SLUG ),
+											( false === SH_CD_IS_PREMIUM ) ? ' disabled="disabled"' : ''
 									);
 
                                     $current_shortcodes = sh_cd_db_shortcodes_all();
@@ -192,7 +193,7 @@ function sc_cd_display_add_button() {
 
 	$limit_reached = sh_cd_reached_free_limit();
 
-	printf( '&nbsp;<a class="button-primary button-add-inline" %1$s>%2$s</a>', ( false === SH_CD_IS_PREMIUM ) ? ' disabled="disabled"' : '', __( 'Add Inline', SH_CD_SLUG ) );
+	printf( '&nbsp;<a class="button-primary button-add-inline">%1$s</a>', __( 'Add Inline', SH_CD_SLUG ) );
 
 	printf( '&nbsp;<a class="button-primary" href="%1$s">%2$s</a>',
 		( false === $limit_reached ) ? sh_cd_link_your_shortcodes_add() : sh_cd_license_upgrade_link(),

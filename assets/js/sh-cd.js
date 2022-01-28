@@ -17,12 +17,7 @@ jQuery( document ).ready(function ($) {
    * Show inline form
    */
     $( '.button-add-inline' ).on( 'click', function( e ) {
-
-      if ( '1' == sh_cd['premium'] ) {
         $( '#sh-cd-add-inline' ).toggleClass( 'sh-cd-hide' );
-      } else {
-        sh_cd_promo();
-      }
     });
 
     /**
