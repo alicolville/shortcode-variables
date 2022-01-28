@@ -123,9 +123,10 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 
                                     if ( false === empty( $current_shortcodes ) ) {
 
-                                        $class = '';
-
-                                        $link = sh_cd_link_your_shortcodes();
+                                        $class 			= '';
+                                        $link 			= sh_cd_link_your_shortcodes();
+                                        $i 				= 0;
+                                        $limit_reached 	= sh_cd_reached_free_limit();
 
                                         foreach ( $current_shortcodes as $shortcode ) {
 
@@ -143,12 +144,12 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 														<td align="middle"><a class="button button-small toggle-disable sh-cd-toggle-%13$s" id="sc-cd-toggle-%8$s" data-id="%8$s" %13$s ><i class="fas %6$s"></i></a></td>
 														<td width="100">
 															<a class="button button-small sh-cd-toggle-%13$s" %13$s href="%9$s"><i class="far fa-clone"></i></a>
-															<a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
+															<a class="button button-small" href="%2$s" %14$s><i class="far fa-edit"></i></a>
 															<a class="button button-small delete-shortcode" data-id="%8$s"><i class="fas fa-trash-alt"></i></a>
 														</td>
 													</tr>',
 													$class,
-													$link . '&action=edit&id=' . $id,
+													( true === $limit_reached && $i > SH_CD_FREE_SHORTCODE_LIMIT ) ? sh_cd_license_upgrade_link() : $link . '&action=edit&id=' . $id,
 													esc_html( $shortcode['slug'] ),
 													SH_CD_SHORTCODE,
 													( true === $is_premium ) ? esc_html( stripslashes( $shortcode['data'] ) ) : __( 'Upgrade for inline editing and toggles.', SH_CD_SLUG ),
@@ -159,8 +160,11 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 													( 1 === (int) $shortcode['multisite'] ) ? 'fa-check' : 'fa-times',
 													__( 'Save', SH_CD_SLUG ),
 													__( 'Are you sure you want to delete this shortcode?', SH_CD_SLUG ),
-													( false === $is_premium ) ? 'disabled' : ''
+													( false === $is_premium ) ? 'disabled' : '',
+													( true === $limit_reached && $i > SH_CD_FREE_SHORTCODE_LIMIT ) ? 'disabled' : ''
                                             );
+
+                                            $i++;
                                         }
                                     }
                                     else {

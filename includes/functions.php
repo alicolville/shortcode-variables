@@ -476,7 +476,7 @@ function sh_cd_reached_free_limit() {
 		return false;
 	}
 
-	return ( (int) $existing_shortcodes >= 15 );
+	return ( (int) $existing_shortcodes >= SH_CD_FREE_SHORTCODE_LIMIT );
 }
 
 /**
