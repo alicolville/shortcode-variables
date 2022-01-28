@@ -52,3 +52,6 @@
 #sh-cd-add-inline {
   background-color: aquamarine;
 }
+.sh-cd-csv-import .sh-cd-form-row {
+  margin-bottom: 20px;
+}

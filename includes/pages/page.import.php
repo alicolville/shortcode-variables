@@ -20,7 +20,7 @@ function sh_cd_admin_page_import() {
 	}
 
     ?>
-    <div class="wrap ws-ls-user-meals ws-ls-admin-page">
+    <div class="wrap sh-cd-csv-import ws-ls-admin-page">
     <div id="poststuff">
         <div id="post-body" class="metabox-holder">
             <div id="post-body-content">
@@ -42,7 +42,7 @@ function sh_cd_admin_page_import() {
 									<input id="select_csv" type="button" class="button" value="<?php echo __( 'Select CSV file', SH_CD_SLUG ); ?>" />
 									<br />
 								</div>
-								<div class="sh-cd-hide" id="selected-form" >
+								<div class="sh-cd-hide sh-cd-import-selected" id="selected-form" >
 									<form action="<?php echo admin_url( 'admin.php?page=sh-cd-import&mode=import'); ?>" method="post">
 										<div class="sh-cd-form-row">
 											<label for="attachment-path"><?php echo __( 'Selected file:', SH_CD_SLUG ); ?></label>
