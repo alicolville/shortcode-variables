@@ -49,3 +49,9 @@
   background-color: #92a8d1;
   color: #FFFFFF;
 }
+#sh-cd-add-inline {
+  background-color: #fff8dd;
+}
+.sh-cd-csv-import .sh-cd-form-row {
+  margin-bottom: 20px;
+}

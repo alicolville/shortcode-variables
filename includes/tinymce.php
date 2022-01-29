@@ -31,7 +31,7 @@
 		$config = [
 			'button-text' => 'Snippet Shortcodes',
 			'select-text' => 'Premade Variables',
-			'premium' => sh_cd_license_is_premium(),
+			'premium' => SH_CD_IS_PREMIUM,
 			'upgrade-url' => sh_cd_license_upgrade_link(),
 			'upgrade-text' => 'This is a premium feature. Would you like to upgrade Snippet Shortcodes?',
 			'dialog-title' => 'Select a shortcode',
@@ -55,7 +55,7 @@
 
 		$data = [];
 
-		if ( false === sh_cd_license_is_premium() ) {
+		if ( false === SH_CD_IS_PREMIUM ) {
 			return [];
 		}
 

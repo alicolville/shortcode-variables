@@ -76,7 +76,7 @@ function sh_cd_slug_generate( $slug, $exising_id = NULL ) {
  */
 function sh_cd_clone( $id ) {
 
-	if( false === sh_cd_license_is_premium() ) {
+	if( false === SH_CD_IS_PREMIUM ) {
 		return true;
 	}
 
@@ -338,7 +338,7 @@ function sh_cd_toggle_multisite( $id ) {
  */
 function sh_cd_display_premade_shortcodes( $display = 'all' ) {
 
-	$premium_user = sh_cd_license_is_premium();
+	$premium_user = SH_CD_IS_PREMIUM;
 	$upgrade_link = sprintf( '<a class="button" href="%1$s"><i class="fas fa-check"></i> %2$s</a>', sh_cd_license_upgrade_link(), __('Upgrade now', SH_CD_SLUG ) );
 
 	switch ( $display ) {
@@ -426,7 +426,7 @@ function sh_cd_is_multisite_enabled() {
 		return false;
 	}
 
-	if ( false === sh_cd_license_is_premium() ) {
+	if ( false === SH_CD_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -466,7 +466,7 @@ function sh_cd_multisite_slugs() {
  */
 function sh_cd_reached_free_limit() {
 
-	if ( true === sh_cd_license_is_premium() ) {
+	if ( true === SH_CD_IS_PREMIUM ) {
 		return false;
 	}
 
@@ -476,7 +476,7 @@ function sh_cd_reached_free_limit() {
 		return false;
 	}
 
-	return ( (int) $existing_shortcodes >= 15 );
+	return ( (int) $existing_shortcodes >= SH_CD_FREE_SHORTCODE_LIMIT );
 }
 
 /**
@@ -486,7 +486,7 @@ function sh_cd_reached_free_limit() {
 function sh_cd_permission_role() {
 
 	// If not premium, then admin only
-	if ( false === sh_cd_license_is_premium() ) {
+	if ( false === SH_CD_IS_PREMIUM ) {
 		return 'manage_options';
 	}
 
@@ -523,4 +523,167 @@ function sh_cd_display_pro_upgrade_notice( ) {
 	</div>
 
 	<?php
+}
+
+
+/**
+ * Process a CSV attachment and import into database
+ *
+ * @param $attachment_id
+ *
+ * @param bool $dry_run
+ *
+ * @return string
+ */
+function sh_cd_import_csv( $attachment_id, $dry_run = true ) {
+
+	if ( false === sh_cd_permission_check() ) {
+		return 'You do not have the correct admin permissions';
+	}
+
+	if ( false === SH_CD_IS_PREMIUM ) {
+		return 'This is a premium feature';
+	}
+
+	$csv_path = get_attached_file( $attachment_id );
+	$admin_id = get_current_user_id();
+
+	if ( true === empty( $csv_path ) || false === file_exists( $csv_path )) {
+		return 'Error: Error loading CSV from disk.';
+	}
+
+	$csv = array_map('str_getcsv', file( $csv_path ) );
+
+	if ( true === empty( $csv ) ) {
+		return 'Error: The CSV appears to be empty.';
+	}
+
+	array_walk($csv, function(&$a) use ($csv) {
+		$a = array_combine($csv[0], $a);
+	});
+
+	$validate_header_result = sh_cd_import_csv_validate_header( $csv[0] );
+
+	if ( true !== $validate_header_result ) {
+		return $validate_header_result;
+	}
+
+	array_shift($csv );
+
+	if ( true === empty( $csv ) ) {
+		return 'Error: The CSV appears to be empty (when header hs been removed).';
+	}
+
+	$errors = 0;
+
+	$output = sprintf( '%d rows to process...' . PHP_EOL, count( $csv ) );
+
+	if ( true === $dry_run ) {
+		$output .= 'DRY RUN MODE! No data will be imported.' . PHP_EOL;
+	}
+
+	foreach ( $csv as $row ) {
+
+		if ( $errors >= 50 ) {
+			$output .= 'Aborted! More than 50 errors have been detected in this file.' . PHP_EOL;
+			break;
+		}
+
+		$row = array_change_key_case( $row ); // Force CSV headers to lowercase
+
+		$validation_result = sh_cd_import_csv_validate_row( $row );
+
+		// Validate a row before proceeding
+		if ( true !== $validation_result ) {
+			$output .= $validation_result . PHP_EOL;
+			$errors++;
+			continue;
+		}
+
+		if ( false === $dry_run ) {
+
+			$shortcode = [	'slug' 			=> $row[ 'slug' ],
+							'previous_slug' => '',
+							'data' 			=> $row[ 'content' ],
+							'disabled' 		=> ! sh_cd_to_bool( $row[ 'enabled' ] ),
+							'multisite' 	=> sh_cd_to_bool( $row[ 'global' ] )
+			];
+
+			$result = sh_cd_db_shortcodes_save( $shortcode );
+
+			if ( false === $result ) {
+				$output .= 'Skipped: Error inserting into database (most likely a field contains too many characters or in the wrong format): ' .  implode( ',', $row ) . PHP_EOL;
+			}
+		}
+
+	}
+
+	if ( $errors > 0 ) {
+		$output .= sprintf( '%d errors were detected and the rows skipped.' . PHP_EOL, $errors );
+	}
+
+	$output .= 'Completed.';
+
+	return $output;
+
+}
+
+/**
+ * Verify header row
+ * @param $header_row
+ *
+ * @return bool|string
+ */
+function sh_cd_import_csv_validate_header( $header_row ) {
+
+	$expected_headers = [ 'slug', 'content', 'global', 'enabled' ];
+
+	foreach ( $expected_headers as $column ) {
+
+		if ( false === isset( $header_row[ $column ] ) ) {
+			return 'Missing column: ' . $column . '. Expecting: ' . implode( ',', $expected_headers ) . PHP_EOL;
+		}
+	}
+
+	return true;
+}
+
+/**
+ * Validate CSV row
+ * @param $csv_row
+ *
+ * @return bool|string
+ */
+function sh_cd_import_csv_validate_row( $csv_row ) {
+
+	if ( true === empty( $csv_row[ 'slug' ] ) ) {
+		return 'Skipped: Missing slug: ' . implode( ',', $csv_row );
+	}
+
+	if ( false === empty( $isset[ 'content' ] ) ) {
+		return 'Skipped: Content: ' . implode( ',', $csv_row );
+	}
+
+	$allowed_bools = [ 'yes', 'no', 'true', 'false', '1', '0' ];
+
+	if ( true === empty( $csv_row[ 'global' ] ) ||
+		 false === in_array( $csv_row[ 'global' ], $allowed_bools ) ) {
+		return 'Skipped: Invalid "global" value. Must be "yes" or "no": ' . implode( ',', $csv_row );
+	}
+
+	if ( true === empty( $csv_row[ 'enabled' ] ) ||
+		 false === in_array( $csv_row[ 'enabled' ], $allowed_bools ) ) {
+		return 'Skipped: Invalid "enabled" value. Must be "yes" or "no": ' . implode( ',', $csv_row );
+	}
+
+	return true;
+}
+
+/**
+ * Convert string to bool
+ * @param $string
+ * @return mixed
+ */
+function sh_cd_to_bool( $string ) {
+	return filter_var( $string, FILTER_VALIDATE_BOOLEAN );
 }
