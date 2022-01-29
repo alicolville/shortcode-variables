@@ -69,6 +69,16 @@ jQuery( document ).ready(function ($) {
 
         $( '#sh-cd-add-inline-results' ).removeClass( 'sh-cd-hide' );
 
+        let text = $( '#sh-cd-add-inline-results span' ).text();
+
+        if ( '' !== text ) {
+          text += ', ';
+        }
+
+        text += ' [sv slug="' + response.shortcode.slug + '"]';
+
+        $( '#sh-cd-add-inline-results span' ).text( text );
+
       } else {
         alert( response.error_message );
       }
