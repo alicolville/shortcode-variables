@@ -146,13 +146,14 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 
 == Upgrade Notice ==
 
-4.0 - Bulk import shortcodes via CSV!
+4.0 - Bulk import shortcodes via CSV and now Quick Add!
 
 == Changelog ==
 
 = 4.0 =
 
 * New feature: Bulk import of shortcodes via CSV.
+* New feature: Quick Add shortcodes without having to open the editor and wait for page refreshes.
 * Improvement: Shortcodes can be deleted via Ajax on the list page. This saves waiting for a page refresh.
 * Improvement: Added "loading" animations on relevant UI elements.
 * Improvement: General code refactoring.
