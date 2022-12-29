@@ -3,8 +3,8 @@ Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 5.7
-Tested up to: 6.0
-Stable tag: 4.0.2
+Tested up to: 6.1.1
+Stable tag: 4.0.3
 Requires PHP: 7.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -145,6 +145,10 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 4.0 - Bulk import shortcodes via CSV and now Quick Add!
 
 == Changelog ==
+
+= 4.0.3 =
+
+* Updated "Tested upto" statement.
 
 = 4.0.2 =
 
