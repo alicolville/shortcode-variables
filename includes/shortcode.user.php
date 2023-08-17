@@ -46,7 +46,7 @@ function sh_cd_shortcode_render( $args ) {
 
 		$shortcode = sh_cd_db_shortcodes_by_slug( $args[ 'slug' ] );
 
-		// Cache it! If a multisite, only cache the shortcode for 30 seconds. Otherwise fall back to default cache time.
+		// Cache it! If a multisite, only cache the shortcode for 30 seconds. Otherwise, fall back to default cache time.
 		$cache_time = ( true === SH_CD_IS_PREMIUM && true === in_array( $args[ 'slug' ], sh_cd_multisite_slugs() ) ) ? 30 : NULL;
 
 		sh_cd_cache_set( $args[ 'slug' ], $shortcode, $cache_time );

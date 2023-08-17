@@ -452,7 +452,7 @@ function sh_cd_multisite_slugs() {
 
 	$slugs = sh_cd_db_shortcodes_multisite_slugs();
 
-	$slugs = ( false === empty( $slugs ) ) ? wp_list_pluck( $slugs, 'slug' ) : NULL;
+	$slugs = ( false === empty( $slugs ) ) ? wp_list_pluck( $slugs, 'slug' ) : [];
 
 	// Cache this for a short time
 	sh_cd_cache_set( 'sh-cd-multisite-slugs', $slugs, 30 );
