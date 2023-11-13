@@ -9,6 +9,7 @@ defined('ABSPATH') or die("Jog on!");
 function sh_cd_shortcode_presets_premium_list() {
 
 	return [
+		'sc-db-value-by-id' => [ 'class' => 'SC_DB_VALUE_BY_ID', 'description' => __( 'Return a column value from a MySQL database for the given ID of search criteria e.g. [sv slug="sc-db-by-id" table="users" return="name" search-column="id" search-value="3"]', SH_CD_SLUG ), 'premium' => true,  'args' => [ '_sh_cd_func' => 'by-id' ] ],
 		'sc-date' => [ 'class' => 'SC_DATE', 'description' => __( 'A shortcode that displays today\'s date with the ability to add or subtract days, months and years. To specify an interval to add or subtract onto the date use the parameter "interval" e.g. [sv slug="sc-date" interval="-1 year"], [sv slug="sc-date" interval="+5 days"], [sv slug="sc-date" interval="+3 months"]. Intervals are based upon PHP intervals and are outlined here <a href="https://www.php.net/manual/en/dateinterval.createfromdatestring.php" target="_blank">https://www.php.net/manual/en/dateinterval.createfromdatestring.php</a>. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>', SH_CD_SLUG ), 'premium' => true ],
 		'sc-site-language' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'Language code for the current site', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'language' ], 'premium' => true ],
 		'sc-site-description' => [ 'class' => 'SC_BLOG_INFO', 'description' => __( 'Site tagline (set in Settings > General)', SH_CD_SLUG ), 'args' => [ '_sh_cd_func' => 'description' ], 'premium' => true ],
@@ -393,3 +394,80 @@ class SV_SC_DATE extends SV_Preset {
 		return date_format( $todays_date, $date_format );
 	}
 }
+
+/**
+ * Fetch a column from a MySQL database by ID
+ *
+ * Min example:
+ *
+ * [sv slug="sc-db-value-by-id" table="users" column="user_login" column-to-search="id" key="3"]
+ *
+ * Full example:
+ *
+ * [sv slug="sc-db-value-by-id" table="users" column="user_login" column-to-search="id" key="3" key-format="%d" message-not-found="User not found"]
+ *
+ * SC_DB_VALUE_BY_ID
+ */
+class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
+
+	protected function unsanitised() {
+
+		$args = $this->get_arguments();
+
+		if ( true === empty( $args['key-format'] ) ) {
+			$args['key-format'] = '%d';
+		}
+
+		if ( $validation_error = $this->validate_arguments( $args ) ) {
+			return $validation_error;
+		}
+
+		global $wpdb;
+
+		$sql = sprintf( 'Select %s from %s where %s = %s',
+								$args['column'],
+								$wpdb->prefix . $args['table'],
+								$args['column-to-search'],
+								$args['key-format']
+		);
+
+		$sql    = $wpdb->prepare( $sql, $args['key'] );
+		$value  = $wpdb->get_var( $sql );
+
+		if ( true === empty( $value ) &&
+				false === empty( $args['message-not-found'] )) {
+			return $args['message-not-found'] ;
+		}
+
+		return $value;
+	}
+
+	protected function validate_arguments( $args = [] ) {
+
+		if ( true === empty( $args['table'] ) ) {
+			return 'No MySQL table specified (i.e. "table" argument is missing).';
+		}
+
+		if ( true === empty( $args['column'] ) ) {
+			return 'No MySQL column specified (i.e. "column" argument is missing).';
+		}
+
+		if ( true === empty( $args['column-to-search'] ) ) {
+			return 'The MySQL column to search for given key has not been specified (i.e. "column-to-search" argument is missing).';
+		}
+
+		if ( true === empty( $args['key'] ) ) {
+			return 'No key has been specified (i.e. "key" argument is missing).';
+		}
+
+		if ( true === empty( $args['key-format'] ) ) {
+			return 'No key format has been specified (i.e. "key-format" argument is missing). If the "key" field is numeric, then use %d otherwise use %s.';
+		}
+
+		if ( false === in_array( $args['key-format'], [ '%s', '%d' ] ) ) {
+			return 'The key format is invalid. If the "key" field is numeric, then use %d otherwise use %s.';
+		}
+
+	}
+}
+
