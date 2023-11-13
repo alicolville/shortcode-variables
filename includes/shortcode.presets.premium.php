@@ -404,7 +404,7 @@ class SV_SC_DATE extends SV_Preset {
  *
  * Full example:
  *
- * [sv slug="sc-db-value-by-id" table="users" column="user_login" column-to-search="id" key="3" key-format="%d" message-not-found="User not found"]
+ * [sv slug="sc-db-value-by-id" table="users" column="user_login" column-to-search="id" key="3" key-format="%d" message-not-found="User not found" cache=false]
  *
  * SC_DB_VALUE_BY_ID
  */
@@ -412,14 +412,17 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 
 	protected function unsanitised() {
 
-		$args = $this->get_arguments();
-
-		if ( true === empty( $args['key-format'] ) ) {
-			$args['key-format'] = '%d';
-		}
+		$args = wp_parse_args( $this->get_arguments(), [ 'key-format' => '%d', 'message-not-found' => '', 'cache' => true, 'cache-duration' => 1 * HOUR_IN_SECONDS ] );
 
 		if ( $validation_error = $this->validate_arguments( $args ) ) {
 			return $validation_error;
+		}
+
+		$cache_key = md5( print_r( $args, true ) );
+
+		if( true === sh_cd_to_bool( $args[ 'cache'] )
+		        && $cache = sh_cd_cache_get( $cache_key ) ) {
+			return $cache;
 		}
 
 		global $wpdb;
@@ -434,10 +437,11 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 		$sql    = $wpdb->prepare( $sql, $args['key'] );
 		$value  = $wpdb->get_var( $sql );
 
-		if ( true === empty( $value ) &&
-				false === empty( $args['message-not-found'] )) {
-			return $args['message-not-found'] ;
+		if ( true === empty( $value )) {
+			$value = $args['message-not-found'] ;
 		}
+
+		sh_cd_cache_set( $cache_key, $value, (int) $args[ 'cache-duration'] );
 
 		return $value;
 	}
