@@ -404,7 +404,7 @@ class SV_SC_DATE extends SV_Preset {
  *
  * Full example:
  *
- * [sv slug="sc-db-value-by-id" table="users" column="user_login" column-to-search="id" key="3" key-format="%d" message-not-found="User not found" cache=false]
+ * [sv slug="sc-db-value-by-id" table="users" column="user_login" column-to-search="id" key="3" key-format="%d" message-not-found="User not found" cache=false cache-duration=3600
  *
  * SC_DB_VALUE_BY_ID
  */
@@ -474,4 +474,3 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 
 	}
 }
-
