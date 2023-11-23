@@ -5,3 +5,4 @@ baseurl: /
 logo: assets/images/product-logo.png
 kramdown:
   smart_quotes: ["apos", "apos", "quot", "quot"]
+port: 9000
