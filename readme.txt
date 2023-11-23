@@ -3,9 +3,9 @@ Contributors: aliakro
 Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 5.7
-Tested up to: 6.3
-Stable tag: 4.0.4
-Requires PHP: 7.2
+Tested up to: 6.4.1
+Stable tag: 4.1
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Donate Link: https://www.paypal.me/yeken
@@ -54,6 +54,7 @@ Each argument can be rendered into the shortcode in the with the following synta
 The plugin comes with the following premium shortcodes:
 
 - sc-date - A shortcode that displays today's date with the ability to add or subtract days, months and years. To specify an interval to add or subtract onto the date use the parameter "interval" e.g. [sv slug="sc-date" interval="-1 year"], [sv slug="sc-date" interval="+5 days"], [sv slug="sc-date" interval="+3 months"]. Intervals are based upon PHP intervals and are outlined here <a href="https://www.php.net/manual/en/dateinterval.createfromdatestring.php" target="_blank">https://www.php.net/manual/en/dateinterval.createfromdatestring.php</a>. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>
+- sc-db-value-by-id - A shortcode that displays today's date with the ability to add or subtract days, months and years. To specify an interval to add or subtract onto the date use the parameter "interval" e.g. [sv slug="sc-date" interval="-1 year"], [sv slug="sc-date" interval="+5 days"], [sv slug="sc-date" interval="+3 months"]. Intervals are based upon PHP intervals and are outlined here <a href="https://www.php.net/manual/en/dateinterval.createfromdatestring.php" target="_blank">https://www.php.net/manual/en/dateinterval.createfromdatestring.php</a>. Default is UK format (DD/MM/YYYY). Format can be changed by adding the parameter format="m/d/Y" onto the shortcode. Format syntax is based upon PHP date: <a href="http://php.net/manual/en/function.date.php" target="_blank">http://php.net/manual/en/function.date.php</a>
 - sc-site-language - Language code for the current site
 - sc-site-description - Site tagline (set in Settings > General)
 - sc-site-wp-url - The WordPress address (URL) (set in Settings > General)
@@ -142,9 +143,13 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 
 == Upgrade Notice ==
 
-4.0 - Bulk import shortcodes via CSV and now Quick Add!
+4.1 -[sv slug="sc-db-value-by-id"], new Premium shortcode for fetching a value from a MySQL table.
 
 == Changelog ==
+
+= 4.1 =
+
+* New Feature: New Premium shortcode for fetching a value from a MySQL table, [sv slug="sc-db-value-by-id"]. Read more: https://snippet-shortcodes.yeken.uk/shortcodes/sc-db-value-by-id.html
 
 = 4.0.4 =
 
