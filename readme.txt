@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 5.7
 Tested up to: 6.4.1
-Stable tag: 4.1
+Stable tag: 4.1.1
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -146,6 +146,10 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 4.1 -[sv slug="sc-db-value-by-id"], new Premium shortcode for fetching a value from a MySQL table.
 
 == Changelog ==
+
+= 4.1.1 =
+
+* Improvement: Dropped the database table prefix from the shortcode [sv slug="sc-db-value-by-id"] e.g. instead of specifying "users" table, it would now be "wp_users" (i.e. if a WP table, specify the prefix)
 
 = 4.1 =
 
