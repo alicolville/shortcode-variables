@@ -429,7 +429,7 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 
 		$sql = sprintf( 'Select %s from %s where %s = %s',
 								$args['column'],
-								$wpdb->prefix . $args['table'],
+								$args['table'],
 								$args['column-to-search'],
 								$args['key-format']
 		);
