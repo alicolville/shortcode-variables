@@ -8,7 +8,6 @@
 		protected $escape_method = 'esc_html';
 
 		public function init() {
-
 			$this->auto_set_escape();
 		}
 
@@ -16,9 +15,26 @@
 			$this->args = ( false === empty( $args ) && true === is_array( $args ) ) ? $args : [];
 		}
 
-		public function get_arguments() {
-			return $this->args;
+		public function get_arguments( $prep_arguments = false ) {
+			$args = $this->args;
+
+            if ( true === $prep_arguments ) {
+                $args = array_map( [ 'SV_Preset', 'prep_argument' ], $this->args );
+            }
+
+            return $args;
 		}
+
+        public static function prep_argument( $argument ) {
+
+            if ( true === empty( $argument ) ) {
+                return $argument;
+            }
+
+            $argument = str_replace( [ '{{{', '}}}' ], [ '[', ']' ], $argument );
+
+            return do_shortcode( $argument );
+        }
 
 		/**
 		 * Be clever and try and auto detect the escape method that should be used.

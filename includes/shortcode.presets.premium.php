@@ -412,7 +412,9 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 
 	protected function unsanitised() {
 
-		$args = wp_parse_args( $this->get_arguments(), [ 'key-format' => '%d', 'message-not-found' => '', 'cache' => true, 'cache-duration' => 1 * HOUR_IN_SECONDS ] );
+		$args = wp_parse_args( $this->get_arguments( true ), [ 'key-format' => '%d', 'message-not-found' => '', 'cache' => true, 'cache-duration' => 1 * HOUR_IN_SECONDS ] );
+
+        print_r($args);
 
 		if ( $validation_error = $this->validate_arguments( $args ) ) {
 			return $validation_error;
