@@ -448,6 +448,10 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 
 	protected function validate_arguments( $args = [] ) {
 
+        if ( false === sh_cd_is_shortcode_db_value_by_id_enabled() ) {
+            return 'This shortcode has been disabled by admin. See "WP Admin" > "Snippet Shortcodes" > "Settings" to enable.';
+        }
+
 		if ( true === empty( $args['table'] ) ) {
 			return 'No MySQL table specified (i.e. "table" argument is missing).';
 		}

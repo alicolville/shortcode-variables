@@ -2,6 +2,8 @@
 
 > The following shortcode are only available in the [Premium](https://shop.yeken.uk/product/shortcode-variables/) version of the plugin.
 
+> Note: By default, this shortcode is disabled. To enable, please read the last section.
+
 Fetch a value from the given MySQL table. Specify which column the value should be fetched from as well as specify which column should be matched against for the given key.
 
 For example, the following shortcode usage, will run the SQL specified below.
@@ -30,3 +32,11 @@ The shortcode supports the following arguments:
 | key               | Value to compare against colum-to-search                                                 | text                                            | [sv slug="sc-db-value-by-id" table="wp_users" column="user_login" column-to-search="id" key="3" key-format="%d"]
 | key-format        | To stop SQL injection, a format (either numeric or string) must be specified for the key | Either "%d" (for a number) or "%s" for a string | [sv slug="sc-db-value-by-id" table="wp_users" column="user_login" column-to-search="id" key="3" key-format="%d"]
 | message-not-found | Message to display if no value can be found for the given key.                           | Either blank or text                            | [sv slug="sc-db-value-by-id" table="wp_users" column="user_login" column-to-search="id" key="3" key-format="%d" message-not-found="Could not find user"]
+
+**Enabling this shortcode**
+
+This shortcode can be enabled within the WP Admin on the page "Snippet Shortcodes" > "Settings". Simply set the setting '"sc-db-value-by-id" shortcode enabled?' to "Yes".  
+
+The following filter can also be used to force the setting to always be "No".
+
+`add_filter( 'disable-ss-sc-db-value-by-id', function( $default ){ return true; } );`
