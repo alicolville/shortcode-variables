@@ -508,6 +508,26 @@ function sh_cd_permission_check() {
 }
 
 /**
+ * Is the shortcode [sv slug="sc-db-value-by-id"] enabled
+ * @return bool (default false)
+ */
+function sh_cd_is_shortcode_db_value_by_id_enabled() {
+
+    if ( false === SH_CD_IS_PREMIUM ) {
+        return false;
+    }
+
+    // Disabling by filter overrides the setting in WP admin
+    if ( true === apply_filters( 'disable-ss-sc-db-value-by-id', __return_false() ) ) {
+        return false;
+    }
+
+    $value = get_option( 'sh-cd-shortcode-db-value-by-id-enabled', false );
+
+    return ws_ls_to_bool( $value );
+}
+
+/**
  * Display upgrade notice
  *
  * @param bool $pro_plus
