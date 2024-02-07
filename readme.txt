@@ -149,6 +149,7 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 
 = 4.1.2 =
 
+* Improvement: By default, the shortcode [sv slug="sc-db-value-by-id"] shall be disabled unless explicitly enabled in WP Admin.
 * Improvement: Added the setting ''"sc-db-value-by-id" shortcode enabled?' to enable the shortcode [sv slug="sc-db-value-by-id"].
 * Improvement: Added filter "disable-ss-sc-db-value-by-id" to hard disable the shortcode [sv slug="sc-db-value-by-id"].
 
