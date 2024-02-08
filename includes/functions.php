@@ -524,7 +524,7 @@ function sh_cd_is_shortcode_db_value_by_id_enabled() {
 
     $value = get_option( 'sh-cd-shortcode-db-value-by-id-enabled', false );
 
-    return ws_ls_to_bool( $value );
+    return sh_cd_to_bool( $value );
 }
 
 /**
