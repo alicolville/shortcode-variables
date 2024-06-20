@@ -5,9 +5,9 @@ defined('ABSPATH') or die("Jog on!");
 /**
  * Plugin Name: Snippet Shortcodes
  * Description: Create your own shortcodes and assign text / variables to it or use our premade ones. You can then embed these shortcodes throughout your entire site and only have to change the value in one place.
- * Version: 4.1.3
+ * Version: 4.1.4
  * Requires at least:   6.0
- * Tested up to: 		6.4.3
+ * Tested up to: 		6.5
  * Requires PHP:        7.4
  * Author:              Ali Colville
  * Author URI:          https://www.YeKen.uk
@@ -34,7 +34,7 @@ defined('ABSPATH') or die("Jog on!");
 
 define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
-define( 'SH_CD_PLUGIN_VERSION', '4.1.3' );
+define( 'SH_CD_PLUGIN_VERSION', '4.1.4' );
 define( 'SH_CD_PLUGIN_NAME', 'Snippet Shortcodes' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
