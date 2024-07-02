@@ -52,7 +52,8 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
                                 ?>
                                     <form method="post" action="<?php echo sh_cd_link_your_shortcodes() . '&action=save'; ?>">
 										<input type="hidden" id="id" name="id" value="<?php echo esc_attr( $shortcode['id'] ); ?>" />
-
+                                        <?php wp_nonce_field( 'save-shortcode' ); ?>
+                                        
 										<div class="sh-cd-button-row sh-cd-border-bottom">
 											<a class="comment-submit button" href="<?php echo sh_cd_link_your_shortcodes(); ?>"><?php echo __( 'Cancel', SH_CD_SLUG ); ?></a>
 											<input name="submit_button" type="submit" value="Save Shortcode" class="comment-submit button button-primary">

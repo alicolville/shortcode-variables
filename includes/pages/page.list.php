@@ -14,6 +14,8 @@ function sh_cd_pages_your_shortcodes() {
 	// Do we have a save event?
 	if ( 'save' === $action ) {
 
+		check_admin_referer( 'save-shortcode' );
+
 		$save_result = false;
 
 		if ( false === empty( $_POST[ 'id'] ) ||
