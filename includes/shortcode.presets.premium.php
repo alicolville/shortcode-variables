@@ -404,15 +404,21 @@ class SV_SC_DATE extends SV_Preset {
  *
  * Full example:
  *
- * [sv slug="sc-db-value-by-id" table="users" column="user_login" column-to-search="id" key="3" key-format="%d" message-not-found="User not found" cache=false cache-duration=3600 ]
+ * [sv slug="sc-db-value-by-id" table="wp_users" column="user_login" column-to-search="id" key="3" key-format="%d" message-not-found="User not found" cache=false cache-duration=3600 ]
+ * 
+ * Another example is to fetch the key we're searching for from the query string:
+ * 
+ * e.g. https://[url]/?user-id=3
  *
+ * [sv slug="sc-db-value-by-id" table="wp_users" column="user_login" column-to-search="id" key-query-string="user-id" key-format="%d" message-not-found="User not found" cache=false cache-duration=3600 ]
+ * 
  * SC_DB_VALUE_BY_ID
  */
 class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 
 	protected function unsanitised() {
 
-		$args = wp_parse_args( $this->get_arguments(), [ 'key-format' => '%d', 'message-not-found' => '', 'cache' => true, 'cache-duration' => 1 * HOUR_IN_SECONDS ] );
+		$args = wp_parse_args( $this->get_arguments(), [ 'key-format' => '%d', 'key-query-string' => NULL, 'message-not-found' => '', 'cache' => true, 'cache-duration' => 1 * HOUR_IN_SECONDS ] );
 
 		if ( $validation_error = $this->validate_arguments( $args ) ) {
 			return $validation_error;
@@ -427,6 +433,10 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 
 		global $wpdb;
 
+		// Load key to look for from querystring?
+		$key = ( false === empty( $args['key-query-string'] ) ) ?
+					$_GET[ $args['key-query-string'] ] : $args['key'];
+
 		$sql = sprintf( 'Select %s from %s where %s = %s',
 								$args['column'],
 								$args['table'],
@@ -434,7 +444,7 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 								$args['key-format']
 		);
 
-		$sql    = $wpdb->prepare( $sql, $args['key'] );
+		$sql    = $wpdb->prepare( $sql, $key );
 		$value  = $wpdb->get_var( $sql );
 
 		if ( true === empty( $value )) {
@@ -464,8 +474,12 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 			return 'The MySQL column to search for given key has not been specified (i.e. "column-to-search" argument is missing).';
 		}
 
-		if ( true === empty( $args['key'] ) ) {
-			return 'No key has been specified (i.e. "key" argument is missing).';
+		if ( false === empty( $args['key-query-string'] ) ) {
+			if( true === empty( $_GET[ $args['key-query-string'] ] ) ) {
+				return sprintf('A querystring key ( "%1$s" ) has been specified but no value was been passed within the URL? (e.g. https://[website-address]/?%1$s=some-value).', esc_html( $args['key-query-string'] ) );
+			}
+		} elseif ( true === empty( $args['key'] ) ) {
+			return 'No key has been specified (i.e. the "key" and "key-query-string" arguments are both missing).';
 		}
 
 		if ( true === empty( $args['key-format'] ) ) {
