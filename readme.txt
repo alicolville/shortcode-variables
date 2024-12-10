@@ -4,7 +4,7 @@ Donate link: https://www.paypal.me/yeken
 Tags: shortcode, variable, php, text, html, parameter, javascript, embed, reuse
 Requires at least: 6.0
 Tested up to: 6.7
-Stable tag: 4.1.6
+Stable tag: 4.1.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -146,6 +146,10 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 4.1 -[sv slug="sc-db-value-by-id"], new Premium shortcode for fetching a value from a MySQL table.
 
 == Changelog ==
+
+= 4.1.7 =
+
+* Improvement: Added additional security checks to Ajax handlers.
 
 = 4.1.6 =
 
