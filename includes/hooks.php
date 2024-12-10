@@ -87,6 +87,8 @@ function sh_cd_ajax_toggle_status() {
 
 	check_ajax_referer( 'sh-cd-security', 'security' );
 
+	sh_cd_permission_check();
+
 	$id = ( false === empty( $_POST['id'] ) ) ? (int) $_POST['id'] : NULL;
 
 	if ( false === empty( $id ) ) {
@@ -106,6 +108,8 @@ Ajax handler for deleting a shortcode
 function sh_cd_ajax_delete_shortcode() {
 
 	check_ajax_referer( 'sh-cd-security', 'security' );
+
+	sh_cd_permission_check();
 
 	$id = ( false === empty( $_POST['id'] ) ) ? (int) $_POST['id'] : NULL;
 
@@ -131,6 +135,8 @@ function sh_cd_ajax_toggle_multisite() {
 
 	check_ajax_referer( 'sh-cd-security', 'security' );
 
+	sh_cd_permission_check();
+
 	$id = ( false === empty( $_POST['id'] ) ) ? (int) $_POST['id'] : NULL;
 
 	if ( false === empty( $id ) ) {
@@ -154,6 +160,8 @@ function sh_cd_ajax_update_shortcode() {
 	}
 
 	check_ajax_referer( 'sh-cd-security', 'security' );
+
+	sh_cd_permission_check();
 
 	$id = ( false === empty( $_POST['id'] ) ) ? (int) $_POST['id'] : NULL;
 	$content = ( false === empty( $_POST['content'] ) ) ? $_POST['content'] : '';
@@ -179,6 +187,8 @@ function sh_cd_ajax_add_shortcode() {
 	}
 
 	check_ajax_referer( 'sh-cd-security', 'security' );
+
+	sh_cd_permission_check();
 
 	if( true === empty( $_POST['slug'] ) ) {
 		wp_send_json( [ 'id' => 0, 'ok' => 0, 'error_message' => __( 'Error: Please specify a "Slug".', SH_CD_SLUG ) ] );
