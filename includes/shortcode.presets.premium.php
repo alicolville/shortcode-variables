@@ -41,7 +41,9 @@ function sh_cd_shortcode_presets_premium_list() {
 		'sc-post-author' => [ 'class' => 'SC_POST_AUTHOR', 'description' => __( 'Display the author\'s display name or ID. The optional argument "field" allows you to specify whether you wish to display the author\'s "display-name" or "id". [sv slug="sc-post-author" field="id" ]', SH_CD_SLUG ), 'premium' => true ],
 		'sc-post-counts' => [ 'class' => 'SC_POST_COUNTS', 'description' => __( 'Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]', SH_CD_SLUG ), 'premium' => true ],
         'sc-user-counts' => [ 'class' => 'SC_USER_COUNTS', 'description' => __( 'Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"]', SH_CD_SLUG ), 'premium' => true ],
-		'sc-user-profile-photo' => [ 'class' => 'SC_AVATAR', 'description' => __( 'Display the WordPress profile photo for the logged in user e.g. [sv slug="sc-user-profile-photo" width="150"] or [sv slug="sc-user-profile-photo"]. Please note, width defaults to 96px.', SH_CD_SLUG ), 'premium' => true ]
+		'sc-user-profile-photo' => [ 'class' => 'SC_AVATAR', 'description' => __( 'Display the WordPress profile photo for the logged in user e.g. [sv slug="sc-user-profile-photo" width="150"] or [sv slug="sc-user-profile-photo"]. Please note, width defaults to 96px.', SH_CD_SLUG ), 'premium' => true ],
+		'sc-user-meta' => [ 'class' => 'SC_USER_META', 'description' => __( 'Display a WordPress user meta field (wraps get_user_meta) field e.g. last_name. Read more: <a href="https://snippet-shortcodes.yeken.uk/shortcodes/sc-user-meta" rel="noopener" target="_blank">[sv slug="sc-user-meta" field="last_name"]</a>', SH_CD_SLUG ), 'premium' => true ],
+		'sc-woocommerce' => [ 'class' => 'SC_USER_META', 'description' => __( 'Display a Woocommerce user profile field e.g. billing_phone. Read more: <a href="https://snippet-shortcodes.yeken.uk/shortcodes/sc-woocommerce" rel="noopener" target="_blank">[sv slug="sc-woocommerce" field="billing_phone"]</a>', SH_CD_SLUG ), 'premium' => true ]
 
 		// '' => [ 'class' => '', 'description' => '', 'premium' => true ]
 	];
@@ -490,5 +492,33 @@ class SV_SC_DB_VALUE_BY_ID extends SV_Preset {
 			return 'The key format is invalid. If the "key" field is numeric, then use %d otherwise use %s.';
 		}
 
+	}
+}
+
+/**
+ * User Info
+ *
+ * Class SV_USER_INFO
+ */
+class SV_SC_USER_META extends SV_Preset {
+
+	protected function unsanitised() {
+		
+		$user_id = get_current_user_id();
+
+		// Not logged in?
+		if ( true === empty( $user_id ) ) {
+			return '';
+		}
+
+		$args 	= wp_parse_args( $this->get_arguments(), [ 'field' => NULL, 'message-not-found' => '' ] );
+
+		if ( true === empty( $args[ 'field' ] ) ) {
+			return 'Field not specified';
+		}
+
+		$value 	= get_user_meta( $user_id, $args[ 'field' ], true );
+
+		return !empty( $value ) ? $value : $args[ 'message-not-found' ];
 	}
 }
