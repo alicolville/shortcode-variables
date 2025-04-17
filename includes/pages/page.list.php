@@ -168,12 +168,12 @@ function sh_cd_pages_your_shortcodes_list($action = NULL, $save_result = NULL) {
 														<td align="middle"><a class="button button-small toggle-disable sh-cd-toggle-%13$s" id="sc-cd-toggle-%8$s" data-id="%8$s" %13$s ><i class="fas %6$s"></i></a></td>
 														<td width="100">
 															<a class="button button-small sh-cd-toggle-%13$s" %13$s href="%9$s"><i class="far fa-clone"></i></a>
-															<a class="button button-small" href="%2$s" %14$s><i class="far fa-edit"></i></a>
+															<a class="button button-small" href="%2$s"><i class="far fa-edit"></i></a>
 															<a class="button button-small delete-shortcode" data-id="%8$s"><i class="fas fa-trash-alt"></i></a>
 														</td>
 													</tr>',
 													$class,
-													( true === $limit_reached && $i > SH_CD_FREE_SHORTCODE_LIMIT ) ? sh_cd_license_upgrade_link() : $link . '&action=edit&id=' . $id,
+													$link . '&action=edit&id=' . $id,
 													esc_html( $shortcode['slug'] ),
 													SH_CD_SHORTCODE,
 													( true === SH_CD_IS_PREMIUM ) ? esc_html( stripslashes( $shortcode['data'] ) ) : __( 'Upgrade for inline editing and toggles.', SH_CD_SLUG ),
