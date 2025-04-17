@@ -86,6 +86,7 @@ The plugin comes with the following premium shortcodes:
 - sc-post-counts - Display a count of posts for certain statuses. Using the argument status, specify whether to return a count for all posts that have a status of "publish" (default), "future", "draft", "pending" or "private". [sv slug="sc-post-counts" status="draft"]
 - sc-user-counts - Display a count of all WordPress users or the number of WordPress users for a given role e.g. [sv slug="sc-user-counts" role="subscriber"] or [sv slug="sc-user-counts"].
 - sc-user-profile-photo - Display the WordPress profile photo for the logged in user e.g. [sv slug="sc-user-profile-photo" width="150"] or [sv slug="sc-user-profile-photo"]. Please note, width defaults to 96px.
+- sc-woocommerce - Display a WooCommerce user meta field field e.g. billing_phone. 
 
 **Free Shortcodes**
 
