@@ -38,6 +38,8 @@ support,Our support team is located in Canada,false,false
 ...
 ```
 
+[Download a sample CSV file with 40 rows](csv-import-test.csv)
+
 ### Importing a CSV file
 
 - Via the WordPress Admin menu, navigate to "Snippet Shortcodes" > "Import Shortcodes".
