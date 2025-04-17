@@ -20,17 +20,21 @@ function sh_cd_help_page() {
 				<div class="meta-box-sortables ui-sortable">
 
                     <div class="postbox">
-						<div class="postbox-header">
-							<h2 class="hndle"><span><?php echo __( 'Custom modifications / web development', SH_CD_SLUG ); ?> </span></h2>
-						</div>
+						<h3 class="postbox-header">
+							<span>
+								<?php echo __( 'Custom modifications / web development', SH_CD_SLUG ); ?>
+							</span>
+                        </h3>
                         <div style="padding: 0px 15px 0px 15px">
 	                        <?php sh_cd_custom_notification_html(); ?>
                         </div>
                     </div>
 					<div class="postbox">
-						<div class="postbox-header">
-							<h2 class="hndle"><span><?php echo __( 'Documentation and Release notes', SH_CD_SLUG ); ?> </span></h2>
-						</div>
+						<h3 class="postbox-header">
+							<span>
+								<?php echo __( 'Documenation and Release notes', SH_CD_SLUG ); ?>
+							</span>
+                        </h3>
 						<div style="padding: 0px 15px 0px 15px">
 							<p><?php echo __( 'You can find detailed documentation for this plugin at our site:', SH_CD_SLUG ); ?></p>
 							<p>
@@ -40,9 +44,11 @@ function sh_cd_help_page() {
 						</div>
 					</div>
                     <div class="postbox">
-						<div class="postbox-header">
-							<h2 class="hndle"><span><?php echo __( 'Contact', SH_CD_SLUG ); ?> </span></h2>
-						</div>
+						<h3 class="postbox-header">
+							<span>
+								<?php echo __( 'Contact', SH_CD_SLUG ); ?>
+							</span>
+                        </h3>
                         <div style="padding: 0px 15px 0px 15px">
                             <p>If you have any questions or bugs to report, then please contact us at <a href="mailto:email@yeken.uk">email@yeken.uk</a>.</p>
                         </div>

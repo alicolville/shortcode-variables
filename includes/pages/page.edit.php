@@ -32,9 +32,11 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
                         <div class="postbox">
-							<div class="postbox-header">
-                          	  <h2 class="hndle"><span><?php echo __( 'Add / Edit a shortcode', SH_CD_SLUG ); ?></span></h2>
-							</div>
+							<h3 class="postbox-header">
+                                <span>
+                                    <?php echo __( 'Add / Edit a shortcode', SH_CD_SLUG ); ?>
+                                </span>
+                            </h3>
                             <div style="padding: 0px 15px 0px 15px">
                             <?php
 

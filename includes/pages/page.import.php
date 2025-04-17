@@ -31,8 +31,12 @@ function sh_cd_admin_page_import() {
 						}
                     ?>
                    <div class="postbox">
-					   	<h2 class="hndle"><?php echo __( 'Import CSV', SH_CD_SLUG ); ?></h2>
-                        <div class="inside">
+				  		<h3 class="postbox-header">
+							<span>
+								<?php echo __( 'Import CSV', SH_CD_SLUG ); ?>
+							</span>
+                        </h3>
+					    <div class="inside">
                         	<?php if ( false === $importing ): ?>
 								<div class="sh-cd-form-row">
 									<p>
