@@ -151,6 +151,7 @@ Login into Wordpress Admin Panel and goto Settings > Snippet Shortcodes
 = 4.2.3 =
 
 * Improvement: All shortcodes are now editable even if there is no premium license. Previously only the top 10 shortcodes could be edited.
+* Improvement: Display update messages from Yeken.uk in Admin notices.
 * Change: Slugs can no longer be changed if not in Premium.
 
 = 4.2.2 =

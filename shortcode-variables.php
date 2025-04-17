@@ -44,6 +44,7 @@ define( 'SH_CD_SHORTCODE', 'sv' );
 define( 'SH_CD_FREE_SHORTCODE_LIMIT', 10 );
 define( 'SH_CD_PREMIUM_PRICE', 4.99 );
 define( 'SH_CD_UPGRADE_LINK', 'https://shop.yeken.uk/product/shortcode-variables/' );
+define( 'SH_CD_YEKEN_UPDATES_URL', 'https://yeken.uk/downloads/_updates/shortcode-variables.json' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
@@ -55,6 +56,7 @@ include_once SH_CD_ABSPATH . 'includes/functions.php';
 include_once SH_CD_ABSPATH . 'includes/db.php';
 include_once SH_CD_ABSPATH . 'includes/cron.php';
 include_once SH_CD_ABSPATH . 'includes/license.php';
+include_once SH_CD_ABSPATH . 'includes/marketing.php';
 
 $sh_cd_is_premium = sh_cd_license_is_premium();
 
