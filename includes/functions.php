@@ -12,6 +12,11 @@ function sh_cd_shortcodes_save_post() {
 	// Capture the raw $_POST fields, the save functions will process and validate the data
 	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled', 'multisite' ] );
 
+	// If we are not premium, then the user is not allowed to change the site slug (otherwise they could just re-use variables and by pass the limit)
+	if ( ! SH_CD_IS_PREMIUM && false === empty( $shortcode[ 'previous_slug' ] ) ) {
+		$shortcode[ 'slug' ] = $shortcode[ 'previous_slug' ];
+	}
+
 	return sh_cd_db_shortcodes_save( $shortcode );
 }
 
