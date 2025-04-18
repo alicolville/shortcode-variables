@@ -45,9 +45,11 @@
 
                         <div class="meta-box-sortables ui-sortable">
                             <div class="postbox">
-								<div class="postbox-header">
-									<h2 class="hndle"><span><?php echo __( 'Upgrade your license', SH_CD_SLUG ); ?> </span></h2>
-								</div>
+                                <h3 class="postbox-header">
+                                    <span>
+                                        <?php echo __( 'Upgrade your license', SH_CD_SLUG ); ?>
+                                    </span>
+                                </h3>
                                 <div class="inside">
                                     <center>
                                         <h3><?php echo __( 'In case you need, your <strong>Site Hash</strong> is', SH_CD_SLUG ); ?>: <?php echo esc_html( $site_hash ) ; ?></h3>
@@ -80,9 +82,11 @@
                         <div class="meta-box-sortables">
 
                             <div class="postbox">
-								<div class="postbox-header">
-									<h2 class="hndle"><span><?php echo __( 'Add or Update License', SH_CD_SLUG ); ?> </span></h2>
-								</div>
+								<h3 class="postbox-header">
+                                    <span>
+                                        <?php echo __( 'Add or update license', SH_CD_SLUG ); ?>
+                                    </span>
+                                </h3>
                                 <div class="inside">
 
                                     <form action="<?php echo admin_url( 'admin.php?page=sh-cd-shortcode-variables-license&add-license=true' ); ?>"
@@ -95,9 +99,11 @@
                                 </div>
                             </div>
                             <div class="postbox">
-								<div class="postbox-header">
-									<h2 class="hndle"><span><?php echo __( 'Your license information', SH_CD_SLUG ); ?> </span></h2>
-								</div>
+                                <h3 class="postbox-header">
+                                    <span>
+                                        <?php echo __( 'Your current license', SH_CD_SLUG ); ?>
+                                    </span>
+                                </h3>
                                 <div class="inside">
                                     <table class="ws-ls-sidebar-stats">
                                         <tr>

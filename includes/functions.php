@@ -12,6 +12,11 @@ function sh_cd_shortcodes_save_post() {
 	// Capture the raw $_POST fields, the save functions will process and validate the data
 	$shortcode = sh_cd_get_values_from_post( [ 'id', 'slug', 'previous_slug', 'data', 'disabled', 'multisite' ] );
 
+	// If we are not premium, then the user is not allowed to change the site slug (otherwise they could just re-use variables and by pass the limit)
+	if ( ! SH_CD_IS_PREMIUM && false === empty( $shortcode[ 'previous_slug' ] ) ) {
+		$shortcode[ 'slug' ] = $shortcode[ 'previous_slug' ];
+	}
+
 	return sh_cd_db_shortcodes_save( $shortcode );
 }
 
@@ -706,4 +711,25 @@ function sh_cd_import_csv_validate_row( $csv_row ) {
  */
 function sh_cd_to_bool( $string ) {
 	return filter_var( $string, FILTER_VALIDATE_BOOLEAN );
+}
+
+/**
+ * Our version of kses and the HTML we are happy with
+ */
+function sh_cd_wp_kses( $value ) {
+
+	$basic_tags = wp_kses_allowed_html( 'html' );
+
+	$basic_tags[ 'a' ] 		= [ 'id' => true, 'class' => true, 'href' => true, 'title' => true, 'target' => true];
+	$basic_tags[ 'canvas' ] = [ 'id' => true, 'class' => true ];
+	$basic_tags[ 'div' ]	= [ 'id' => true, 'class' => true, 'style' => true ];	
+	$basic_tags[ 'i' ]		= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'p' ]		= [ 'id' => true, 'class' => true ];		
+	$basic_tags[ 'span' ]	= [ 'id' => true, 'class' => true ];			
+	$basic_tags[ 'table' ]	= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'tr' ]		= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'td' ]		= [ 'id' => true, 'class' => true ];	
+	$basic_tags[ 'li' ]		= [ 'class' => true ];	
+
+	return wp_kses( $value, $basic_tags );
 }

@@ -4,8 +4,8 @@ defined('ABSPATH') or die("Jog on!");
 
 /**
  * Plugin Name: Snippet Shortcodes
- * Description: Create your own shortcodes and assign text / variables to it or use our premade ones. You can then embed these shortcodes throughout your entire site and only have to change the value in one place.
- * Version: 4.2.2
+ * Description: Easily create custom shortcodes by assigning text or variables, or use our ready-made options. Embed them anywhere across your site—update the value once, and it updates everywhere.
+ * Version: 4.2.3
  * Requires at least:   6.0
  * Tested up to: 		6.8
  * Requires PHP:        7.4
@@ -16,7 +16,7 @@ defined('ABSPATH') or die("Jog on!");
  * Text Domain:         shortcode-variables
  */
 
-/*  Copyright 2024 YeKen.uk
+/*  Copyright 2025 YeKen.uk
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License, version 2, as
@@ -34,7 +34,7 @@ defined('ABSPATH') or die("Jog on!");
 
 define( 'SH_CD_ABSPATH', plugin_dir_path( __FILE__ ) );
 
-define( 'SH_CD_PLUGIN_VERSION', '4.2' );
+define( 'SH_CD_PLUGIN_VERSION', '4.2.3' );
 define( 'SH_CD_PLUGIN_NAME', 'Snippet Shortcodes' );
 define( 'SH_CD_TABLE', 'SH_CD_SHORTCODES' );
 define( 'SH_CD_TABLE_MULTISITE', 'SH_CD_SHORTCODES_MULTISITE' );
@@ -42,8 +42,9 @@ define( 'SH_CD_SLUG', 'sh-cd-shortcode-variables' );
 define( 'SH_CD_PREFIX', 'sh-cd-' );
 define( 'SH_CD_SHORTCODE', 'sv' );
 define( 'SH_CD_FREE_SHORTCODE_LIMIT', 10 );
-define( 'SH_CD_PREMIUM_PRICE', 2.99 );
+define( 'SH_CD_PREMIUM_PRICE', 4.99 );
 define( 'SH_CD_UPGRADE_LINK', 'https://shop.yeken.uk/product/shortcode-variables/' );
+define( 'SH_CD_YEKEN_UPDATES_URL', 'https://yeken.uk/downloads/_updates/shortcode-variables.json' );
 
 // -----------------------------------------------------------------------------------------
 // AC: Include all relevant PHP files
@@ -55,6 +56,7 @@ include_once SH_CD_ABSPATH . 'includes/functions.php';
 include_once SH_CD_ABSPATH . 'includes/db.php';
 include_once SH_CD_ABSPATH . 'includes/cron.php';
 include_once SH_CD_ABSPATH . 'includes/license.php';
+include_once SH_CD_ABSPATH . 'includes/marketing.php';
 
 $sh_cd_is_premium = sh_cd_license_is_premium();
 

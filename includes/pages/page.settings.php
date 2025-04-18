@@ -24,10 +24,10 @@ function sh_cd_settings_page_generic() {
                 <div class="meta-box-sortables ui-sortable">
 
                     <div class="postbox">
-                        <h3 class="hndle">
-                            <span>
-                                <?php echo __( SH_CD_PLUGIN_NAME . ' Settings', SH_CD_SLUG); ?>
-                            </span>
+                        <h3 class="postbox-header">
+							<span>
+								<?php echo __( 'Settings', SH_CD_SLUG ); ?>
+							</span>
                         </h3>
                         <div class="inside">
                             <form method="post" action="options.php">

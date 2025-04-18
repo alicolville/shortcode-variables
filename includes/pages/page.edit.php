@@ -32,9 +32,11 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
 				<div id="post-body-content">
 					<div class="meta-box-sortables ui-sortable">
                         <div class="postbox">
-							<div class="postbox-header">
-                          	  <h2 class="hndle"><span><?php echo __( 'Add / Edit a shortcode', SH_CD_SLUG ); ?></span></h2>
-							</div>
+							<h3 class="postbox-header">
+                                <span>
+                                    <?php echo __( 'Add / Edit a shortcode', SH_CD_SLUG ); ?>
+                                </span>
+                            </h3>
                             <div style="padding: 0px 15px 0px 15px">
                             <?php
 
@@ -62,7 +64,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
                                         <p><small><?php echo __( 'Specify the unique identifier for this shortcode', SH_CD_SLUG ); ?>.</small></p>
                                         <input type="text" required class="regular-text" size="100" id="slug" name="slug"
                                                 placeholder="Slug"
-                                                    value="<?php echo esc_attr( $shortcode['slug'] )?>" />
+                                                    value="<?php echo esc_attr( $shortcode['slug'] )?>"  <?php if ( false === SH_CD_IS_PREMIUM ) { echo 'disabled="disabled"'; } ?> />
                                         <?php
 
                                             $previous_slug = ( false === empty( $shortcode['previous_slug'] ) ) ? $shortcode['previous_slug'] : $shortcode['slug'];
@@ -73,7 +75,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
                                         <h4><?php echo __( 'Shortcode Content', SH_CD_SLUG ); ?></h4>
                                         <p><small><?php echo __( 'Specify the text, HTML, media, data, etc that should be rendered wherever the shortcode is placed.', SH_CD_SLUG ); ?></small></p>
                                         <?php wp_editor( $shortcode['data'], 'data', [ 'textarea_name' => 'data' ] ); ?>
-
+                                        
                                         <h4><?php echo __( 'Disable?', SH_CD_SLUG ); ?></h4>
                                         <p><?php echo __( 'If disabled, nothing will be rendered where the shortcode has been placed.', SH_CD_SLUG ); ?></p>
                                         <select id="disabled" name="disabled">
@@ -92,7 +94,7 @@ function sh_cd_pages_your_shortcodes_edit( $action = 'add', $save_result = NULL 
                                             <p>
                                                 <i class="far fa-credit-card"></i>
                                                 <a href="<?php echo sh_cd_license_upgrade_link(); ?>">
-													<?php echo __( 'Multi site support is for Premium users. Upgrade now.', SH_CD_SLUG ); ?>
+													<?php echo __( 'Multi site support and editing slugs are only available for Premium users. Upgrade now.', SH_CD_SLUG ); ?>
                                                 </a>
                                             </p>
                                         <?php endif; ?>
